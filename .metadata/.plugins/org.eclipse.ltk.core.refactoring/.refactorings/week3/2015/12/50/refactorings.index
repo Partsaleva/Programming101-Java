@@ -1,0 +1,9 @@
+1449399057835	Infer generic type arguments
+1449402962759	Extract local variable 'next'
+1449402992374	Extract local variable 'next2'
+1449746856322	Encapsulate field 'grade'
+1449747076884	Encapsulate field 'name'
+1449756116960	Encapsulate field 'priority'
+1449841048761	Encapsulate field 'next'
+1449841055546	Encapsulate field 'value'
+1449841063204	Encapsulate field 'key'

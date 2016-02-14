@@ -1,0 +1,6 @@
+package friday;
+
+public class Example {
+	public int exampleOfLife;
+	
+}

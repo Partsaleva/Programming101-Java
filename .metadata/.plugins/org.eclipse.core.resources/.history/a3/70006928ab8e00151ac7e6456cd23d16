@@ -1,0 +1,44 @@
+package week1;
+
+import java.util.Arrays;
+import java.util.LinkedList;
+
+/*25. Sum all the numbers in a String
+int sumOfNumbers(String input)
+Sum all of the numbers in the String. Ignore the characters. 
+sumOfNumbers("abc123dd34") => 157 sumOfNumbers("12 99 1) => 112*/
+public class SumOfNumbers {
+
+	public static void main(String[] args) {
+		SumOfNumbers str=new SumOfNumbers();
+		String test1="abc123dd34";
+		String test2="12 99 1";
+		 String test3 = "qwerty-1qwerty-2 455 f0gfg 4"; 
+		test3 = test3.replaceAll("[^-?0-9]+", " "); 
+		String[] numbers = test3.split(" ");
+		int[] a = new int [numbers.length];
+		for(int i=0; i<numbers.length; i++)
+		{
+			System.out.println(numbers[i]);
+		}
+		System.out.println(numbers);
+		System.out.println(str.sumOfNumbers(test1));
+		System.out.println(str.sumOfNumbers(test2));
+		//System.out.println(str.sumOfNumbers(test3));
+
+	}
+	
+	int sumOfNumbers(String input)
+	{
+		int sum=0;
+		input = input.replaceAll("[^-?0-9]+", " "); 
+		String[] numbers = input.split(" ");
+		int[] a = new int [numbers.length];
+		for (int x = 0; x < input.length(); x++){
+	        a[x] = Integer.parseInt (numbers[x]);
+	        sum+=a[x];
+		}
+		return sum;
+	}
+
+}

@@ -1,0 +1,30 @@
+package week1;
+
+public class IsPrime {
+	public boolean isPrime(int number)
+	{
+		double max=Math.sqrt(number);
+		int i = 2;
+		if (number == 2)
+		{
+		    return true;
+		}
+		while (i <= max)
+		{
+			if (number % i == 0)
+			{
+				return false;
+			}
+			i++;
+		}
+		return true;	
+	}
+	
+	public static void main(String[] args) {
+		IsPrime num=new IsPrime();
+		System.out.println(num.isPrime(24));
+		System.out.println(num.isPrime(7));
+
+	}
+
+}

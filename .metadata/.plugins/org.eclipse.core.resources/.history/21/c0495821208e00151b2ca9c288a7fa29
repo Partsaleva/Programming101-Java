@@ -1,0 +1,37 @@
+package week1;
+
+
+public class DoubleFac {
+
+	int factorial(int n)
+	{
+		int fact=n;
+		if(n>1)
+		{		
+			while(n!=1)
+			{
+				fact=fact*(n-1);
+				n--;		
+			}
+		}else fact=1;
+		return fact;
+	}
+	
+	long doubleFac(int n)
+	{
+		n=factorial(factorial(n));
+		return n;
+	}
+	
+	public static void main(String[] args) {
+		DoubleFac num=new DoubleFac();
+		
+		//Scanner in = new Scanner(System.in);
+		//int n = in.nextInt();
+		//in.close();
+		
+		System.out.println(num.doubleFac(3));
+
+	}
+
+}

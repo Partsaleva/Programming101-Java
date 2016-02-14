@@ -1,0 +1,13 @@
+package friday;
+
+import javax.swing.SingleSelectionModel;
+
+public class MyRunnable implements Runnable{
+
+	@Override
+	public void run() {
+		System.err.println("I"m ruunable");
+		
+	}
+
+}

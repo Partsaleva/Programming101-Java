@@ -1,0 +1,105 @@
+package monday;
+
+import java.util.ArrayList;
+
+public class Vector {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+	private Vec magnitude;
+	private int direction;
+	//Create a constructor that takes a variable number of arguments - the coordinates
+	public Vector(Vec p,Vec q){
+		setStart(p);
+		setEnd(q);
+	}
+	
+	//Create a constructor that copies an existing vector
+	public Vector(Vector other){
+		this.magnitude=other.magnitude;
+		this.magnitude=other.magnitude;
+	}
+	
+	//Think of a way to get and set each coordinate of the vector
+	public Vec getStart() {
+		return magnitude;
+	}
+
+	public void setStart(Vec start) {
+		this.magnitude = start;
+	}
+
+	public Vec getEnd() {
+		return end;
+	}
+
+	public void setEnd(Vec end) {
+		if(magnitude.arg.size()!=end.arg.size()){
+			System.out.println("points are different");
+		}
+		else{
+			this.end = end;
+		}
+	}
+	
+	//Create a method for returning the dimensionality of the vector 
+	//(E.g. for a 3D vector it should return 3)
+	int dimension(){
+		return this.getStart().arg.size();
+	}
+
+	//Create a method for returning the length of the vector
+	double length(){
+		double sum=0, diff=0;
+		for(int i=0; i< getStart().arg.size(); i++){
+			diff=getEnd().arg.get(i)-getStart().arg.get(i);
+			sum+=diff*diff;
+		}
+		return Math.sqrt(sum);
+	}
+	//Override toString()
+	public String toString(){
+		return new String("("+getStart().arg.toString()+","+getEnd().arg.toString());
+	}
+	//Override equals()
+	public boolean equal(){
+		return getStart()==getEnd();
+	}
+	//Override hashCode()
+	public int	hashCode(){
+		int hash = 17;
+	    hash = hash * 23 + getStart().hashCode();
+	    hash = hash * 23 + getEnd().hashCode();
+	    return hash;
+	}
+	//define methods add(Vector vector), subtract(Vector vector between vectors (First check 
+	//if the 2 vectors have the same dimension! If they don't, print a message that they cannot be added.)
+	Vector add(Vector other){		
+		for(int i=0; i< getStart().arg.size(); i++){
+			this.magnitude.arg.add(this.getStart().arg.get(i)+other.getStart().arg.get(i));			
+		}
+		for(int i=0; i< getStart().arg.size(); i++){
+			this.end.arg.add(this.getEnd().arg.get(i)+other.getEnd().arg.get(i));				
+		}
+		return this;
+	}
+		
+	
+	//define methods add(float by), subtract(flaot by), multiply(float by), divide(float by) 
+	//between a vector and a scalar
+	//define dotProduct(Vector vector) - the dot product of 2 vectors (First check if the 2 vectors have the same dimension!)
+}
+
+class Vec{
+	ArrayList<Double> arg=new ArrayList<>();
+	//Create a constructor that takes a variable number of arguments - the coordinates
+	public Vec(ArrayList<Double>arg){
+		for(int i=0; i<arg.size(); i++){
+			this.arg.add(arg.get(i));
+		}
+	}
+}
+

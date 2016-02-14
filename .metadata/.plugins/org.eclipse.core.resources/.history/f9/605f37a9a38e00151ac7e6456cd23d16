@@ -1,0 +1,46 @@
+package week1;
+
+import java.io.UnsupportedEncodingException;
+
+/*24. Decode an URL
+
+Input 'kitten%20pic.jpg' 
+Output 'kitten pic.jpg' %20=>' ' %3A=>':' %3D=>'?' %2F=>'/' 
+String decodeUrl(String input)
+*/
+public class DecodeUrl {
+
+	public static void main(String[] args){
+		DecodeUrl str=new DecodeUrl();
+		String input="kitten%20pic.jpg";
+		System.out.println(str.decodeUrl(input));
+
+	}
+	String decodeUrl(String input) 
+	{
+		//%20=>' ' %3A=>':' %3D=>'?' %2F=>'/'
+		//array to hold replacements
+		String[][] replacements = {{"%20", " "}, {"%3A", ":"}, {"%3D","?"}, {"%2F","/"}};
+
+		//loop over the array and replace
+		String strOutput = input;
+		for(String[] replacement: replacements) {
+		    strOutput = strOutput.replace(replacement[0], replacement[1]);
+		}
+
+		return strOutput;
+	}
+	
+	/*public static void main(String[] args) throws UnsupportedEncodingException {
+		DecodeUrl str=new DecodeUrl();
+		String input="kitten%20pic.jpg";
+		System.out.println(str.decodeUrl(input));
+
+	}
+	String decodeUrl(String url) throws UnsupportedEncodingException 
+	{
+		String decoded = java.net.URLDecoder.decode(url, "UTF-8");
+		return decoded;
+	}*/
+
+}

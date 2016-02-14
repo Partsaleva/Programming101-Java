@@ -1,0 +1,32 @@
+package friday;
+
+
+public class uprTread {
+
+	public static void main(String[] args) throws InterruptedException {
+		MyRunnable myRunnable =new MyRunnable();
+		Thread thread=new Thread(myRunnable);
+		thread.start();
+		
+		Example runExample=new Example(3, 3);
+		Thread tr3=new Thread(runExample);
+		tr3.start();
+		
+		
+		/*MyThread thread1=new MyThread();
+		thread1.start();
+		thread1.join();
+		System.out.println("I'm MAIN thread");*/
+		
+	
+	}
+	
+	private static class MyThread extends Thread{
+		
+		public void run(){
+			System.out.println("I'm a thread");
+		}
+	}
+	
+
+}

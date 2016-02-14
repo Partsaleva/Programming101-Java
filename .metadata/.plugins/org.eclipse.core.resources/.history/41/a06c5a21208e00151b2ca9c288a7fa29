@@ -1,0 +1,33 @@
+package week1;
+/*16. Rescale an image using nearest neighbour interpolation
+int[][] rescale(int[][] original, int newWidth, int newHeight)
+You are given an image original. Rescale it to newWidth, newHeight,
+using nearest neighbour interpolation. 
+(See http://en.wikipedia.org/wiki/Nearest-neighbor_interpolation)*/
+
+public class Rescale {
+
+	public int[][] rescale(int[][] original, int newWidth, int newHeight)
+	{
+		    int[][] result = new int[newWidth][newHeight] ;
+		    int oldWidth=original.length;
+		    int oldHeight=original[0].length;
+		    int x_ratio = (int)((oldWidth<<16)/newHeight) +1;
+		    int y_ratio = (int)((oldHeight<<16)/newHeight) +1;
+		    int x2, y2 ;
+		    for (int i=0;i<newHeight;i++) {
+		        for (int j=0;j<newWidth;j++) {
+		            x2 = ((j*x_ratio)>>16) ;
+		            y2 = ((i*y_ratio)>>16) ;
+		            result[(i*newWidth)+j] = original[(y2*oldWidth)+x2] ;
+		        }                
+		    }                
+		    return result ;
+		
+	}
+	public static void main(String[] args) {
+		Rescale img=new Rescale();
+		
+	}
+
+}

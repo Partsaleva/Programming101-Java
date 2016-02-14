@@ -1,0 +1,13 @@
+package week1;
+
+public class IsOdd {
+	public boolean isOdd(int n){
+		return n%2==1;
+	}
+	public static void main(String[] args) {
+		IsOdd num=new IsOdd();
+		System.out.println(num.isOdd(3));
+		System.out.println(num.isOdd(4));
+	}
+
+}

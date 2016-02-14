@@ -1,0 +1,158 @@
+package monday;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+public class Vector {
+
+	public static void main(String[] args) {
+		ArrayList <Integer> vec = new ArrayList <Integer> (Arrays.<Integer>asList (1,2,3,4,5,5,5));
+		Vec magn=new Vec(vec);
+		Vector vector=new Vector(magn, 1);
+
+	}
+
+	private Vec magnitude;
+	private int direction;
+	//Create a constructor that takes a variable number of arguments - the coordinates
+	public Vector(Vec magnitude,int direction){
+		setMagnitude(magnitude);
+		setDirection(direction);
+		
+	}
+	
+	public Vec getMagnitude() {
+		return magnitude;
+	}
+
+	public void setMagnitude(Vec magnitude) {
+		for(int i=0; i< magnitude.getVec().size(); i++){
+			this.magnitude.getVec().add(magnitude.getVec().get(i));
+		}
+	}
+
+	public int getDirection() {
+		return direction;
+	}
+
+	public void setDirection(int direction) {
+		if(direction!=1 || direction != -1){
+			System.out.println("1 and -1 are allowed");
+		}
+		else{
+			this.direction = direction;
+		}
+	}
+
+	//Create a constructor that copies an existing vector
+	public Vector(Vector other){
+		this.magnitude=other.magnitude;
+		this.direction=other.direction;
+	}
+	
+	//Think of a way to get and set each coordinate of the vector
+	double getCoordinate(int index){
+		return this.getMagnitude().getVec().get(index);
+	}
+	void setCoordinate(int index, int value){
+		this.getMagnitude().getVec().add(index, value);;
+	}
+	//Create a method for returning the dimensionality of the vector 
+	//(E.g. for a 3D vector it should return 3)
+	int dimension(){
+		return getMagnitude().getVec().size();
+	}
+
+	//Create a method for returning the length of the vector
+	double length(){
+		double sum=0, diff=0;
+		for(int i=0; i< getMagnitude().getVec().size()-1; i++){
+			diff=getMagnitude().getVec().get(i)-getMagnitude().getVec().get(i+1);
+			sum+=diff*diff;
+		}
+		return Math.sqrt(sum);
+	}
+	//Override toString()
+	public String toString(){
+		return new String("( magnitude: "+getMagnitude().getVec().toString()+
+				", direction: "+getDirection());
+	}
+	//Override equals()
+	public boolean equal(Vector other){
+		return this.getMagnitude().equals(other.getMagnitude()) && 
+				this.getDirection() == other.getDirection();
+		
+	}
+	//Override hashCode()
+	public int	hashCode(){
+		int hash = 17;
+	    hash = hash * 23 + getMagnitude().hashCode();
+	    hash = hash * 23 + getMagnitude().hashCode();
+	    return hash;
+	}
+	//define methods add(Vector vector), subtract(Vector vector between vectors (First check 
+	//if the 2 vectors have the same dimension! If they don't, print a message that they cannot be added.)
+	Vector add(Vector other){		
+		for(int i=0; i< getMagnitude().getVec().size(); i++){
+			this.setCoordinate(i, other.getCoordinate(i)+this.getCoordinate(i));;			
+		}
+		return this;
+	}
+		
+	
+	//define methods add(float by), subtract(flaot by), multiply(float by), divide(float by) 
+	//between a vector and a scalar
+	Vector add(double by){
+		for(int i=0; i< getMagnitude().getVec().size(); i++){
+			this.setCoordinate(i, this.getCoordinate(i)+by);;			
+		}
+		return this;
+	}
+	Vector subtract(double by){
+		for(int i=0; i< getMagnitude().getVec().size(); i++){
+			this.setCoordinate(i, this.getCoordinate(i)-by);;			
+		}
+		return this;
+	}
+	Vector multiply(double by){
+		for(int i=0; i< getMagnitude().getVec().size(); i++){
+			this.setCoordinate(i, this.getCoordinate(i)*by);;			
+		}
+		return this;
+	}
+	Vector divide(double by){
+		for(int i=0; i< getMagnitude().getVec().size(); i++){
+			this.setCoordinate(i, this.getCoordinate(i)/by);;			
+		}
+		return this;
+	} 
+	
+	//define dotProduct(Vector vector) - the dot product of 2 vectors (First check if 
+	//the 2 vectors have the same dimension!)
+	Vector dotProduct(Vector other){
+		if(this.getMagnitude().getVec().size()!=other.getMagnitude().getVec().size()){
+			System.out.println("The vectors are with different dimentions");
+		}
+		else{
+			for(int i=0; i< getMagnitude().getVec().size(); i++){
+				this.setCoordinate(i, other.getCoordinate(i)*this.getCoordinate(i));;			
+			}
+		}
+		return this;
+	}
+}
+
+class Vec{
+	ArrayList<Integer> arg=new ArrayList<>();
+	//Create a constructor that takes a variable number of arguments - the coordinates
+	public Vec(ArrayList<Integer>arg){
+		for(int i=0; i<arg.size(); i++){
+			this.arg.add(arg.get(i));
+		}
+	}
+	public ArrayList<Integer> getVec(){
+		return this.arg;
+	}
+}
+
