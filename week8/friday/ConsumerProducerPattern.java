@@ -3,7 +3,7 @@ package friday;
 public class ConsumerProducerPattern {
 
 	public static void main(String[] args) {
-		Producer producer=new Producer(c);
+		Producer producer=new Producer();
 		Consumer consumer=new Consumer();
 		
 		producer.start();

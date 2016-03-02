@@ -11,3 +11,6 @@
 /TestValidator.class
 /BST.class
 /BST$Node.class
+/FunnyArraySorter$1PivotDivComperator.class
+/FunnyArraySorter$1PivotSubComperator.class
+/FunnyArraySorter$1ReverseComperator.class

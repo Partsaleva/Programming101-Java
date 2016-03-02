@@ -17,15 +17,15 @@ public class UserInputChecker {
 		//phoneValidation.validate("+359888111000");
 		ageValidator.validate("13");
 		creditcardValidaion.validate("1111 1111 1111 1111");
-		IpVersion4Val.validate("255.255.250.240");
+		//IpVersion4Val.validate("255.255.250.240");
 		IpVersion6Val.validate(name);
-		MacAddressVal.validate("01-23-45-67-89-ab");
+		//MacAddressVal.validate("01-23-45-67-89-ab");
 		
 	}
 
-	private String input;
-	UserInputChecker(){
-		this.input=input;
+
+	public UserInputChecker(){
+		
 	}
 	public interface Validator{
 		public void validate(String input);
