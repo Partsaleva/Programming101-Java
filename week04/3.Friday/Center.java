@@ -1,0 +1,6 @@
+
+	interface Center {	
+		
+		Point center();
+		
+	}
