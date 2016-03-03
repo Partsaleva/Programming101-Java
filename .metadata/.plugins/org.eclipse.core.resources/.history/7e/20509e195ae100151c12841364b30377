@@ -1,0 +1,29 @@
+package fastAndFurious;
+
+public class Volkswagen implements Car{
+
+	
+	public Volkswagen(boolean testing) {
+		this.setTesting(testing);
+	}
+
+	@Override
+	public boolean isEcoFriendly(boolean testing) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public void setTesting(boolean test) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void setMileage(int mil) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	
+}

@@ -21,6 +21,7 @@ public class OnOffCollection<T> {
 			list.add(elem);
 		}
 		else{
+			System.out.println(String.format("Add element: %s", elem));
 			removeItem(elem);
 		}
 	}

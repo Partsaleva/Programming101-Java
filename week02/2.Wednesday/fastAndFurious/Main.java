@@ -1,6 +1,6 @@
 package fastAndFurious;
 
-public class Main extends Car{
+public class Main{
 
 	public static void main(String[] args) {
 		

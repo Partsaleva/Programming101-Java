@@ -18,10 +18,10 @@ public class CorrectBrackets {
 				return false;
 			}
 			if(expr[i]=='('){
-				count++;
+				count--;
 			}
 			else if(expr[i]==')'){
-				count--;
+				count++;
 			}
 		}
 		return count==0;

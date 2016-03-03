@@ -21,6 +21,7 @@ public class UniqueWords {
 	}
 
 	int uniqueWordsCount(String[] words){
+		//HashSet didn't allow duplicates
 		HashSet<String> noDupSet = new HashSet<String>();
 		for(int i=0; i<words.length;i++){
 			noDupSet.add(words[i]);

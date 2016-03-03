@@ -1,0 +1,19 @@
+package fastAndFurious;
+
+public class Audi implements Car{
+
+	public int mileage;
+
+	@Override
+	public boolean isEcoFriendly(boolean testing) {
+		return true;
+	}
+
+	
+
+
+	public int getMileage() {
+		return mileage;
+		
+	}
+}

@@ -16,13 +16,13 @@ public class ReverseGenericCollection <T>{
 		
 	}
 
-	 Collection<T> /*void*/ reverse (Collection<T> collection){
+	 Collection<T> reverse (Collection<T> collection){
 		ArrayList<T> rev=new ArrayList<>(collection);	
-		Collection<T> result = new ArrayList<>();		
+		Collection<T> result = new ArrayList<>();
+		//iterate from end to 0 and add element in result
 		for(int i=rev.size()-1;i>=0;i--){
 			result.add(rev.get(i));
 		}
-		//System.out.println(result.toString());
 		return result;
 	}
 }

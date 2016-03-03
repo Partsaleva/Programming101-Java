@@ -22,12 +22,14 @@ public class StackImpl<T> implements Stack<T>{
 			System.out.println(err.getMessage());
 		}
 	}
+	private Node top;
+	private int size;
 	
 	public StackImpl(){
 		size=0;
 		top=null;
 	}
-	private class Node{
+	public class Node{
 		private T elem;
 		private Node link;
 		public Node(T elem, Node link){
@@ -35,8 +37,7 @@ public class StackImpl<T> implements Stack<T>{
 			this.link=link;
 		}	
 	}
-	private Node top;
-	private int size;
+	
 	
 	private void throwIfEmpty(){
 		if(top==null){
@@ -45,11 +46,8 @@ public class StackImpl<T> implements Stack<T>{
 	}
 	
 	public void push(T elem){
-		if(!hasElem(elem)){
 		top=new Node(elem,top);
-		size++;
-		}
-		else return;
+		size++;	
 	}
 	
 	public T pop(){

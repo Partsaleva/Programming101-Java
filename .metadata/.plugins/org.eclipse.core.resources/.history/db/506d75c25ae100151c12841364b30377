@@ -1,0 +1,7 @@
+package fastAndFurious;
+
+public interface Car {
+
+	boolean isEcoFriendly(boolean testing);
+	
+}
