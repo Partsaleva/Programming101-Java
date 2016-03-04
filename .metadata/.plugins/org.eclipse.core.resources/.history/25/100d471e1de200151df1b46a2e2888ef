@@ -1,0 +1,61 @@
+
+//Create a BST with a Node as nested class.
+	//You should be able to add, search and remove an element. 
+	//You should also calculate the depth and the height of a given element.
+	//Bonus: Try to calculate the depth and height in O(1).
+public class BST {
+
+	public static void main(String[] args) {
+		BST bst=new BST();
+		bst.add(3);bst.add(4);bst.add(1);
+		System.out.println(bst.toString());
+	}
+	
+	class Node{
+		int value;
+		int height, depth;
+		Node left;
+		Node right;
+		Node(int value){
+			this.value=value;
+			left=null; right=null;	
+			height=0; depth=0;
+		}
+	}
+	
+	Node root;
+	BST(){
+		root=null;
+	}
+	
+	public void add(int value) {
+	    root = insertNode(root, new Node(value));
+	}
+
+	// private recursive call
+
+	private Node insertNode(Node currentParent, Node newNode) {
+
+	    if (currentParent == null) {
+	        return newNode;
+	    } else if (newNode.value > currentParent.value) {
+	        currentParent.right = insertNode(currentParent.right, newNode);
+	    } else if (newNode.value < currentParent.value) {
+	        currentParent.left = insertNode(currentParent.left, newNode);
+	    }
+
+	    return currentParent;
+	}
+	
+	boolean search(){
+		return false;
+	}
+	
+	
+	void remove(){}
+	
+	
+	
+	
+	
+}

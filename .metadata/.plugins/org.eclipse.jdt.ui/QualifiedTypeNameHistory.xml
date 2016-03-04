@@ -1,8 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-<fullyQualifiedTypeName name="monday.ShopInventory.ProductDatabase"/>
-<fullyQualifiedTypeName name="monday.vatTaxCalc.VATTaxCalculator"/>
-<fullyQualifiedTypeName name="monday.ShopInventory.NotAvailableInInventoryException"/>
 <fullyQualifiedTypeName name="monday.vatTaxCalc.CountryManager"/>
 <fullyQualifiedTypeName name="java.util.HashMap"/>
 <fullyQualifiedTypeName name="java.util.Iterator"/>
@@ -53,11 +50,14 @@
 <fullyQualifiedTypeName name="java.lang.annotation.Annotation"/>
 <fullyQualifiedTypeName name="java.lang.ClassValue"/>
 <fullyQualifiedTypeName name="Wednesday.MyClass"/>
-<fullyQualifiedTypeName name="java.util.ArrayList"/>
 <fullyQualifiedTypeName name="java.util.Comparator"/>
 <fullyQualifiedTypeName name="java.util.Collections"/>
-<fullyQualifiedTypeName name="java.lang.reflect.Array"/>
 <fullyQualifiedTypeName name="java.util.List"/>
 <fullyQualifiedTypeName name="java.util.Arrays"/>
 <fullyQualifiedTypeName name="wednesday.FunnyArraySorter"/>
+<fullyQualifiedTypeName name="stack.Stack"/>
+<fullyQualifiedTypeName name="java.util.ArrayList"/>
+<fullyQualifiedTypeName name="java.lang.reflect.Array"/>
+<fullyQualifiedTypeName name="java.util.Vector"/>
+<fullyQualifiedTypeName name="Vector"/>
 </qualifiedTypeNameHistroy>
