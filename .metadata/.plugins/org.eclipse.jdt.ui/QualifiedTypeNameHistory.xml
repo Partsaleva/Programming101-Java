@@ -1,31 +1,16 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-<fullyQualifiedTypeName name="monday.vatTaxCalc.CountryManager"/>
-<fullyQualifiedTypeName name="java.util.HashMap"/>
-<fullyQualifiedTypeName name="java.util.Iterator"/>
-<fullyQualifiedTypeName name="java.util.Set"/>
-<fullyQualifiedTypeName name="monday.vatTaxCalc.NotSupportedCountryException"/>
-<fullyQualifiedTypeName name="monday.vatTaxCalc.Country"/>
-<fullyQualifiedTypeName name="monday.vatTaxCalc.CountryDataBase"/>
-<fullyQualifiedTypeName name="monday.vatTaxCalc.VatTaxCalculator"/>
-<fullyQualifiedTypeName name="monday.ShopInventory.Product"/>
-<fullyQualifiedTypeName name="monday.ShopInventory.Storage"/>
-<fullyQualifiedTypeName name="monday.ShopInventory.Inventory"/>
-<fullyQualifiedTypeName name="java.util.Map"/>
-<fullyQualifiedTypeName name="friday.Circle"/>
 <fullyQualifiedTypeName name="java.awt.Color"/>
 <fullyQualifiedTypeName name="monday.BouncingBallsGame.Point"/>
 <fullyQualifiedTypeName name="monday.BouncingBallsGame.Direction"/>
 <fullyQualifiedTypeName name="friday.Point"/>
 <fullyQualifiedTypeName name="java.util.StringTokenizer"/>
-<fullyQualifiedTypeName name="java.lang.Integer"/>
 <fullyQualifiedTypeName name="wednesday.UserInputChecker.PersonAgeValidator"/>
 <fullyQualifiedTypeName name="wednesday.UserInputChecker.PersonNameValidator"/>
 <fullyQualifiedTypeName name="wednesday.UserInputChecker.BulgarianPhoneNumberValidator"/>
 <fullyQualifiedTypeName name="wednesday.BST"/>
 <fullyQualifiedTypeName name="wednesday.UserInputChecker"/>
 <fullyQualifiedTypeName name="wednesday.UserInputChecker.Validator"/>
-<fullyQualifiedTypeName name="java.lang.Exception"/>
 <fullyQualifiedTypeName name="friday.CustomExceptions"/>
 <fullyQualifiedTypeName name="friday.InvalidNameExeption"/>
 <fullyQualifiedTypeName name="friday.BankAccount.TypeOfInterest"/>
@@ -60,4 +45,19 @@
 <fullyQualifiedTypeName name="java.lang.reflect.Array"/>
 <fullyQualifiedTypeName name="java.util.Vector"/>
 <fullyQualifiedTypeName name="Vector"/>
+<fullyQualifiedTypeName name="UserInputChecker.PersonNameValidator"/>
+<fullyQualifiedTypeName name="UserInputChecker.PersonAgeValidator"/>
+<fullyQualifiedTypeName name="UserInputChecker"/>
+<fullyQualifiedTypeName name="java.io.Console"/>
+<fullyQualifiedTypeName name="java.lang.Integer"/>
+<fullyQualifiedTypeName name="Owner"/>
+<fullyQualifiedTypeName name="java.lang.Exception"/>
+<fullyQualifiedTypeName name="CLI"/>
+<fullyQualifiedTypeName name="java.util.Scanner"/>
+<fullyQualifiedTypeName name="java.util.HashMap"/>
+<fullyQualifiedTypeName name="java.util.Map"/>
+<fullyQualifiedTypeName name="TheBank"/>
+<fullyQualifiedTypeName name="BankAccount.TypeOfInterest"/>
+<fullyQualifiedTypeName name="BankAccount"/>
+<fullyQualifiedTypeName name="InsufficientFundsException"/>
 </qualifiedTypeNameHistroy>
