@@ -29,9 +29,6 @@ public class CLI {
 		} catch (NonExistingBankAccountException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		} catch (InsufficientFundsException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
 		}
 
 	}

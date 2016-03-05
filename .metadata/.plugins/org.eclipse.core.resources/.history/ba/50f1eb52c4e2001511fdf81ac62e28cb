@@ -76,14 +76,9 @@ public class BankAccount {
 	}
 	
 	
-	public void withdraw(double money) throws InvalidInputException, 
-												ForbidenWithdrawException, 
-												InsufficientFundsException{
+	public void withdraw(double money) throws InvalidInputException, ForbidenWithdrawException{
 		if(this.getInterest()>1){
 			throw new ForbidenWithdrawException("Interest is greater than 1");
-		}
-		else if(getBalance()-money<0){
-			throw new InsufficientFundsException("Insufficient Funds");
 		}
 		else{
 			this.setBalance(this.getBalance()-money);
@@ -91,9 +86,7 @@ public class BankAccount {
 			
 		}
 	}
-	public void transfer(double money,BankAccount other) throws InvalidInputException, 
-																ForbidenWithdrawException, 
-																InsufficientFundsException{
+	public void transfer(double money,BankAccount other) throws InvalidInputException, ForbidenWithdrawException{
 		this.withdraw(money);
 		other.add(money);
 		operations.add("transfer: "+money);

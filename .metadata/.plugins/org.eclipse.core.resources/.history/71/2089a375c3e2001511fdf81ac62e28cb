@@ -1,3 +1,5 @@
+import java.io.Console;
+import java.util.Scanner;
 
 
 public class CLI {
@@ -24,12 +26,6 @@ public class CLI {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (ForbidenWithdrawException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (NonExistingBankAccountException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (InsufficientFundsException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
