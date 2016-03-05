@@ -1,0 +1,47 @@
+import java.io.Console;
+
+
+public class CLI {
+
+	public static void main(String[] args) {
+		CLI console=new CLI();
+		try {
+			console.create_bank_account();
+		} catch (InvalidInputException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+	}
+
+	Console c = System.console();
+	
+	//It should prompt the user for the needed information and if everything is ok it should create a new bank account
+	public void create_bank_account() throws InvalidInputException{
+		//System.out.println("Your first name: ");
+		String firstName=c.readLine("Your first name: ");
+		String lastName=c.readLine("Your last name: ");
+		String age=c.readLine("Age: ");
+		Owner owner=new Owner(firstName, lastName, Integer.parseInt(age));		
+		BankAccount account=new BankAccount(owner, 0, 1,"complex");
+	}
+	//It should prompt the user for the bank account number and show its history.
+	public void show_history(){
+	}
+	//It should prompt the user for the amount and the bank account number.
+	public void add_money(){
+		
+	}
+	//It should prompt the user for the amount and the bank account number.
+	public void withdraw_money(){
+		
+	}
+	//It should prompt the user for the origin and destination bank account numbers and the amount
+	public void transfer_money(){
+		
+	}
+	//It should prompt the user for the origin and destination bank account numbers and the amount
+	public void calculate_amount(){
+		
+	}
+}
