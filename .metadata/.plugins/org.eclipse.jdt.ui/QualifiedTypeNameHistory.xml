@@ -1,14 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-<fullyQualifiedTypeName name="java.awt.Color"/>
-<fullyQualifiedTypeName name="monday.BouncingBallsGame.Point"/>
-<fullyQualifiedTypeName name="monday.BouncingBallsGame.Direction"/>
-<fullyQualifiedTypeName name="friday.Point"/>
-<fullyQualifiedTypeName name="java.util.StringTokenizer"/>
-<fullyQualifiedTypeName name="wednesday.UserInputChecker.PersonAgeValidator"/>
-<fullyQualifiedTypeName name="wednesday.UserInputChecker.PersonNameValidator"/>
-<fullyQualifiedTypeName name="wednesday.UserInputChecker.BulgarianPhoneNumberValidator"/>
-<fullyQualifiedTypeName name="wednesday.BST"/>
 <fullyQualifiedTypeName name="wednesday.UserInputChecker"/>
 <fullyQualifiedTypeName name="wednesday.UserInputChecker.Validator"/>
 <fullyQualifiedTypeName name="friday.CustomExceptions"/>
@@ -41,7 +32,6 @@
 <fullyQualifiedTypeName name="java.util.Arrays"/>
 <fullyQualifiedTypeName name="wednesday.FunnyArraySorter"/>
 <fullyQualifiedTypeName name="stack.Stack"/>
-<fullyQualifiedTypeName name="java.util.ArrayList"/>
 <fullyQualifiedTypeName name="java.lang.reflect.Array"/>
 <fullyQualifiedTypeName name="java.util.Vector"/>
 <fullyQualifiedTypeName name="Vector"/>
@@ -60,4 +50,14 @@
 <fullyQualifiedTypeName name="BankAccount.TypeOfInterest"/>
 <fullyQualifiedTypeName name="BankAccount"/>
 <fullyQualifiedTypeName name="InsufficientFundsException"/>
+<fullyQualifiedTypeName name="java.io.FileOutputStream"/>
+<fullyQualifiedTypeName name="java.io.ObjectOutputStream"/>
+<fullyQualifiedTypeName name="java.io.FileInputStream"/>
+<fullyQualifiedTypeName name="java.io.ObjectInputStream"/>
+<fullyQualifiedTypeName name="serializeBank.SerializeDeserialize"/>
+<fullyQualifiedTypeName name="java.util.ArrayList"/>
+<fullyQualifiedTypeName name="serializeBank.BankAccount"/>
+<fullyQualifiedTypeName name="com.sun.java.util.jar.pack.Package.File"/>
+<fullyQualifiedTypeName name="java.io.File"/>
+<fullyQualifiedTypeName name="java.io.Serializable"/>
 </qualifiedTypeNameHistroy>

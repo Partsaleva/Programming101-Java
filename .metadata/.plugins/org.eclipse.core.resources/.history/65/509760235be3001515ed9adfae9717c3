@@ -1,0 +1,27 @@
+package utilityReadWriteInFile;
+
+import java.io.File;
+import java.nio.file.Path;
+
+public class FileUtils {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+	private static FileUtils mInstance;
+	private FileUtils(){}
+
+	public static FileUtils getInstance() {
+		if (mInstance == null) {
+			mInstance = new FileUtils();
+		}
+		
+		return mInstance;
+	}
+	
+	String readFrom(File file) {
+		return null;}
+	String readFrom(Path path){
+		return null;}
+}

@@ -1,6 +1,5 @@
 package serializeBank;
 
-import java.io.Serializable;
 
 public class Owner{
 
