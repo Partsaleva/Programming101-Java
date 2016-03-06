@@ -25,9 +25,8 @@ public class PropertiesFileParser {
 	}
 	
 	Map<String, String> mParseProperties;
-	List<String> lines=new ArrayList<>();
 	
-	public PropertiesFileParser() {}
+	public PropertiesFileParser(){}
 
 	Map<String, String> parseProperties(String aFileName) throws IOException{
 		Path path = Paths.get(aFileName);

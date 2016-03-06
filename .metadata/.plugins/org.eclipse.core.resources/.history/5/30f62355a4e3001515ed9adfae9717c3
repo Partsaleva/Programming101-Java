@@ -1,0 +1,5 @@
+package propertiesFileParser;
+
+public @interface BeforeClass {
+
+}
