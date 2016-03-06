@@ -1,0 +1,85 @@
+package propertiesFileParser;
+
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.IOException;
+import java.io.Reader;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.Enumeration;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Properties;
+
+public class PropertiesFileParser {
+
+	public static void main(String[] args) {
+		PropertiesFileParser p=new PropertiesFileParser();
+		try {
+			p.readFile("test.properties");
+			p.parseProperties().toString();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
+	}
+	
+	Map<String, String> mParseProperties;
+	List<String> lines=new ArrayList<>();
+	
+	public PropertiesFileParser() {
+		
+	}
+
+	void readFile(String aFileName) throws IOException{
+		Path path = Paths.get(aFileName);
+		try(BufferedReader buf=Files.newBufferedReader(path)){
+			String line=null;
+			while((line=buf.readLine())!=null){
+				lines.add(line);
+				//System.out.println(line);
+			}
+		}
+	}
+	
+	Map<String, String> parseProperties(){
+		mParseProperties=new HashMap<>();
+		String key="",value="";
+		for(String s:lines){
+			for(int i=0; i<s.length(); i++){
+				if(s.charAt(i)=='#'){
+					break;
+				}
+				else{
+					while(s.charAt(i)!='#' && s.charAt(i)!='='){
+						key+=s.charAt(i);
+						i++;
+					}
+					while(s.charAt(i)!='#'){
+						if(s.charAt(i)!=' '){
+							value+=s.charAt(i);
+							i++;
+						}		
+					}
+				}
+				
+			}
+		}
+		mParseProperties.put(key, value);
+		return mParseProperties;
+	}
+	/*
+	 * Properties properties = new Properties();
+		properties.load(buf);
+
+		Enumeration enuKeys = properties.keys();
+		while (enuKeys.hasMoreElements()) {
+			String key = (String) enuKeys.nextElement();
+			String value = properties.getProperty(key);
+			mParseProperties.put(key, value);
+			//System.out.println(key + ": " + value);
+		}*/
+}

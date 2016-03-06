@@ -1,0 +1,33 @@
+package propertiesFileParser;
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.util.HashMap;
+import java.util.Map;
+
+import utilityReadWriteInFile.FileUtils;
+
+public class PropertiesFileParser {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+	
+	Map<String, String> mParseProperties;
+	
+	public PropertiesFileParser() {
+		
+	}
+
+	Map<String, String> parseProperties(File file){
+		mParseProperties=new HashMap<>();
+		FileInputStream inputStream = new FileInputStream(file);
+		try {
+		    String everything = IOUtils.toString(inputStream);
+		} finally {
+		    inputStream.close();
+		}
+		return mParseProperties;
+	}
+}

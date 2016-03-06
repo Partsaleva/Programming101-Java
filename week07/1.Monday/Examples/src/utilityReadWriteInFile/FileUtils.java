@@ -3,11 +3,9 @@ package utilityReadWriteInFile;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.io.Writer;
 import java.nio.file.Path;
 
 public class FileUtils {
@@ -28,22 +26,15 @@ public class FileUtils {
 	}
 	
 	String readFrom(File file) throws IOException  {
-		BufferedReader buffer=null;
 		StringBuilder sb=new StringBuilder();
 		
-		try {
-			buffer=new BufferedReader(new FileReader(file));		
-			String line;
-			
+		try (BufferedReader buffer=new BufferedReader(new FileReader(file))){					
+			String line;			
 			while((line = buffer.readLine())!=null){
 				sb.append(line);
 				sb.append(System.lineSeparator());
 			}
-		} finally{
-			
-			buffer.close();
-		}
-				
+		}		
 		return sb.toString();
 	}
 	
@@ -53,10 +44,11 @@ public class FileUtils {
 	}
 	
 	public void writeTo(String contents, File file) throws IOException{
-		BufferedWriter buf = new BufferedWriter(new FileWriter(file));
-		buf.write(contents);
-		buf.close();
+		try(BufferedWriter buf = new BufferedWriter(new FileWriter(file))){
+			buf.write(contents);
+		}
 	}
+	
 	public void writeTo(String contents, Path path) throws IOException{
 		writeTo(contents,path.toFile());
 	}
