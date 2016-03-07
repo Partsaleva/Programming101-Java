@@ -46,7 +46,6 @@ public class WordCountResult {
 			}
 			
 		}
-		
 		result.setLines(lines);
 		result.setWords(words);
 		result.setCharachters(charachters);
