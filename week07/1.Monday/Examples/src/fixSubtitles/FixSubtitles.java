@@ -28,14 +28,15 @@ public class FixSubtitles {
 	}
 
 	public void fixEncoding(Path path) throws IOException{
-		try (
-		      BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(path.toFile()), "windows-1251"));
-		      BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(new FileOutputStream("str-result"), "UTF-8")); ) {
-		          char[] buffer = new char[16384];
+		try (BufferedReader in = new BufferedReader(new InputStreamReader(new FileInputStream(path.toFile()), "windows-1251"));
+		      BufferedWriter out = new BufferedWriter(new OutputStreamWriter(new FileOutputStream("str-result"), "UTF-8")); ) {
+		      
 		          int read;
-		          while ((read = br.read(buffer)) != -1)
-		              bw.write(buffer, 0, read);
-			    } 
+		          while ((read = in.read()) != -1){
+		        	  out.write(read);
+		          }
+		              
+		} 
 	}
 	
 }

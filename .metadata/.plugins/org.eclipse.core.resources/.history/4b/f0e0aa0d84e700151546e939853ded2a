@@ -1,0 +1,48 @@
+package textFileCompression;
+
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.nio.file.Path;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+
+public class FileCompresion {
+
+	public static void main(String[] args) {
+		File f="comprTest.txt";
+
+	}
+
+	private Map<Integer,String> map=new HashMap<>();
+	
+	void compress(File file) throws IOException{
+		int counter=0;
+		try(
+		BufferedReader in = new BufferedReader(new InputStreamReader(new FileInputStream(file)));
+		BufferedWriter out = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(file.getName()+".compr")))){
+			  String line;
+	          while ((line = in.readLine()) != null){
+	        	  String[] word=line.split(" ");
+	        	  for(String w:word){
+	        		  map.put(counter,w);
+	        		  out.write('~'+counter);
+	        		  counter++;
+	        	  }
+	          }
+		}
+	}
+	
+	void compress(Path path){}
+	
+	
+	void decompress(File file){}
+	void decompress(Path path){}
+}

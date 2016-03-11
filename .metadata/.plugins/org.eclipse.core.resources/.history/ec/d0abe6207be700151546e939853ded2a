@@ -1,0 +1,10 @@
+package textFileCompression;
+
+public class FileCompresion {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}
