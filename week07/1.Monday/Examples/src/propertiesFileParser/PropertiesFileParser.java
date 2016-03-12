@@ -18,6 +18,7 @@ public class PropertiesFileParser {
 		PropertiesFileParser p=new PropertiesFileParser();
 		try {
 			System.out.println(p.parseProperties("test.properties"));
+			System.out.println(p.removeComment("abv #abv"));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
