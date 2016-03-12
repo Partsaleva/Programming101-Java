@@ -1,0 +1,16 @@
+package friday;
+
+public class MainCounterThreads {
+
+	public static void main(String[] args) {
+		Thread tr1=new Thread(new ThreadForCounter());
+		Thread tr2=new Thread(new ThreadForCounter());
+		tr1.start();
+		tr2.start();
+		
+		System.out.println(Counter.getCounter());
+
+		System.out.println(Counter.getCounter());
+	}
+
+}

@@ -2,7 +2,7 @@ package practice;
 
 public class uprTread {
 
-	public static void main(String[] args) throws InterruptedException {
+	public static void main(String[] args) {
 		MyThread tr1=new MyThread();
 		MyThread tr2=new MyThread();
 		
@@ -33,7 +33,4 @@ public class uprTread {
 	
 	}
 	
-
-	
-
 }
