@@ -1,0 +1,34 @@
+package monday;
+
+public class Run {
+
+	public static void main(String[] args) throws InterruptedException{
+		final SimpleBlockingQueue queue=new SimpleBlockingQueue();
+		Thread tr1=new Thread(new Runnable() {
+			
+			@Override
+			public void run() {
+				try {
+					queue.produce();
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
+				
+			}
+		});
+
+		Thread tr2=new Thread(new Runnable() {
+			
+			@Override
+			public void run() {
+				try {
+					queue.consume();
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
+				
+			}
+		});
+	}
+
+}

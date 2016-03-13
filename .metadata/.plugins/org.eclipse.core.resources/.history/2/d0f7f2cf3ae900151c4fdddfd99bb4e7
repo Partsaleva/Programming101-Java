@@ -1,0 +1,32 @@
+package monday;
+
+import java.util.LinkedList;
+import java.util.List;
+
+public class SimpleBlockingQueue {
+
+	private LinkedList<Integer> list=new LinkedList<>();
+	private final int MAXSIZE=10;
+	Object lock=new Object();
+	
+	public void produce()throws InterruptedException{
+		int value=0;
+		while(true){
+			synchronized (lock) {
+				list.add(value++);
+			}
+			
+		}
+	}
+	public void consume()throws InterruptedException{
+		while(true){
+			synchronized (lock) {
+				System.out.print("Size: "+list.size());
+				int value=list.removeFirst();
+				System.out.println(", value: "+value);
+			}
+			
+		}
+	}
+
+}
