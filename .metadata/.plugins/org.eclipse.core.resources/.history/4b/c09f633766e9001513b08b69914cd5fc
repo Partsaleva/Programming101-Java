@@ -1,0 +1,67 @@
+package monday;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Random;
+
+public class PointCalculator {
+
+	public static void main(String[] args) {
+		generatePoints();
+		System.out.println(getNearestPoints(listOfPoints).toString());
+
+	}
+
+	private static List<Point> listOfPoints = new ArrayList<>();
+	private static Map<Point,Point> nearestPoints=new HashMap<>();
+
+	public static List<Point> generatePoints() {
+		Random random = new Random();
+		while(listOfPoints.size()<100000){
+			listOfPoints.add(new Point(random.nextInt(10000),random.nextInt(10000)));
+		}
+		return listOfPoints;
+	}
+	
+	static Map<Point,Point> getNearestPoints(List<Point> generatedPoints){
+		//((x1 - x2)^2 + (y1 - y2)^2)^-2 
+		Point target = null;
+		double distance=0;
+		double near=distance;
+		for(int i=0; i<100000; i++){
+			for(int j=1; j<100000-1;j++){
+				distance=Math.sqrt((generatedPoints.get(i).getX() - generatedPoints.get(j).getX())*
+						           (generatedPoints.get(i).getX() - generatedPoints.get(j).getX()) +
+						           (generatedPoints.get(i).getY() - generatedPoints.get(j).getY())*
+						           (generatedPoints.get(i).getY() - generatedPoints.get(j).getY()));
+				if(near<distance){
+					near=distance;
+					target=generatedPoints.get(j);
+				}
+			}
+			nearestPoints.put(generatedPoints.get(i), target);
+		}
+		return nearestPoints;		
+	}
+	
+	public static double doCalculations(List<Point> inPoints, int indexFrom, int indexTo, Map<Point, Point> outMap){
+		Point target = null;
+		double distance=0;
+		double smaller=distance;
+		for(int i=indexFrom; i<indexTo; i++){
+			for(int j=indexFrom+1; j<indexTo-1;j++){
+				distance=Math.sqrt((inPoints.get(i).getX() - inPoints.get(j).getX())*
+						           (inPoints.get(i).getX() - inPoints.get(j).getX()) +
+						           (inPoints.get(i).getY() - inPoints.get(j).getY())*
+						           (inPoints.get(i).getY() - inPoints.get(j).getY()));
+				if(smaller<distance){
+					smaller=distance;
+					target=inPoints.get(j);
+				}
+			}
+			outMap.put(inPoints.get(i), target);
+		}
+		return indexTo;}
+}

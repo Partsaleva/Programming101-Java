@@ -1,0 +1,48 @@
+package monday;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Random;
+
+public class PointCalculator {
+
+	public static void main(String[] args) {
+		generatePoints();
+		System.out.println(getNearestPoints(listOfPoints).toString());
+
+	}
+
+	private static List<Point> listOfPoints = new ArrayList<>();
+
+	public static List<Point> generatePoints() {
+		Random random = new Random();
+		while(listOfPoints.size()<100){
+			listOfPoints.add(new Point(random.nextInt(10000),random.nextInt(10000)));
+		}
+		return listOfPoints;
+	}
+	
+	static Map<Point,Point> getNearestPoints(List<Point> generatedPoints){
+		//((x1 - x2)^2 + (y1 - y2)^2)^-2 
+		Map<Point,Point> nearestPoints=new HashMap<>();
+		Point target = null;
+		double distance=0;
+		double near=distance;
+		for(int i=0; i<100000; i++){
+			for(int j=1; j<100000-1;j++){
+				distance=Math.sqrt((generatedPoints.get(i).getX() - generatedPoints.get(j).getX())*
+						           (generatedPoints.get(i).getX() - generatedPoints.get(j).getX()) +
+						           (generatedPoints.get(i).getY() - generatedPoints.get(j).getY())*
+						           (generatedPoints.get(i).getY() - generatedPoints.get(j).getY()));
+				if(near<distance){
+					near=distance;
+					target=generatedPoints.get(j);
+				}
+			}
+			nearestPoints.put(generatedPoints.get(i), target);
+		}
+		return nearestPoints;		
+	}
+}
