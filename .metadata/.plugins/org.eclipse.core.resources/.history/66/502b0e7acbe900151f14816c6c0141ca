@@ -1,0 +1,29 @@
+package monday;
+
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+
+import javax.imageio.ImageIO;
+
+public class ImgResizer {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+	private int width;
+	private int height;
+	
+	
+	
+	public static void resize(File src, int width,int height) throws IOException{
+		BufferedImage original=ImageIO.read(new File(src.getAbsolutePath()));
+		int type = original.getType() == 0 ? BufferedImage.TYPE_INT_ARGB : original.getType();
+		
+		BufferedImage resizedImage = new BufferedImage(width, height, type);
+		
+		
+	}
+}
