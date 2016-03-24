@@ -1,6 +1,6 @@
-package fixSubtitles;
+package monday;
 
-public class FixSubtitles {
+public class ParallelCopy {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
