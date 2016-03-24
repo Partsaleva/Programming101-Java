@@ -1,6 +1,0 @@
-package friday;
-
-public class ThreadForCounter extends Thread{
-
-	
-}
