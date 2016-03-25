@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <launchConfiguration type="org.eclipse.jdt.launching.localJavaApplication">
 <listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_PATHS">
-<listEntry value="/week09/1. Monday/monday/BlockingQueue/Run.java"/>
+<listEntry value="/week09/1. Monday/blockingQueue/Run.java"/>
 </listAttribute>
 <listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_TYPES">
 <listEntry value="1"/>
 </listAttribute>
-<stringAttribute key="org.eclipse.jdt.launching.MAIN_TYPE" value="monday.BlockingQueue.Run"/>
+<stringAttribute key="org.eclipse.jdt.launching.MAIN_TYPE" value="blockingQueue.Run"/>
 <stringAttribute key="org.eclipse.jdt.launching.PROJECT_ATTR" value="week09"/>
 </launchConfiguration>
