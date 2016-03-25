@@ -27,14 +27,7 @@ public class ParallelCopy {
 		File[] files=srcFolder.listFiles();
         if (command.equals("-s")) {
 			for (int i = 0; i < files.length; i++) {
-				Thread tr1=new Thread(new Runnable() {
-					
-					@Override
-					public void run() {
-						// TODO Auto-generated method stub
-						
-					}
-				});
+				
 			}
 		}
 		else{
@@ -57,7 +50,7 @@ public class ParallelCopy {
 		}		
 	}
 	
-	private static boolean isSmall(final File file){
+	private boolean isSmall(final File file){
 		return file.length() < 7000000;		
 	}
 	

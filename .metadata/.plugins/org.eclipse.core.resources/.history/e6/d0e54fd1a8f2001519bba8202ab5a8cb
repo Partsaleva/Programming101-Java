@@ -22,29 +22,23 @@ public class ParallelCopy {
 		if(srcFolder.isDirectory()){
 			if(!destFolder.exists()){
 				destFolder.mkdir();
+				System.out.println("Maded destination folder: "+destFolder.getName());
 			}
 		}
 		File[] files=srcFolder.listFiles();
         if (command.equals("-s")) {
-			for (int i = 0; i < files.length; i++) {
-				Thread tr1=new Thread(new Runnable() {
-					
-					@Override
-					public void run() {
-						// TODO Auto-generated method stub
-						
-					}
-				});
-			}
+			
 		}
 		else{
-			for (File file: files){
-				if (file.isFile()){
-					copyFile(file.toPath(),destFolder.toPath());
+			for (File file: files) {
+				if (file.isFile()) {
+					//copyFile(file.toPath(),destFolder.toPath());
 				}
-				else if(file.isDirectory()){
-					File p=new File(destFolder+"/"+file.getName().toString());
-					copyFolder(command,file, p);
+				else if(file.isDirectory() && !file.getName().equals(destFolder.getName()) ){
+					System.out.println(file.toPath().toString());
+					System.out.println(destFolder.toPath().toString());
+					copyFolder(command, file, destFolder);
+					
 				}
 			}
 		}
@@ -57,7 +51,7 @@ public class ParallelCopy {
 		}		
 	}
 	
-	private static boolean isSmall(final File file){
+	private boolean isSmall(final File file){
 		return file.length() < 7000000;		
 	}
 	
