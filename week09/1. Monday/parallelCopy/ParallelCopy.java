@@ -4,62 +4,116 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class ParallelCopy {
 
 	public static void main(String[] args) {
+		ParallelCopy p=new ParallelCopy();
 		try {
-			copyFolder("",new File("/home/partsaleva/Documents"),new File("/home/partsaleva/Documents_copy"));
+			p.copyFilesAndFolders("",new File("/home/partsaleva/Documents"),new File("/home/partsaleva/Documents_copy"));
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (InterruptedException e) {			
 			e.printStackTrace();
 		}
-
+//TODO fix dest folder 
 	}
 
-	public static void copyFolder(String command, File srcFolder, File destFolder) throws IOException{
+	private List<Path> smallFiles=new ArrayList<>();
+	private List<Path> bigFiles=new ArrayList<>();
+	
+	public void copyFilesAndFolders(String command,File srcFolder, File destFolder) throws IOException, InterruptedException{
+		copy(command,srcFolder,destFolder);
+		if (command.equals("-s")) {
+			createThreads(destFolder.toPath());
+		}		
+	}
+	
+	public void copy(String command,File srcFolder, File destFolder) throws IOException, InterruptedException{
 		if(srcFolder.isDirectory()){
 			if(!destFolder.exists()){
 				destFolder.mkdir();
 			}
 		}
 		File[] files=srcFolder.listFiles();
-        if (command.equals("-s")) {
-			for (int i = 0; i < files.length; i++) {
-				Thread tr1=new Thread(new Runnable() {
-					
-					@Override
-					public void run() {
-						// TODO Auto-generated method stub
-						
-					}
-				});
-			}
-		}
-		else{
-			for (File file: files){
-				if (file.isFile()){
+        
+		for (File file: files){
+			if (file.isFile()){
+				if (command.equals("-s")) {
+					splitFilesBySize(file);
+				}
+				else{
 					copyFile(file.toPath(),destFolder.toPath());
 				}
-				else if(file.isDirectory()){
-					File p=new File(destFolder+"/"+file.getName().toString());
-					copyFolder(command,file, p);
-				}
+			}
+			else if(file.isDirectory()){
+				File p=new File(destFolder+"/"+file.getName().toString());
+				copy(command,file, p);
 			}
 		}
+		
 	}
 	
-	private static void copyFile(Path path, Path dest) throws IOException{		
+	private void copyFile(Path path, Path dest) throws IOException{		
 		File f= new File(dest.toString()+"/"+path.getFileName());
 		if (!f.exists()) {
 			Files.copy(path, f.toPath());
 		}		
 	}
 	
-	private static boolean isSmall(final File file){
-		return file.length() < 7000000;		
+	private  boolean isSmall(final File file){
+		return file.length() < 70000;		
 	}
 	
+	private void splitFilesBySize(File file){
+		if (isSmall(file)) {
+			smallFiles.add(file.toPath());
+		} else {
+			bigFiles.add(file.toPath());
+		}
+	}
 
+	private void createThreads(Path dest) throws InterruptedException{
+		System.out.println(bigFiles.size());
+		System.out.println(smallFiles.size());
+		for (Path path : bigFiles) {
+			Thread tr=new Thread(new Runnable() {				
+				@Override
+				public void run() {
+					try {
+						copyFile(path, dest);
+					} catch (IOException e) {
+						e.printStackTrace();
+					}
+					
+				}
+			});
+			tr.start();
+			tr.join();
+		}
+		
+		
+		Thread tr2=new Thread(new Runnable() {				
+			@Override
+			public void run() {
+				try {
+					for (Path path : smallFiles) {
+						copyFile(path, dest);
+					}
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+				
+			}
+		});
+			
+			tr2.start();
+			tr2.join();
+			
+		
+		
+	}
 }
