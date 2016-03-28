@@ -1,0 +1,13 @@
+package annotations;
+
+
+public class MyClass {
+
+	@ClassInfo(
+			autor = "Mariana",
+			revision=1,
+			checked=true,
+			relatedClasses={"FClass"}
+		)
+	public static void main(String[] args) {}
+}

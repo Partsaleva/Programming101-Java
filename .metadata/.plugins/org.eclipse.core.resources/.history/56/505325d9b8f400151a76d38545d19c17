@@ -1,0 +1,11 @@
+package annotations;
+
+@ClassInfo(
+	autor = "Mariana",
+	revision=1,
+	checked=true,
+	relatedClasses={"FClass"}
+)
+public class MyClass {
+
+}
