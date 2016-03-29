@@ -1,7 +1,6 @@
 package annotations;
 
 import java.lang.annotation.Annotation;
-import java.lang.annotation.Retention;
 
 public class Main {
 
@@ -14,7 +13,7 @@ public class Main {
 		
 		for(Annotation annotation: annotations){
 			ClassInfo info= (ClassInfo) annotation;
-			System.out.println(info.autor());
+			System.out.println(info.author());
 		}
 	}
 

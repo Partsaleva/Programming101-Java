@@ -1,7 +1,7 @@
 package annotations;
 
 @ClassInfo(
-	autor = "Mariana",
+	author = "Mariana",
 	revision=1,
 	checked=true,
 	relatedClasses={"FClass"}

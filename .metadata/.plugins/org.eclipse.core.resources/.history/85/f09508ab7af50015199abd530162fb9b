@@ -1,0 +1,16 @@
+package annotations;
+
+import java.lang.annotation.Annotation;
+import java.lang.annotation.Retention;
+
+public class Main {
+
+	public static void main(String[] args) {
+		Annotation[] annotations = MyClass.class.getDeclaredAnnotations();
+		
+		for(Annotation annotation: annotations){
+			System.out.println(annotation.toString());
+		}
+	}
+
+}
