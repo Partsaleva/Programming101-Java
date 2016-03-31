@@ -29,7 +29,7 @@ public class VatTaxCalculator {
 	public double CalculateTax(String country, double price) throws NotSupportedCountryException{
 		Map<String, Double> map=countries.createHashMap();
 		Set<?> set=map.entrySet();
-		Iterator iter=set.iterator();
+		Iterator<?> iter=set.iterator();
 		while(iter.hasNext()){
 			Map.Entry m = (Map.Entry)iter.next();
 			if(m.getKey().equals(country)){

@@ -75,7 +75,7 @@ public class ProducerConsumer {
   
   static class Memory {
     
-    List data = new ArrayList();
+    List<Object> data = new ArrayList<>();
     int capacity;
     
     public Memory(int capacity) {
