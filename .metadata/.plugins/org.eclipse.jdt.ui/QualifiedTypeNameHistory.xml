@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-<fullyQualifiedTypeName name="java.io.Writer"/>
-<fullyQualifiedTypeName name="java.io.FileWriter"/>
 <fullyQualifiedTypeName name="sun.misc.IOUtils"/>
 <fullyQualifiedTypeName name="java.io.Reader"/>
 <fullyQualifiedTypeName name="java.util.Properties"/>
@@ -28,7 +26,6 @@
 <fullyQualifiedTypeName name="friday.Counter"/>
 <fullyQualifiedTypeName name="friday.ThreadForCounter"/>
 <fullyQualifiedTypeName name="friday.VisibilityExampleThread"/>
-<fullyQualifiedTypeName name="java.util.LinkedList"/>
 <fullyQualifiedTypeName name="monday.SimpleBlockingQueue"/>
 <fullyQualifiedTypeName name="java.lang.InterruptedException"/>
 <fullyQualifiedTypeName name="java.lang.Object"/>
@@ -60,4 +57,7 @@
 <fullyQualifiedTypeName name="java.util.HashSet"/>
 <fullyQualifiedTypeName name="java.util.List"/>
 <fullyQualifiedTypeName name="java.util.ArrayList"/>
+<fullyQualifiedTypeName name="java.util.LinkedList"/>
+<fullyQualifiedTypeName name="webCrawler.WebCrawler"/>
+<fullyQualifiedTypeName name="java.io.IOException"/>
 </qualifiedTypeNameHistroy>

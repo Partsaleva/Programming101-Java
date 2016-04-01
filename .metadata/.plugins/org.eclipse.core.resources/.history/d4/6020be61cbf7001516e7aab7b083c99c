@@ -1,0 +1,14 @@
+package webCrawler;
+
+import java.io.IOException;
+
+public class CrawlerTest {
+
+	public static void main(String[] args) {
+		WebCrawler webCrawler = new WebCrawler();
+		webCrawler.search("http://darebee.com/");
+		
+
+	}
+
+}

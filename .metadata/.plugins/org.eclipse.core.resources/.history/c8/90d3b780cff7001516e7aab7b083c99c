@@ -1,0 +1,12 @@
+package webCrawler;
+
+public class CrawlerTest {
+
+	public static void main(String[] args) {
+		WebCrawler webCrawler = new WebCrawler();
+		webCrawler.search("http://blog.hackbulgaria.com","Python");
+		
+
+	}
+
+}

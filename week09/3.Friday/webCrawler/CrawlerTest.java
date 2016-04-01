@@ -1,18 +1,14 @@
 package webCrawler;
 
-import java.io.IOException;
-
 public class CrawlerTest {
 
 	public static void main(String[] args) {
-		WebCrawler spider = new WebCrawler();
-        try {
-			spider.search("http://darebee.com/");
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		long start = System.currentTimeMillis();
+		WebCrawler webCrawler = new WebCrawler();
+		webCrawler.search("http://blog.hackbulgaria.com","Python");
+		
 
+		System.out.println("time: " + (System.currentTimeMillis() - start));
 	}
 
 }

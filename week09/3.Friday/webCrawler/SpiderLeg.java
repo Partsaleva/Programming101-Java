@@ -3,6 +3,7 @@ package webCrawler;
 import java.io.IOException;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.concurrent.atomic.AtomicInteger;
 
 import org.jsoup.Connection;
 import org.jsoup.Jsoup;
@@ -19,48 +20,48 @@ public class SpiderLeg
     private Document htmlDocument;
 
 
-    /**
-     * This performs all the work. It makes an HTTP request, checks the response, and then gathers
-     * up all the links on the page. Perform a searchForWord after the successful crawl
-     * 
-     * @param url
-     *            - The URL to visit
-     * @return whether or not the crawl was successful
-     */
-    public boolean crawl(String url)
-    {
-        try
-        {
+    
+     // This performs all the work. It makes an HTTP request, checks the response, and then gathers
+     // up all the links on the page. Perform a searchForWord after the successful crawl
+     
+    //return whether or not the crawl was successful
+     
+    public boolean crawl(String url) {
+    	AtomicInteger in=new AtomicInteger();
+        try{
             Connection connection = Jsoup.connect(url).userAgent(USER_AGENT);
             Document htmlDocument = connection.get();
             this.htmlDocument = htmlDocument;
-            if(connection.response().statusCode() == 200) // 200 is the HTTP OK status code
+            if(connection.response().statusCode() == 200) {// 200 is the HTTP OK status code
                                                           // indicating that everything is great.
-            {
                 System.out.println(url);
             }
-            if(!connection.response().contentType().contains("text/html"))
-            {
+            if(!connection.response().contentType().contains("text/html")){
                 System.out.println("**Failure** Retrieved something other than HTML");
                 return false;
             }
             Elements linksOnPage = htmlDocument.select("a[href]");
-           // System.out.println("Found (" + linksOnPage.size() + ") links");
-            for(Element link : linksOnPage)
-            {
-                this.links.add(link.absUrl("href"));
+            //System.out.println("Found (" + linksOnPage.size() + ") links");
+            for(Element link : linksOnPage) {          	
+            	this.links.add(link.absUrl("href"));
+    
             }
             return true;
         }
-        catch(IOException ioe)
-        {
+        catch(IOException ioe) {
             // We were not successful in our HTTP request
             return false;
         }
     }
 
 
-
+    public boolean searchForWord(String searchWord)
+    {
+        System.out.println("Searching for the word " + searchWord + "...");
+        String bodyText = this.htmlDocument.body().text();
+        return bodyText.toLowerCase().contains(searchWord.toLowerCase());
+    }
+    
     public List<String> getLinks()
     {
         return this.links;
