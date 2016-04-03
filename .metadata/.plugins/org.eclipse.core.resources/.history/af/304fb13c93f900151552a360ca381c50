@@ -1,0 +1,29 @@
+package matrices;
+
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+
+public class MatrixTest {
+
+	public static void main(String[] args) {
+		Matrix A=new Matrix(3, 4); 
+		A.fillMatrix();
+		Matrix B=new Matrix(3, 4);
+		B.fillMatrix();
+		Matrix C=new Matrix(3, 4);
+		Multiplier multiply=new Multiplier(A.getRow(),A.getCol(), A, B, C);
+		
+		ExecutorService executor = Executors.newFixedThreadPool(9);
+	    for (int i = 0; i < 9; i++) {
+	        Runnable worker = new Thread(multiply);
+	        executor.execute(worker);
+	    }
+	    executor.shutdown();
+	    while (!executor.isTerminated()) {
+	    }
+		
+		
+
+	}
+
+}

@@ -1,6 +1,7 @@
 package matrices;
 
 import java.util.Arrays;
+import java.util.Random;
 
 public class Matrix {
 
@@ -18,6 +19,15 @@ public class Matrix {
 		return matrix;
 	}
 
+	//fill matrix with random numbers
+	public void fillMatrix(){
+		Random r=new Random();
+		for (int i = 0; i < row; i++) {
+			for (int j = 0; j < col; j++) {
+				matrix[i][j]=r.nextInt(100);
+			}
+		}		
+	}
 	
 	public int getRow() {
 		return row;
@@ -50,10 +60,14 @@ public class Matrix {
 		return true;
 	}
 
-	@Override
-	public String toString() {
-		return "Matrix [matrix=" + Arrays.toString(matrix) + "]";
-	}
-
+	public void print(){
+		for (int i = 0; i <row; i++) {
+	        for (int j = 0; j < col; j++) {
+	            System.out.print(matrix[i][j]+" ");
+	        }
+	        System.out.println();
+	    }
+		System.out.println();
+	} 
 	
 }

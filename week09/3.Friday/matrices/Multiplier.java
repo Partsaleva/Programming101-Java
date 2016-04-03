@@ -2,17 +2,26 @@ package matrices;
 
 import java.util.Random;
 
-public class Multiplier {
+public class Multiplier extends Thread{
 
-	//fill matrix with random numbers
-	public void fillMatrix(Matrix m){
-		Random r=new Random();
-		for (int i = 0; i < m.getRow(); i++) {
-			for (int j = 0; j <m.getCol(); j++) {
-				m.getMatrix()[i][j]=r.nextInt(100);
-			}
-		}		
+	private int row;
+	private int col;
+	Matrix A;
+	Matrix B;
+	Matrix result;
+	
+	public Multiplier(int row, int col, Matrix A,Matrix B, Matrix result){
+	    this.row = row;
+        this.col = col;
+        this.A = A;
+        this.B = B;
+        this.result = result;
 	}
 	
+	
+	public void run(){
+		 result.getMatrix()[row][col] = (A.getMatrix()[row][0] * B.getMatrix()[0][col])+ 
+				       (A.getMatrix()[row][1]*B.getMatrix()[1][col]) ; 
+	}
 
 }
