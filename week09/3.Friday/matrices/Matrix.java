@@ -7,15 +7,15 @@ public class Matrix {
 
 	private int row;
 	private int col;
-	private int matrix[][];
+	private Cell matrix[][];
 	
 	public Matrix(int row, int col) {
 		this.row=row;
 		this.col=col;
-		matrix= new int[row][col];
+		matrix= new Cell[row][col];
 	}
 
-	public int[][] getMatrix() {
+	public Cell[][] getMatrix() {
 		return matrix;
 	}
 
@@ -24,7 +24,7 @@ public class Matrix {
 		Random r=new Random();
 		for (int i = 0; i < row; i++) {
 			for (int j = 0; j < col; j++) {
-				matrix[i][j]=r.nextInt(100);
+				matrix[i][j]=new Cell(r.nextInt(10));
 			}
 		}		
 	}
