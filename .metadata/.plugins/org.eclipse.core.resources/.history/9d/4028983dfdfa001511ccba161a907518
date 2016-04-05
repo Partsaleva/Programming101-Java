@@ -1,0 +1,16 @@
+package advancedFileSearch;
+
+import java.io.File;
+
+public class Searcher {
+	File folder;
+	Memory m;
+	
+	public Searcher(Memory m) {
+		this.m=m;
+	}
+	
+	private void search(File file){
+		
+	}
+}

@@ -18,6 +18,7 @@ public class ProducerConsumer {
     ttt.start();
     t.join();
     tt.join();
+
     
     System.out.println("dsadas");
     System.out.println("dsadas");System.out.println("dsadas");
@@ -39,7 +40,7 @@ public class ProducerConsumer {
       // TODO Auto-generated method stub
       while(true) {
         try {
-//          Thread.sleep(100);
+          Thread.sleep(100);
           m.put(++count);
           System.out.println("Produced " + count + " " + Thread.currentThread().getName());
         } catch (InterruptedException e) {
