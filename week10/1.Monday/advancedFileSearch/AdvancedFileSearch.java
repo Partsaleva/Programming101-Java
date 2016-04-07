@@ -1,25 +1,24 @@
 package advancedFileSearch;
 
+import java.io.File;
+import java.io.IOException;
 
 public class AdvancedFileSearch {
 
 	public static void main(String[] args) {
 		Memory memory=new Memory(50);
 		Searcher searcher=new Searcher(memory);	
-		Get get=new Get(memory);
-		Thread tr1=new Thread(searcher);
-		Thread tr2=new Thread(get);
-		tr1.start();
-		tr2.start();
+		
+		File file=new File("/home/partsaleva/Documents");
+		String text="HashMap";
+	
 		try {
-			tr1.join();
-			tr2.join();
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
+			searcher.search(file, text);
+			System.out.println(memory.get());
+			
+		} catch (IOException | InterruptedException e) {
 			e.printStackTrace();
 		}
-		
-		
 
 	}
 
