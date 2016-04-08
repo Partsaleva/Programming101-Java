@@ -67,7 +67,6 @@ public class MeasurementTool {
 			int elementsToProduce=-1;
 			while((elementsToProduce=totalElemToProduce.getAndDecrement()) > 0){
 				try {
-					//Thread.sleep(100);
 					memory.put(elementsToProduce);
 					System.out.println("Produced " + (NUMBER_OF_ELEMENTS - elementsToProduce) + " " + Thread.currentThread().getName());
 				} catch (InterruptedException e) {
