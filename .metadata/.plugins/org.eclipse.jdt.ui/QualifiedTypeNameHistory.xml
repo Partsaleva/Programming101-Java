@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-<fullyQualifiedTypeName name="textFileCompression.FileCompresion"/>
 <fullyQualifiedTypeName name="propertiesFileParser.PropertiesFileParserTest"/>
 <fullyQualifiedTypeName name="propertiesFileParser.PropertiesFileParser"/>
 <fullyQualifiedTypeName name="friday.RunnableClass"/>
@@ -32,8 +31,6 @@
 <fullyQualifiedTypeName name="jUnit.Assert"/>
 <fullyQualifiedTypeName name="java.lang.reflect.Method"/>
 <fullyQualifiedTypeName name="java.util.HashSet"/>
-<fullyQualifiedTypeName name="java.util.List"/>
-<fullyQualifiedTypeName name="java.util.ArrayList"/>
 <fullyQualifiedTypeName name="java.util.LinkedList"/>
 <fullyQualifiedTypeName name="webCrawler.WebCrawler"/>
 <fullyQualifiedTypeName name="java.io.IOException"/>
@@ -57,7 +54,10 @@
 <fullyQualifiedTypeName name="java.util.Map"/>
 <fullyQualifiedTypeName name="advancedFileSearch.Searcher"/>
 <fullyQualifiedTypeName name="advancedFileSearch.Get"/>
-<fullyQualifiedTypeName name="java.lang.Thread"/>
-<fullyQualifiedTypeName name="java.io.File"/>
 <fullyQualifiedTypeName name="java.util.Set"/>
+<fullyQualifiedTypeName name="java.io.File"/>
+<fullyQualifiedTypeName name="advancedFileSearch.Search"/>
+<fullyQualifiedTypeName name="java.util.ArrayList"/>
+<fullyQualifiedTypeName name="java.util.List"/>
+<fullyQualifiedTypeName name="java.lang.Thread"/>
 </qualifiedTypeNameHistroy>

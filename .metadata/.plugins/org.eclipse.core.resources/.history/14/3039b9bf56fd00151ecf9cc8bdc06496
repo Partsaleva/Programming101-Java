@@ -1,0 +1,53 @@
+package measurementTool;
+
+import java.util.concurrent.atomic.AtomicInteger;
+
+import concurrentDataStructure.*;
+public class MeasurementTool {
+
+	private static final int NUMBER_OF_ELEMENTS = 1000000;
+	
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+	
+	static class Producer implements Runnable{
+
+		@Override
+		public void run() {
+			// TODO Auto-generated method stub
+			
+		}
+	}
+	
+	
+	static class Consumer implements Runnable{
+
+		private int count=0;
+		private IMemory memory;
+		private AtomicInteger totalElemToProduce;
+		
+		
+		public Consumer(IMemory memory, AtomicInteger totalElemToProduce) {
+			this.memory = memory;
+			this.totalElemToProduce = totalElemToProduce;
+		}
+
+
+		@Override
+		public void run() {
+			int elementsToProduce=-1;
+			while((elementsToProduce=totalElemToProduce.getAndDecrement()) > 0){
+				try {
+					memory.put(elementsToProduce);
+					System.out.println("Produced " + (NUMBER_OF_ELEMENTS - elementsToProduce) + " " + Thread.currentThread().getName());
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
+			}
+			
+		}
+	}
+}

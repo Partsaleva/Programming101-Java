@@ -96,7 +96,7 @@ public class Producer_Consumer {
     }
   }
   
-  interface IMemory {
+ interface IMemory {
     public void put (Object o) throws InterruptedException;
     Object get() throws InterruptedException ;
   }
