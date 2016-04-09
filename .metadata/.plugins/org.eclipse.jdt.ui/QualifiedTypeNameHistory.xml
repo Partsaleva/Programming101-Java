@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-<fullyQualifiedTypeName name="propertiesFileParser.PropertiesFileParserTest"/>
-<fullyQualifiedTypeName name="propertiesFileParser.PropertiesFileParser"/>
 <fullyQualifiedTypeName name="friday.RunnableClass"/>
 <fullyQualifiedTypeName name="friday.ThreadClass"/>
 <fullyQualifiedTypeName name="java.util.Scanner"/>
@@ -37,7 +35,6 @@
 <fullyQualifiedTypeName name="java.net.URI"/>
 <fullyQualifiedTypeName name="java.net.URISyntaxException"/>
 <fullyQualifiedTypeName name="sun.net.www.http.HttpClient"/>
-<fullyQualifiedTypeName name="java.util.concurrent.atomic.AtomicInteger"/>
 <fullyQualifiedTypeName name="java.util.Random"/>
 <fullyQualifiedTypeName name="matrices.Matrix"/>
 <fullyQualifiedTypeName name="java.util.concurrent.ExecutorService"/>
@@ -57,7 +54,10 @@
 <fullyQualifiedTypeName name="java.util.Set"/>
 <fullyQualifiedTypeName name="java.io.File"/>
 <fullyQualifiedTypeName name="advancedFileSearch.Search"/>
-<fullyQualifiedTypeName name="java.util.ArrayList"/>
-<fullyQualifiedTypeName name="java.util.List"/>
 <fullyQualifiedTypeName name="java.lang.Thread"/>
+<fullyQualifiedTypeName name="java.util.concurrent.atomic.AtomicInteger"/>
+<fullyQualifiedTypeName name="concurrentDataStructure.IMemory"/>
+<fullyQualifiedTypeName name="jdk.nashorn.internal.runtime.regexp.JoniRegExp.Factory"/>
+<fullyQualifiedTypeName name="java.util.List"/>
+<fullyQualifiedTypeName name="java.util.ArrayList"/>
 </qualifiedTypeNameHistroy>

@@ -1,0 +1,21 @@
+package oddNumbers;
+
+import java.util.List;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+
+public class CountOddNumbers {
+
+	static int count(List<Integer> nums){
+		int cores=Runtime.getRuntime().availableProcessors();
+		ExecutorService executor=Executors.newFixedThreadPool(cores);
+		int step=nums.size()/cores;
+		
+		for (int i = 0; i < cores-1; i++) {
+			
+		}
+				
+		return 0;
+		
+	}
+}
