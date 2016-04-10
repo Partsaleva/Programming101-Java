@@ -1,0 +1,33 @@
+package oddNumbers;
+
+import java.util.List;
+
+public class Task implements Runnable{
+	
+	private List<Integer> numbers;
+	private int count;
+	private int start;
+	private int end;
+	public Task(List<Integer> numbers, int start, int end){
+		this.numbers=numbers;
+		this.start=start;
+		this.end=end;
+	}
+	
+	public int getCount() {
+		return count;
+	}
+
+	@Override
+	public void run() {
+		System.out.println("Execute");
+		for (int i = start; i < end; i++) {
+			if ((numbers.get(i) % 2) == 0) {
+				count++;
+			}
+		}
+		System.out.println(count);
+		
+	}
+
+}
