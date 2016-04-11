@@ -1,34 +1,35 @@
 package oddNumbers;
 
 import java.util.List;
+import java.util.concurrent.Callable;
 
-public class Task implements Runnable{
+public class Task implements Callable<Object>{
 	
 	private List<Integer> numbers;
 	 int count;
 	 int start;
 	 int end;
-	public Task(List<Integer> numbers, int start, int end, int count){
+	public Task(List<Integer> numbers, int start, int end){
 		this.numbers=numbers;
 		this.start=start;
 		this.end=end;
-		this.count=count;
 	}
 	
 	public int getCount() {
 		return count;
 	}
 
+	
+
 	@Override
-	public void run() {
+	public Integer call() throws Exception {
 		System.out.println("Execute");
 		for (int i = start; i < end; i++) {
 			if ((numbers.get(i) % 2) == 0) {
 				count++;
 			}
-		}
-		//System.out.println(count);
-		
+		}	
+		return count;
 	}
 
 }

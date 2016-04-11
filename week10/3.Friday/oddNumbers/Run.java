@@ -6,7 +6,7 @@ import java.util.Random;
 
 public class Run {
 
-	public static void main(String[] args) throws InterruptedException {
+	public static void main(String[] args) throws Exception {
 		Random random = new Random();
 		
 		long start = System.currentTimeMillis(); 
