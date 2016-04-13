@@ -1,8 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-<fullyQualifiedTypeName name="friday.sumInts"/>
-<fullyQualifiedTypeName name="friday.Counter"/>
-<fullyQualifiedTypeName name="friday.ThreadForCounter"/>
 <fullyQualifiedTypeName name="friday.VisibilityExampleThread"/>
 <fullyQualifiedTypeName name="monday.SimpleBlockingQueue"/>
 <fullyQualifiedTypeName name="java.lang.InterruptedException"/>
@@ -13,9 +10,7 @@
 <fullyQualifiedTypeName name="java.awt.image.BufferedImage"/>
 <fullyQualifiedTypeName name="javax.imageio.ImageIO"/>
 <fullyQualifiedTypeName name="java.awt.Graphics2D"/>
-<fullyQualifiedTypeName name="java.nio.file.Path"/>
 <fullyQualifiedTypeName name="monday.bulkThumbnailCreator.ImgResizer"/>
-<fullyQualifiedTypeName name="java.nio.file.Files"/>
 <fullyQualifiedTypeName name="java.nio.file.Paths"/>
 <fullyQualifiedTypeName name="parallelCopy.ParallelCopy"/>
 <fullyQualifiedTypeName name="annotations.ClassInfo"/>
@@ -36,7 +31,6 @@
 <fullyQualifiedTypeName name="java.util.HashMap"/>
 <fullyQualifiedTypeName name="java.lang.Object"/>
 <fullyQualifiedTypeName name="advancedFileSearch.Memory"/>
-<fullyQualifiedTypeName name="java.io.BufferedReader"/>
 <fullyQualifiedTypeName name="java.io.Reader"/>
 <fullyQualifiedTypeName name="java.io.FileReader"/>
 <fullyQualifiedTypeName name="java.util.Map.Entry"/>
@@ -44,7 +38,6 @@
 <fullyQualifiedTypeName name="advancedFileSearch.Searcher"/>
 <fullyQualifiedTypeName name="advancedFileSearch.Get"/>
 <fullyQualifiedTypeName name="java.util.Set"/>
-<fullyQualifiedTypeName name="java.io.File"/>
 <fullyQualifiedTypeName name="advancedFileSearch.Search"/>
 <fullyQualifiedTypeName name="java.lang.Thread"/>
 <fullyQualifiedTypeName name="java.util.concurrent.atomic.AtomicInteger"/>
@@ -60,4 +53,11 @@
 <fullyQualifiedTypeName name="java.util.concurrent.Callable"/>
 <fullyQualifiedTypeName name="java.util.concurrent.FutureTask"/>
 <fullyQualifiedTypeName name="oddNumbers.Task"/>
+<fullyQualifiedTypeName name="java.io.BufferedReader"/>
+<fullyQualifiedTypeName name="java.net.URL"/>
+<fullyQualifiedTypeName name="java.io.InputStreamReader"/>
+<fullyQualifiedTypeName name="java.nio.file.Path"/>
+<fullyQualifiedTypeName name="java.io.File"/>
+<fullyQualifiedTypeName name="java.nio.file.Files"/>
+<fullyQualifiedTypeName name="java.nio.file.StandardCopyOption"/>
 </qualifiedTypeNameHistroy>
