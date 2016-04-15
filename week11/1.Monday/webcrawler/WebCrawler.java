@@ -1,8 +1,9 @@
 package webcrawler;
 
 import java.io.BufferedReader;
-import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -15,33 +16,33 @@ import java.util.regex.Pattern;
 public class WebCrawler {
 
 	public static void main(String[] args) throws IOException {
-		String url="http://ebusiness.free.bg/";
+		URL url=new URL("http://ebusiness.free.bg/");
 		String text="Револвираща";
-		//search(url, text);
-		System.out.println(containText(removeTags(url), text));
+		String webText=getText(url);			
+		search(url, text);
+		System.out.println(pagesToVisit);
 
 	}
 
 	 private static Set<String> pagesVisited = new HashSet<String>();
 	 private static List<String> pagesToVisit = new LinkedList<String>();
 	  
-	public static void search(String url, String text) throws IOException{
-		while (true) {
-			String currentUrl;
-			if(pagesToVisit.isEmpty()){
-	              currentUrl = url;
-	              pagesVisited.add(url);
-	        }
-			else{
-	              currentUrl = nextUrl();
-	        }
-			
-			if(containText(removeTags(currentUrl),text)){
-				pagesVisited.add(currentUrl);
-	 			System.out.println("FOUND IN" + currentUrl.toUpperCase());
-			}
-			pagesToVisit.addAll(getAllLinks(currentUrl));
+	public static void search(URL url, String text) throws IOException{
+		URL currentUrl;
+		if(pagesToVisit.isEmpty()){
+              currentUrl = url;
+            //  System.out.println(currentUrl.toString());
+              pagesToVisit.addAll(getAllLinks(getText(currentUrl)));
+        }
+		else{
+              currentUrl = new URL(nextUrl());
+        }
+		if(containText(getText(currentUrl),text)){
+			pagesVisited.add(currentUrl.toString());
+ 			System.out.println("FOUND IN " + currentUrl.toString().toUpperCase());
 		}
+		//pagesToVisit.addAll(getAllLinks(getText(currentUrl)));
+		
 	}
 	
 	private static String nextUrl() {
@@ -52,55 +53,33 @@ public class WebCrawler {
 	}
 
 	private static List<String> getAllLinks(String content) {
-        ArrayList<String> resultList = new ArrayList<>();
-        String regex = "<a.*?href=\"((?!javascript).*?)\".*?>";
-        Pattern pattern = Pattern.compile(regex);
-        Matcher matcher = pattern.matcher(content);
-        while (matcher.find()) {
-            resultList.add(matcher.group(1));
-        }
-        return resultList;
+		 String regex = "<a.*?href=\"((?!javascript).*?)\".*?>";
+	        Pattern pattern = Pattern.compile(regex,Pattern.CASE_INSENSITIVE|Pattern.DOTALL);
+	        Matcher matcher = pattern.matcher(content);
+	        while (matcher.find()) {
+	        	String w = matcher.group(1).replace("../", "");
+	            if (!pagesToVisit.contains(w)) {
+	            	pagesToVisit.add(w);
+	            }
+	        }
+	        return pagesToVisit;
     }
 	
-	private static String removeTags(String url) throws IOException{	
-		 StringBuilder b=new StringBuilder();
-	     try(BufferedReader br = new BufferedReader(new FileReader(url))){
-		     String line;
-		     while ( (line=br.readLine()) != null) {
-		       b.append(line.replaceAll("<!--.*?-->", "").replaceAll("<[^>]+>", ""));		       
-		     }
-	     }
-	     return b.toString();
+	private static String getText(URL url) throws IOException{	
+		StringBuilder b=new StringBuilder();
+        try(BufferedReader in = new BufferedReader(new InputStreamReader(url.openStream()))){
+	        String line;
+	        while ((line = in.readLine()) != null){
+	        	b.append(line);
+	        }        
+        }
+		return b.toString();
 	   }
 	
-	private static boolean containText(String urlText, String text) throws IOException{
-		String[] words = text.split(" ");
-		try(BufferedReader br = new BufferedReader(new FileReader(urlText))){
-			String buffer="";
-			String line;
-			int count=0;
-			while ( (line=br.readLine()) != null) {				
-				count++;
-				
-				if (buffer.length()>0) {
-					buffer+=line.substring(0, (text.length()-buffer.length()) -1);
-					if (buffer.equals(text)) {
-						return true;
-					}
-				}
-				if (line.contains(words[0])) {
-					buffer=line.substring(line.indexOf(words[0]));
-					if (buffer.length() >= text.length()) {
-						buffer=buffer.substring(0, text.length()-1);
-						if (buffer.equals(text)) {
-							System.out.println("Found in line: " + count);
-							return true;
-						}
-					}
-				}
-			}		       
-		}
-		return false;
+	private static boolean containText(String urlText, String text){
+		
+		 System.out.println("Searching for " + "'"+text + "'"+"...");	       
+	     return urlText.toLowerCase().contains(text.toLowerCase());
 	}
 	
 	
