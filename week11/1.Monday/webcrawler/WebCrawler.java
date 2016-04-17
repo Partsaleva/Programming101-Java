@@ -16,12 +16,11 @@ import java.util.regex.Pattern;
 public class WebCrawler {
 
 	public static void main(String[] args) throws IOException {
-		URL url=new URL("http://www.kolonkata.info/search/label/%D0%91%D0%B5%D0%B7%D0%BF%D0%BB%D0%B0%D1%82%D0%BD%D0%BE");
-		String text="16 април";
-		String webText=getText(url);
-		System.out.println(webText);
+		URL url=new URL("http://www.peter.and.bilyana.net/");
+		String text="почивка";	
 		search(url, text);
 		System.out.println(pagesToVisit);
+		System.out.println(pagesVisited);
 		
 
 	}
@@ -29,23 +28,22 @@ public class WebCrawler {
 	 private static Set<String> pagesVisited = new HashSet<String>();
 	 private static List<String> pagesToVisit = new LinkedList<String>();
 	  
-	public static void search(URL url, String text) throws IOException{
-		URL currentUrl;
-	
+	public static void search(URL url, String text) throws IOException{    
+		URL currentUrl;	
+		while(true){
 			if(pagesToVisit.isEmpty()){
 	              currentUrl = url;
-	              System.out.println(currentUrl.toString());
 	              pagesToVisit.addAll(getAllLinks(currentUrl,getText(currentUrl)));
 	        }
 			else{
 	              currentUrl = new URL(nextUrl());
 	        }
 			if(containText(getText(currentUrl),text)){
-				pagesVisited.add(currentUrl.toString());
-	 			System.out.println("FOUND IN " + currentUrl.toString().toUpperCase());
+	 			System.out.println("FOUND IN " + currentUrl.toString());
 			}
-		
-		
+			System.out.println(pagesToVisit.size());
+			System.out.println(pagesVisited.size());
+		}
 	}
 	
 	private static String nextUrl() {
@@ -56,11 +54,11 @@ public class WebCrawler {
 	}
 
 	private static List<String> getAllLinks(URL url, String content) {
-		    String regex = "<a.*?href=\"((?!javascript).*?)\".*?>";
-	        Pattern pattern = Pattern.compile(regex,Pattern.CASE_INSENSITIVE|Pattern.DOTALL);
+		    String regex = "<a.*?href=\"((?!javascript).*?)/\".*?>";
+	        Pattern pattern = Pattern.compile(regex);
 	        Matcher matcher = pattern.matcher(content);
 	        while (matcher.find()) {
-	        	String w = matcher.group(1);
+	        	String w = matcher.group(1).replace("../", "");
 	            if (!pagesToVisit.contains(w)) {            
 	            		pagesToVisit.add(w);				
 	            }
@@ -81,7 +79,7 @@ public class WebCrawler {
 	   }
 	
 	private static boolean containText(String urlText, String text){		
-		 System.out.println("Searching for " + "'"+text + "'"+"...");	       
+		// System.out.println("Searching for " + "'"+text + "'"+"...");	       
 	     return urlText.toLowerCase().contains(text.toLowerCase());
 	}
 	
