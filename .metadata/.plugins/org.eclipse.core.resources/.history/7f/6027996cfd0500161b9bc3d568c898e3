@@ -1,0 +1,14 @@
+package weather_forcasting_tool;
+
+import org.codehaus.jettison.json.JSONObject;
+
+public class WeatherForcastingTool {
+
+	public static void main(String[] args) {
+		WeatherForcastingTool tool = new WeatherForcastingTool();
+        JSONObject o =    tool.getJsonForWeather("http://api.openweathermap.org/data/2.5" +
+                   "/weather?q=Sofia,bg&appid=5c557da33209735e6993f7f1a091851d");
+
+	}
+
+}
