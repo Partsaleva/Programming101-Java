@@ -1,0 +1,3 @@
+eclipse.preferences.version=1
+locationorg.eclipse.jst.server.tomcat.runtime.70=/home/partsaleva/apache-tomee-jaxrs-1.7.1
+locationorg.eclipse.jst.server.tomcat.runtime.80=/home/partsaleva/javaEE/Servers/apache-tomcat-8.0.33
