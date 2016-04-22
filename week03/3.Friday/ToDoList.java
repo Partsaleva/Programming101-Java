@@ -2,8 +2,6 @@
 
 import java.util.PriorityQueue;
 import java.util.Comparator;
-import java.util.Iterator;
-import java.util.Map.Entry;
 
 public class ToDoList {
 

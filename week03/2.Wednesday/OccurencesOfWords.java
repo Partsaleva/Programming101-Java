@@ -4,6 +4,7 @@
 import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Set;
 
 public class OccurencesOfWords {
@@ -20,7 +21,8 @@ public class OccurencesOfWords {
 		Set<?> set=res.entrySet();
 		Iterator<?> iter=set.iterator();
 		while(iter.hasNext()){
-			 Map.Entry m = (Map.Entry)iter.next();
+			 @SuppressWarnings("unchecked")
+			Map.Entry<String, Integer>m = (Entry<String, Integer>) iter.next();
 	         result+=m.getKey() + ":"+m.getValue()+ ",  ";
 		}
 		return result;

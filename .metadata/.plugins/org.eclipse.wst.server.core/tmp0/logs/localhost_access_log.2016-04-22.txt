@@ -1,0 +1,5 @@
+127.0.0.1 - - [22/Apr/2016:10:04:29 +0300] "GET / HTTP/1.1" 404 994
+127.0.0.1 - - [22/Apr/2016:10:04:29 +0300] "GET /SimpleNewsAgregator/WEB-INF/classes/service/Agregator.java HTTP/1.1" 404 992
+127.0.0.1 - - [22/Apr/2016:10:04:30 +0300] "GET /favicon.ico HTTP/1.1" 404 1016
+127.0.0.1 - - [22/Apr/2016:10:14:37 +0300] "GET / HTTP/1.1" 404 994
+127.0.0.1 - - [22/Apr/2016:10:14:37 +0300] "GET /SimpleNewsAgregator/WEB-INF/classes/service/Agregator.java HTTP/1.1" 404 992

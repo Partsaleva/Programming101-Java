@@ -1,6 +1,5 @@
 package ShopInventory;
 
-import java.util.Map;
 
 public class Order {
 

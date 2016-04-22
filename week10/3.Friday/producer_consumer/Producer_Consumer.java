@@ -112,7 +112,7 @@ public class Producer_Consumer {
   
   static class JavaMemory implements IMemory {
     
-    CopyOnWriteArrayList memory = new CopyOnWriteArrayList();
+    CopyOnWriteArrayList<Object> memory = new CopyOnWriteArrayList<>();
     
     @Override
     public void put(Object o) throws InterruptedException {
@@ -129,7 +129,7 @@ public class Producer_Consumer {
   
   static class Memory implements IMemory {
     
-    List data = new ArrayList();
+    List<Object> data = new ArrayList<>();
     int capacity;
     
     public Memory(int capacity) {
