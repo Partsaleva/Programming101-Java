@@ -26,7 +26,7 @@ public class Agregator {
 			sb.append("<br/>");
 			String desc = syndEntry.getDescription().getValue();
 			if (desc.endsWith("/>") && desc.length() > 100) {
-				desc = desc.substring(0, desc.length()-10);
+				desc = desc.substring(0, desc.length()-11);
 			}
 			sb.append("<div>"+desc + "<a href=" + syndEntry.getLink() + ">" + "more</a></div><hr><br/>");
 			
