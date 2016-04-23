@@ -36,7 +36,6 @@
 <fullyQualifiedTypeName name="java.util.regex.Pattern"/>
 <fullyQualifiedTypeName name="java.util.regex.Matcher"/>
 <fullyQualifiedTypeName name="java.io.FileReader"/>
-<fullyQualifiedTypeName name="java.lang.StringBuilder"/>
 <fullyQualifiedTypeName name="java.io.File"/>
 <fullyQualifiedTypeName name="org.apache.http.impl.client.CloseableHttpClient"/>
 <fullyQualifiedTypeName name="org.apache.http.impl.client.HttpClients"/>
@@ -60,4 +59,5 @@
 <fullyQualifiedTypeName name="com.sun.syndication.feed.synd.SyndEntry"/>
 <fullyQualifiedTypeName name="java.lang.Object"/>
 <fullyQualifiedTypeName name="java.net.HttpURLConnection"/>
+<fullyQualifiedTypeName name="java.lang.StringBuilder"/>
 </qualifiedTypeNameHistroy>
