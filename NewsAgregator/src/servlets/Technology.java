@@ -13,7 +13,7 @@ import service.Agregator;
 /**
  * Servlet implementation class Technology
  */
-@WebServlet("/Technology")
+@WebServlet("/technology")
 public class Technology extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private Agregator agr=new Agregator();
@@ -30,13 +30,14 @@ public class Technology extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("text/html");
 		request.setAttribute("technology", agr.getRss("(//www.kaldata.com/rosebud/rss.php?catid=3"));
+		request.getRequestDispatcher("/jsp/Technology.jsp").forward(request, response);
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		doGet(request, response);
 	}
 
 }
