@@ -1,0 +1,17 @@
+127.0.0.1 - - [26/Apr/2016:09:15:17 +0300] "GET / HTTP/1.1" 404 994
+127.0.0.1 - - [26/Apr/2016:09:15:18 +0300] "GET /Simple_JSON_pretty_printer_service/PrettyPrinter HTTP/1.1" 500 1578
+127.0.0.1 - - [26/Apr/2016:09:15:19 +0300] "GET /favicon.ico HTTP/1.1" 404 1016
+127.0.0.1 - - [26/Apr/2016:09:16:31 +0300] "GET / HTTP/1.1" 404 994
+127.0.0.1 - - [26/Apr/2016:09:16:31 +0300] "GET /Simple_JSON_pretty_printer_service/PrettyPrinter HTTP/1.1" 500 1578
+127.0.0.1 - - [26/Apr/2016:09:17:47 +0300] "GET / HTTP/1.1" 404 994
+127.0.0.1 - - [26/Apr/2016:09:17:48 +0300] "GET /Simple_JSON_pretty_printer_service/PrettyPrinter HTTP/1.1" 500 1631
+127.0.0.1 - - [26/Apr/2016:09:19:44 +0300] "GET / HTTP/1.1" 404 994
+127.0.0.1 - - [26/Apr/2016:09:19:45 +0300] "GET /Simple_JSON_pretty_printer_service/PrettyPrinter HTTP/1.1" 500 3910
+127.0.0.1 - - [26/Apr/2016:09:43:12 +0300] "GET / HTTP/1.1" 404 994
+127.0.0.1 - - [26/Apr/2016:09:43:13 +0300] "GET /Simple_JSON_pretty_printer_service/PrettyPrinter HTTP/1.1" 500 1631
+127.0.0.1 - - [26/Apr/2016:09:44:50 +0300] "GET / HTTP/1.1" 404 994
+127.0.0.1 - - [26/Apr/2016:09:44:52 +0300] "GET /Simple_JSON_pretty_printer_service/PrettyPrinter HTTP/1.1" 500 1631
+127.0.0.1 - - [26/Apr/2016:09:46:21 +0300] "GET / HTTP/1.1" 404 994
+127.0.0.1 - - [26/Apr/2016:09:46:21 +0300] "GET /Simple_JSON_pretty_printer_service/PrettyPrinter HTTP/1.1" 500 1578
+127.0.0.1 - - [26/Apr/2016:09:49:10 +0300] "GET / HTTP/1.1" 404 994
+127.0.0.1 - - [26/Apr/2016:09:49:11 +0300] "GET /Simple_JSON_pretty_printer_service/PrettyPrinter HTTP/1.1" 200 705
