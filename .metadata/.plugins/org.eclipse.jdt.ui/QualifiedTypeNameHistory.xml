@@ -1,15 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-<fullyQualifiedTypeName name="java.util.LinkedList"/>
-<fullyQualifiedTypeName name="webCrawler.WebCrawler"/>
-<fullyQualifiedTypeName name="java.net.URI"/>
-<fullyQualifiedTypeName name="java.net.URISyntaxException"/>
 <fullyQualifiedTypeName name="sun.net.www.http.HttpClient"/>
 <fullyQualifiedTypeName name="matrices.Matrix"/>
 <fullyQualifiedTypeName name="matrices.Multiplier"/>
 <fullyQualifiedTypeName name="java.util.HashMap"/>
 <fullyQualifiedTypeName name="advancedFileSearch.Memory"/>
-<fullyQualifiedTypeName name="java.io.Reader"/>
 <fullyQualifiedTypeName name="java.util.Map.Entry"/>
 <fullyQualifiedTypeName name="java.util.Map"/>
 <fullyQualifiedTypeName name="advancedFileSearch.Searcher"/>
@@ -42,14 +37,10 @@
 <fullyQualifiedTypeName name="org.apache.http.client.methods.CloseableHttpResponse"/>
 <fullyQualifiedTypeName name="java.lang.System"/>
 <fullyQualifiedTypeName name="java.io.IOException"/>
-<fullyQualifiedTypeName name="java.net.URLConnection"/>
-<fullyQualifiedTypeName name="java.io.BufferedReader"/>
 <fullyQualifiedTypeName name="java.io.InputStreamReader"/>
 <fullyQualifiedTypeName name="org.codehaus.jettison.json.JSONObject"/>
 <fullyQualifiedTypeName name="org.codehaus.jettison.json.JSONException"/>
-<fullyQualifiedTypeName name="java.io.PrintWriter"/>
 <fullyQualifiedTypeName name="java.awt.List"/>
-<fullyQualifiedTypeName name="java.net.URL"/>
 <fullyQualifiedTypeName name="com.sun.syndication.io.SyndFeedInput"/>
 <fullyQualifiedTypeName name="com.sun.syndication.feed.synd.SyndFeed"/>
 <fullyQualifiedTypeName name="com.sun.syndication.io.XmlReader"/>
@@ -57,7 +48,16 @@
 <fullyQualifiedTypeName name="com.sun.syndication.feed.synd.SyndEntry"/>
 <fullyQualifiedTypeName name="java.lang.Object"/>
 <fullyQualifiedTypeName name="java.net.HttpURLConnection"/>
-<fullyQualifiedTypeName name="java.lang.StringBuilder"/>
 <fullyQualifiedTypeName name="java.util.Iterator"/>
 <fullyQualifiedTypeName name="service.Agregator"/>
+<fullyQualifiedTypeName name="com.google.gson.JsonParser"/>
+<fullyQualifiedTypeName name="com.google.gson.GsonBuilder"/>
+<fullyQualifiedTypeName name="com.google.gson.JsonElement"/>
+<fullyQualifiedTypeName name="java.io.PrintWriter"/>
+<fullyQualifiedTypeName name="java.net.URL"/>
+<fullyQualifiedTypeName name="java.net.MalformedURLException"/>
+<fullyQualifiedTypeName name="java.lang.StringBuilder"/>
+<fullyQualifiedTypeName name="java.net.URLConnection"/>
+<fullyQualifiedTypeName name="java.io.BufferedReader"/>
+<fullyQualifiedTypeName name="java.io.Reader"/>
 </qualifiedTypeNameHistroy>

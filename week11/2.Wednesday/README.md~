@@ -19,8 +19,6 @@ Check the 'html source code' returned by your servlet. You will see no HTML tags
 Write an HTML response to your client. For instance <h1>Now that's a big title!</h1>
 Congratulations. You've just witnessed what ASP/JSP/PHP is all about. We are not going to do any of that sh** stuff.
 
-https://github.com/Partsaleva/Programming101-Java/tree/master/FirstServlet
-
 2. Simple news agregator
 
 Do you know what an RSS is? It is a simple format for describing content (just the content, and not it's visualization). It is an XML-based format.
@@ -41,8 +39,6 @@ Do not parse the XML yourself. There are libraries for that, use the ones given 
 Add both jars in the WEB-INF/lib folder. Don't do anything after that, Eclipse will automatically add them to the project's build path.
 Use this ROME tutorial: http://blog.manishchhabra.com/2011/10/rome-library-example-for-parsing-rss-and-atom-feeds/
 
-https://github.com/Partsaleva/Programming101-Java/tree/master/NewsAgregator
-
 3. Simple JSON pretty printer service.
 
 Just look at the JSON at London weather. It is horrible - completely unreadable. What are the elements? What are the JSON objects? You cannot easily tell.
@@ -51,5 +47,3 @@ Deploy a servlet, that accepts a named "POST" parameter "json".
 Read the json as a POST parameter given to the request (as a parameter from the HttpServletRequest via the getParameter method.)
 Use google gson to pretty-print the json given.
 See how to it here: http://stackoverflow.com/questions/4105795/pretty-print-json-in-java
-
-https://github.com/Partsaleva/Programming101-Java/tree/master/Simple%20JSON%20pretty%20printer%20service

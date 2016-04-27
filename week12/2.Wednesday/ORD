@@ -1,0 +1,168 @@
+﻿create table DEPARTMENT(
+  NAME VARCHAR(50)NOT NULL PRIMARY KEY
+);
+
+create table EMPLOYEE(
+    EMPNAME varchar(255)NOT NULL,
+    EMAIL VARCHAR(20),
+    BIRTHDATE DATE NOT NULL,
+    MANAGER VARCHAR(255),
+    DEPARTMENT VARCHAR(50),
+    CONSTRAINT PK_employeeID PRIMARY KEY(EMPNAME, BIRTHDATE)
+);
+
+CREATE TABLE PRODUCTS(
+    PRODNAME VARCHAR(50) NOT NULL PRIMARY KEY,
+    PRICE FLOAT,
+    CATEGORYNAME VARCHAR(20)
+);
+
+CREATE TABLE CATEGORY(
+    CODE CHAR(3) PRIMARY KEY,
+    CATEGNAME VARCHAR(50)
+);
+
+CREATE TABLE CUSTOMERS(
+    CUSTID INT NOT NULL PRIMARY KEY,
+    CUSTNAME VARCHAR(50),
+    EMAIL VARCHAR(20),
+    ADDRESS VARCHAR(100),
+    DISCOUNT FLOAT
+);
+
+CREATE TABLE ORDERS(
+    ORDERID INT NOT NULL PRIMARY KEY, 
+    DATEOFORDER DATE,
+    CUSTOMER INT,
+    TOTALPRICE FLOAT,
+    PRODUCT VARCHAR(50)
+);
+
+CREATE TABLE ORDERPRODUCT(
+   PRODID VARCHAR(50) NOT NULL REFERENCES PRODUCTS(PRODNAME),
+   ORDID INT NOT NULL REFERENCES ORDERS(ORDERID)
+);
+
+ALTER TABLE EMPLOYEE
+ADD FOREIGN KEY (DEPARTMENT)
+REFERENCES DEPARTMENT(NAME)
+
+
+ALTER TABLE PRODUCTS
+ADD FOREIGN KEY (CATEGORYNAME)
+REFERENCES CATEGORY(CODE)
+
+ALTER TABLE ORDERS
+ADD FOREIGN KEY (CUSTOMER)
+REFERENCES CUSTOMERS(CUSTID)
+
+INSERT INTO DEPARTMENT(NAME)
+VALUES('Sales'),('Production'),('Financial');
+
+/#big boss
+INSERT INTO employee(EMPNAME,EMAIL,BIRTHDATE, MANAGER, DEPARTMENT)
+VALUES('Ivan Ivanov', 'ivanov@gmail.com','20-03-1980',null,null);
+
+INSERT INTO employee(EMPNAME,EMAIL,BIRTHDATE, MANAGER, DEPARTMENT)
+VALUES('Angel Petrov', 'ap@gmail.com','20-04-1990','Ivan Ivanov','Sales'),
+	('Vasil Vasilev', 'vv@gmail.com','02-05-1993','Angel Petrov','Sales'),
+	('Kalin Kolev', 'kk@gmail.com','04-01-1991','Angel Petrov','Sales'),
+	('Mariq Ilieva', 'mi@gmail.com','15-06-1992','Angel Petrov','Sales'),
+	('Marina Zdravkova', 'mz@gmail.com','28-07-1991','Angel Petrov','Sales'),
+	('Angel Kalinov', 'ak@gmail.com','20-04-1989','Angel Petrov','Sales'),
+	
+	('Mariana Hristova', 'mh@gmail.com','17-12-1981','Ivan Ivanov','Production'),
+	('Borislav Kirilov', 'bk@gmail.com','25-05-1985','Mariana Hristova','Production'),
+	('Vladimir Videnov', 'vvid@gmail.com','22-07-1987','Mariana Hristova','Production'),
+	('Kostadin Binev', 'kb@gmail.com','27-09-1987','Mariana Hristova','Production'),
+	('Zara Koseva', 'zk@gmail.com','19-10-1988','Mariana Hristova','Production'),
+	
+	('Ivan Danov', 'id@gmail.com','08-11-1982','Ivan Ivanov','Financial'),
+	('Manov Dichev', 'md@gmail.com','07-06-1981','Ivan Danov','Financial'),
+	('Kapka Kateva', 'kkat@gmail.com','21-07-1984','Ivan Danov','Financial'),
+	('Oleg Kaloqnov', 'ok@gmail.com','12-06-1984','Ivan Danov','Financial'),
+	('Petyr Petrov', 'pp@gmail.com','18-02-1985','Ivan Danov','Financial');
+	
+INSERT INTO CATEGORY(CODE,CATEGNAME)
+VALUES('boo', 'Books'), ('mus','Music'), ('har','Hardware'), ('sof','Software');
+
+INSERT INTO PRODUCTS( PRODNAME,PRICE, CATEGORYNAME)
+VALUES('Thinking in Java',50.0,'boo'),
+	('Thinking in c++',50.0,'boo'),
+	('Programming Ruby',30.0,'boo'),
+	('From Bash to Z Shell',30.0,'boo');
+
+INSERT INTO PRODUCTS( PRODNAME,PRICE, CATEGORYNAME)
+VALUES('The Dream',15.0,'mus'),
+	('A Star-Crossed Wasteland ',15.0,'mus'),
+	('Blood',15.0,'mus'),
+
+('E-mini NC-T01 Black 200W Flex ATX PSU',81.90,'har'),
+('Toshiba SSD Q300, 480Gb, retail',247.0,'har'),
+('Crucial RAM 8GB DDR3L',70.90,'har'),
+
+('MarineTraffic',6.69,'sof'),
+('Runtastic PRO',9.59,'sof'),
+('Shazam Encore',11.49,'sof');
+
+INSERT INTO CUSTOMERS(CUSTID,CUSTNAME ,EMAIL,ADDRESS,DISCOUNT)
+VALUES(1,'Ivan Petkov','ip@gmail.com', null,0.2),
+	(2,'Kalinka Kyneva','kk@gmail.com', null,0.15),
+	(3,'Ivan Draganov','id@gmail.com', null,0.12),
+	(4,'Georgi Zlatkov','gz@gmail.com', null,0),
+	(5,'Zahari Hristov','zh@gmail.com', null,0);
+
+INSERT INTO ORDERS(ORDERID,DATEOFORDER,CUSTOMER,TOTALPRICE,PRODUCT)
+VALUES(1,'11-02-2016',1,30,'The Dream'),(2,'11-02-2016',2,30,'Blood'),
+(3,'11-02-2016',3,30,'The Dream'),(4,'11-02-2016',2,30,'Blood'),
+(5,'11-02-2016',4,30,'The Dream'),(6,'11-02-2016',5,30,'Blood');
+
+SELECT EMPNAME
+FROM EMPLOYEE
+WHERE MANAGER IS NULL AND DEPARTMENT IS NULL
+
+SELECT EMPNAME
+FROM EMPLOYEE
+WHERE MANAGER like 'Ivan Ivanov';
+
+SELECT *
+FROM EMPLOYEE
+WHERE DEPARTMENT like 'Sales'
+ORDER BY EMPNAME;
+
+SELECT DEPARTMENT
+FROM EMPLOYEE
+WHERE BIRTHDATE >'01-01-1990';
+
+
+#Select all departments with more than 3 employees
+SELECT DEPARTMENT,COUNT(*)
+FROM EMPLOYEE,DEPARTMENT
+WHERE NAME LIKE DEPARTMENT 
+GROUP BY DEPARTMENT
+HAVING COUNT(*)>3;
+
+#Select the department having the most employees
+SELECT DEPARTMENT,COUNT(*) AS CEMP
+FROM EMPLOYEE JOIN DEPARTMENT
+ON NAME=DEPARTMENT
+GROUP BY DEPARTMENT
+ORDER BY CEMP DESC 
+LIMIT 1
+
+#Select the order having the maximum total number of products
+SELECT ORDERS, COUNT(PRODUCTS) AS COUNTPRODUCT
+FROM ORDERS,PRODUCTS,ORDERPRODUCT
+WHERE (PRODID=PRODNAME AND ORDID =ORDERID)
+GROUP BY ORDERS
+ORDER BY COUNTPRODUCT DESC
+LIMIT 1
+
+#Select the average discount of all customers
+SELECT AVG(DISCOUNT)
+FROM CUSTOMERS
+
+UPDATE EMPLOYEE
+SET BIRTHDATE = BIRTHDATE+365;
+
+
