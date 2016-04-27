@@ -1,4 +1,3 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<session version="1.0">
-<refactoring comment="Delete resource &apos;Simple JSON pretty printer service&apos;" deleteContents="true" description="Delete resource &apos;Simple JSON pretty printer service&apos;" element1="/Simple JSON pretty printer service" flags="7" id="org.eclipse.ltk.core.refactoring.delete.resources" resources="1" stamp="1461568517008"/>
+<session version="1.0">&#x0A;<refactoring comment="Delete resource &apos;Simple JSON pretty printer service&apos;" deleteContents="true" description="Delete resource &apos;Simple JSON pretty printer service&apos;" element1="/Simple JSON pretty printer service" flags="7" id="org.eclipse.ltk.core.refactoring.delete.resources" resources="1" stamp="1461568517008"/>&#x0A;<refactoring comment="Delete resource &apos;Copy of FirstServlet&apos;" deleteContents="true" description="Delete resource &apos;Copy of FirstServlet&apos;" element1="/Copy of FirstServlet" flags="7" id="org.eclipse.ltk.core.refactoring.delete.resources" resources="1" stamp="1461737164802"/>
 </session>
