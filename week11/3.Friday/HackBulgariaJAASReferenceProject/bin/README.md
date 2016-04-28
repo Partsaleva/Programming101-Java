@@ -1,55 +1,46 @@
-0. Paralel web crawler
+### 1. Download a file with java
+Using only URL and the stream classes, download this photo: http://d3dsacqprgcsqh.cloudfront.net/photo/aozrdx0_700b.jpg to a location of your choosing
 
-There is a bottleneck in web crawling - while waiting for an answer from the server, the CPU does nothing. It would be better to make several requests at once.
+##### Now accept files from the command line and label your program the 'java wget'. Woohoo!
 
-Try to crawl 9gag.com, for instance, and print every page you've visited. See the speed is not that great. Now Introduce parallelisation and speed up the solution.
+### 2. Make a simple website crawler
+Have you grown tiiiiiiired of looking for stuff on websites that simply seems is not in the navigation menu at all?
+You grow tired of that... and suddenly, baaaam! Someone skypes you the link. It was there, how could I have not seen it.
 
-1. Servlet/HelloWorld
 
-Create an HttpServlet. Override the doGet method, and write 'HelloWorld!' to the response's outputStream.
-Run your application on Eclipse ('Run as Server').
-See your own message at 'localhost:8080/YourAppName/YourServletName'
-Make your servlet respond at 'localhost:8080/YourAppName/' (Edit the @WebServlet annotation path to '/')
-See that your servlet now responds at 'localhost:8080/YourAppName/'
-Now undo your change (restore the @WebServlet annotation path).
-Right click on your project -> Java EE tools -> Generate Deployment descriptor stub.
-- You will now have a 'web.xml' file. It is called a deployment descriptor.
-- Edit the deployment descriptor, and add a first welcome-file tag pointing to 'YourServletName'. We want to register the servlet as a welcome page for your server :)
-Check the 'html source code' returned by your servlet. You will see no HTML tags. Why?
-Write an HTML response to your client. For instance <h1>Now that's a big title!</h1>
-Congratulations. You've just witnessed what ASP/JSP/PHP is all about. We are not going to do any of that sh** stuff.
+Today, we will put an end to that.
 
-https://github.com/Partsaleva/Programming101-Java/tree/master/FirstServlet
+Write a simple web crawler, that is receiving a URL as a command line parameter and a "needle" to search for.
+Needle is text, usually a sentence.
 
-2. Simple news agregator
+What your crawler should do is simple
+- GET the contents of the URL received
+- Check if the contents contain "needle"
+- If they do, output the URL and exit
+- If they don't, **get all the links** from the URL given and repeat for every link.
 
-Do you know what an RSS is? It is a simple format for describing content (just the content, and not it's visualization). It is an XML-based format.
+Hints/tips:
+- **Don't go out of the website's scope** - if a link in `abv.bg` points to google, well, don't follow google, please...
+- **Don't visit the same URL twice**
+- **Use regular expressions** for getting links. If you are unfamiliar with them, use the following method:
+```java
+	private static List<String> getAllLinks(String content) {
+		ArrayList<String> resultList = new ArrayList<>();
+		String regex = "<a.*?href=\"((?!javascript).*?)\".*?>";
+		Pattern pattern = Pattern.compile(regex);
+		Matcher matcher = pattern.matcher(content);
+		while (matcher.find()) {
+			resultList.add(matcher.group(1));
+		}
+		return resultList;
+	}
+```
+- **If you are not comfortable with even using something as ugly as regular expressions, you can do it with regular string matching. It will be harder though :(**
+- Use small websites for testing. For example, http://ebusiness.free.bg is one site you can use. It has very, very few links. (Search for the word 'Револвираща'.)
 
-This is an RSS Your task is simple - create a service (using just a servlet), that shows the latest news in bulgarian in the following categories:
+### 3. Create a weather forcasting tool
+First start with getting the weather in a concrete location using [OpenWeatherMap](http://openweathermap.org/current#name) REST service API. (You can use [Jettison library](http://jettison.codehaus.org/) and [Apache HttpClient](https://hc.apache.org/httpcomponents-client-ga/tutorial/html/)).
 
-General/Bulgaria
-Technology
-Sport
-Write the ugliest simplest html output you possibly can. Something like is completely OK. this
+Second thing is to think for a simple algorithm which can work for weather prediction.
 
-If you don't know HTML, it's okay, just check http://www.w3schools.com/html/html_basic.asp You'll learn a few tricks in no time.
-
-Hints:
-
-Pick some RSS feed links from popular news websites. Dnevnik.bg, sportal.bg, etc have RSS feed functionality. Maybe even FMI had one?
-Do not parse the XML yourself. There are libraries for that, use the ones given in this github folder (the ROME library).
-Add both jars in the WEB-INF/lib folder. Don't do anything after that, Eclipse will automatically add them to the project's build path.
-Use this ROME tutorial: http://blog.manishchhabra.com/2011/10/rome-library-example-for-parsing-rss-and-atom-feeds/
-
-https://github.com/Partsaleva/Programming101-Java/tree/master/NewsAgregator
-
-3. Simple JSON pretty printer service.
-
-Just look at the JSON at London weather. It is horrible - completely unreadable. What are the elements? What are the JSON objects? You cannot easily tell.
-
-Deploy a servlet, that accepts a named "POST" parameter "json".
-Read the json as a POST parameter given to the request (as a parameter from the HttpServletRequest via the getParameter method.)
-Use google gson to pretty-print the json given.
-See how to it here: http://stackoverflow.com/questions/4105795/pretty-print-json-in-java
-
-https://github.com/Partsaleva/Programming101-Java/tree/master/Simple%20JSON%20pretty%20printer%20service
+And the third thing (the most important one!!!) is how to design the entire tool (software design).
