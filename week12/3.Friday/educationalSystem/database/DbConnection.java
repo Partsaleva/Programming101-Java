@@ -17,7 +17,7 @@ public class DbConnection {
 			
 			System.out.println("Connected");
 			List<String> initialQueries= conn.initialQueries();
-			System.out.println(initialQueries);
+			//System.out.println(initialQueries);
 		
 			ResultSet rs=null;
 			for (String query : initialQueries) {
