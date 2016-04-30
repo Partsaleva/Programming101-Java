@@ -1,12 +1,11 @@
 package educationalSystem.models;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class QuestionAnswers {
 
 	private Question q;
-	private List<Answer> ans=new ArrayList<Answer>();
+	private List<Answer> ans;
 	
 	public QuestionAnswers(Question q, List<Answer> ans) {
 		this.q = q;
