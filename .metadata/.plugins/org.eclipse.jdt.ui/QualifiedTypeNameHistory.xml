@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-<fullyQualifiedTypeName name="java.util.Map"/>
-<fullyQualifiedTypeName name="advancedFileSearch.Searcher"/>
 <fullyQualifiedTypeName name="advancedFileSearch.Get"/>
 <fullyQualifiedTypeName name="java.util.Set"/>
 <fullyQualifiedTypeName name="advancedFileSearch.Search"/>
@@ -60,4 +58,6 @@
 <fullyQualifiedTypeName name="educationalSystem.models.Question"/>
 <fullyQualifiedTypeName name="java.util.List"/>
 <fullyQualifiedTypeName name="java.util.ArrayList"/>
+<fullyQualifiedTypeName name="java.sql.PreparedStatement"/>
+<fullyQualifiedTypeName name="educationalSystem.database.SQLQuery"/>
 </qualifiedTypeNameHistroy>

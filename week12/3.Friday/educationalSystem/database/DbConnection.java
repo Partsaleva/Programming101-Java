@@ -9,35 +9,9 @@ import java.util.List;
 public class DbConnection {
 
 	public static void main(String[] args) throws SQLException {
-		DbConnection dbConn=new DbConnection();
-		
-		Connection dbConnection=dbConn.getConnectionToDb();
-		SQLQuery q=new SQLQuery();
-		PreparedStatement preparedStatement=null;
-		try {
-			
-			System.out.println("Connected");
-			List<String> initialQueries= q.initialQueries();
-			//System.out.println(initialQueries);
-		
-			for (String query : initialQueries) {
-				preparedStatement=dbConnection.prepareStatement(query);
-				preparedStatement.executeUpdate();
-			}			
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}finally {
-
-		if (preparedStatement != null) {
-			preparedStatement.close();
-		}
-
-		if (dbConnection != null) {
-			dbConnection.close();
-		}
-
-	}
-
+		SQLQuery sql=new SQLQuery();
+		//sql.createDatabase();
+		sql.getTestQuestions();
 	}
 
 	
