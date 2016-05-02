@@ -7,7 +7,6 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 
 import educationalSystem.models.QuestionAnswers;
 
@@ -94,7 +93,7 @@ public class SQLQuery {
 		return queries;
 	}
 	
-	public List<QuestionAnswers> getTestQuestions(Set<Integer>questionsForSession) throws SQLException{
+	public List<QuestionAnswers> getTestQuestions() throws SQLException{
 		List<QuestionAnswers> result=new ArrayList<>();
 		String queryQ="SELECT questions.q_id, question, answer, iscorrect "
 				+ "FROM questions,answers "
@@ -107,7 +106,7 @@ public class SQLQuery {
 		
 		try {		
 			System.out.println("Connected");
-			for (Integer i: questionsForSession) {
+			for (int i = 1; i < 10; i++) {
 				preparedStatement=dbConnection.prepareStatement(queryQ);
 				preparedStatement.setInt(1, i);
 				rs=preparedStatement.executeQuery();
