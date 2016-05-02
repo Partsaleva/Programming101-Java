@@ -3,8 +3,8 @@ package educationalSystem.database;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -95,24 +95,30 @@ public class SQLQuery {
 	
 	public List<QuestionAnswers> getTestQuestions() throws SQLException{
 		List<QuestionAnswers> result=new ArrayList<>();
-		String queryQ="SELECT q_id, question "
-				+ "FROM questions "
-				+ "ORDER BY RANDOM() "
-				+ "LIMIT 10";
-		String queryA="";
+		String queryQ="SELECT questions.q_id, question, answer, iscorrect "
+				+ "FROM questions,answers "
+				+ "where questions.q_id=answers.q_id and questions.q_id=?";
+				
 		DbConnection dbConn=new DbConnection();
 		ResultSet rs=null;
 		Connection dbConnection=dbConn.getConnectionToDb();
 		PreparedStatement preparedStatement=null;
+		
 		try {		
 			System.out.println("Connected");
-			preparedStatement=dbConnection.prepareStatement(queryQ);
-			rs=preparedStatement.executeQuery();
-			while(rs.next()){
-				int id=rs.getInt("q_id");
-				String data=rs.getString("question");
-				System.out.println(id+" "+data);
+			for (int i = 1; i < 10; i++) {
+				preparedStatement=dbConnection.prepareStatement(queryQ);
+				preparedStatement.setInt(1, i);
+				rs=preparedStatement.executeQuery();
+				while(rs.next()){
+					int id=rs.getInt("q_id");
+					String ques=rs.getString("question");
+					String ans=rs.getString("answer");
+					boolean corr=rs.getBoolean("isCorrect");
+					System.out.println(id+" "+ques+" "+ans+" "+corr);
+				}
 			}
+			
 						
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -124,6 +130,7 @@ public class SQLQuery {
 	
 			if (dbConnection != null) {
 				dbConnection.close();
+				System.out.println("Connection is closed");
 			}
 
 	}
@@ -131,4 +138,6 @@ public class SQLQuery {
 		return null;
 		
 	}
+	
+	
 }
