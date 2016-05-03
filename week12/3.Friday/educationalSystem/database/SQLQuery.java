@@ -4,11 +4,14 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
+
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 import java.util.Set;
 
+import educationalSystem.models.Answer;
+import educationalSystem.models.Question;
 import educationalSystem.models.QuestionAnswers;
 
 public class SQLQuery {
@@ -75,15 +78,15 @@ public class SQLQuery {
 		StringBuilder questionQuery=new StringBuilder("INSERT INTO questions VALUES");
 		StringBuilder answerQuery=new StringBuilder("INSERT INTO answers VALUES");
 		//fill tables 
-		String boolValue="'true'";
+		String boolValue="'false'";
 		for (int i = 1; i <= 20; i++) {
 			questionQuery.append("(" + i + "," + "'Question" + i + "'"+"),");
 			for (int j = 1; j <= 7; j++) {
 				if (j%3==0) {
-					boolValue="'false'";
+					boolValue="'true'";
 				}
 				answerQuery.append("(" + j+i + "," + i + ","+ "'Answer" + j+ "'"+"," + boolValue + "),");	
-				boolValue="'true'";
+				boolValue="'false'";
 			}
 		}
 		questionQuery.setCharAt(questionQuery.length()-1, ';');
@@ -111,15 +114,29 @@ public class SQLQuery {
 				preparedStatement=dbConnection.prepareStatement(queryQ);
 				preparedStatement.setInt(1, i);
 				rs=preparedStatement.executeQuery();
+				
+				Question currQuestion=null;
+				List<Answer> answers = null;
+				QuestionAnswers qa=null;
 				while(rs.next()){
 					int id=rs.getInt("q_id");
 					String ques=rs.getString("question");
 					String ans=rs.getString("answer");
 					boolean corr=rs.getBoolean("isCorrect");
-					System.out.println(id+" "+ques+" "+ans+" "+corr);
-				}
+					//System.out.println(id+" "+ques+" "+ans+" "+corr);
+					
+					if (currQuestion == null || currQuestion.getId() != id) {
+						currQuestion = new Question(id, ques);
+						answers=new ArrayList<Answer>();
+						qa= new QuestionAnswers(currQuestion, answers);
+						result.add(qa);
+					}
+					Answer currentAnswer =new Answer(ans,corr);
+					answers.add(currentAnswer);
+				}			
 			}
 			
+			//System.out.println(result);
 						
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -136,9 +153,8 @@ public class SQLQuery {
 
 	}
 
-		return null;
+		return result;
 		
 	}
-	
 	
 }

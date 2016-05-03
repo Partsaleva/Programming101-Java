@@ -13,6 +13,11 @@ public class QuestionAnswers {
 	}
 
 	
+	public void setAns(List<Answer> ans) {
+		this.ans = ans;
+	}
+
+
 	public Question getQ() {
 		return q;
 	}
@@ -20,6 +25,13 @@ public class QuestionAnswers {
 
 	public List<Answer> getAns() {
 		return ans;
+	}
+
+
+	
+	@Override
+	public String toString() {
+		return "QuestionAnswers [q=" + q + ", ans=" + ans + "]";
 	}
 
 

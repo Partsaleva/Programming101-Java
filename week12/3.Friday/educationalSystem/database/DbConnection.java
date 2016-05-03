@@ -11,7 +11,6 @@ public class DbConnection {
 	public static void main(String[] args) throws SQLException {
 		SQLQuery sql=new SQLQuery();
 		//sql.createDatabase();
-		//sql.getTestQuestions();
 	}
 
 	
