@@ -2,14 +2,12 @@ package educationalSystem.database;
 
 import java.sql.DriverManager;
 import java.sql.Connection;
-import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import java.util.List;
 
 public class DbConnection {
 
 	public static void main(String[] args) throws SQLException {
-		SQLQuery sql=new SQLQuery();
+		//SQLQuery sql=new SQLQuery();
 		//sql.createDatabase();
 	}
 

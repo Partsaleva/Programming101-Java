@@ -1,81 +1,51 @@
 package educationalSystem.session;
 
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Random;
-import java.util.Set;
-
-import com.sun.xml.internal.messaging.saaj.packaging.mime.util.QEncoderStream;
+import java.util.Scanner;
 
 import educationalSystem.database.SQLQuery;
-import educationalSystem.models.Answer;
 import educationalSystem.models.QuestionAnswers;
 
 public class UserSession {
 
-	public static void main(String[] args){
-		UserSession session=new UserSession();
+	
+	public  void startTest(String userName){
+		TestPreparation test=new TestPreparation();
 		SQLQuery query=new SQLQuery();
-		System.out.println(session.createListOfNumbers());
+		List<QuestionAnswers> quiz;
 		try {
-			List <QuestionAnswers> quiz=query.getTestQuestions(session.createListOfNumbers());
-			System.out.println(session.getQuiz(quiz));
+			quiz = query.getTestQuestions(test.createListOfNumbers());
+			int points=solve(test.getQuiz(quiz));
+			System.out.println("Result: "+points);
+			
+			submitResult(userName, points);
 			
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
-	
-	}
-	private String user="user1";
-	private int numberOfQuestions=19;
-	private Set<Integer>questionsForSession=new HashSet<Integer>();
-	
-	
-	
-	private Set<Integer>createListOfNumbers(){
-		Random random=new Random();
-		while(questionsForSession.size()<10){
-			questionsForSession.add(1 + random.nextInt(numberOfQuestions));
-		}
-		return questionsForSession;
+		}		
 	}
 	
-	
-	
-	List<QuestionAnswers> getQuiz(List<QuestionAnswers> qa){
-		for (QuestionAnswers qAns : qa) {
-			List<Answer> answers=chooseAnswersToSolve(qAns.getAns());
-			qAns.setAns(answers);
-		}
-		return qa;
-		
-	}
-	//choose 3 wrong and 1 correct answer
-			private List<Answer> chooseAnswersToSolve(List<Answer> ans){
-				List<Answer> result=new ArrayList<>();
-				List<Answer> correct=new ArrayList<>();
-				List<Answer> wrong=new ArrayList<>();
-				for (Answer answer :ans) {
-					if(answer.isCorrect()==true){
-						correct.add(answer);
-					}
-					else{
-						wrong.add(answer);
-					}
-				}
-				Random random=new Random();
-				//remove one correct
-				correct.remove(random.nextInt(1));
-				//remove all but 3 wrong
-				while(wrong.size()>3){
-					wrong.remove(random.nextInt(wrong.size()-1));
-				}
-				
-				result.addAll(correct);
-				result.addAll(wrong);
-				return result;
+	private int solve(List<QuestionAnswers> quiz){
+		Scanner scan=new Scanner(System.in);
+		int answer;
+		int points=0;
+		for (QuestionAnswers qa : quiz) {
+			System.out.println(qa.getQ().getText());
+			for (int i = 0; i < qa.getAns().size(); i++) {
+				System.out.println((i+1)+ ". " +qa.getAns().get(i).getData());
 			}
+			answer=scan.nextInt();
+			if (qa.getAns().get(answer-1).isCorrect() == true) {
+				points+=1;
+			}
+		}
+		scan.close();
+		return points;
+	}
+	
+	private static void submitResult(String user, int points) throws SQLException{
+		SQLQuery s=new SQLQuery();
+		s.putScore(user,points);
+	}
 }

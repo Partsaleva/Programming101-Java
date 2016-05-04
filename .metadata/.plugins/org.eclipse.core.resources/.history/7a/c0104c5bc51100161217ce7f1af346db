@@ -1,0 +1,12 @@
+package main;
+
+import educationalSystem.session.UserSession;
+
+public class Run {
+
+	public static void main(String[] args) {
+		UserSession session=new UserSession();
+
+	}
+
+}

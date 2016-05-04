@@ -7,7 +7,6 @@ import java.sql.SQLException;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 import java.util.Set;
 
 import educationalSystem.models.Answer;
@@ -23,7 +22,6 @@ public class SQLQuery {
 		try {
 			System.out.println("Connected");
 			List<String> initialQueries = initialQueries();
-			// System.out.println(initialQueries);
 
 			for (String query : initialQueries) {
 				preparedStatement = dbConnection.prepareStatement(query);
@@ -77,7 +75,7 @@ public class SQLQuery {
 		
 		StringBuilder questionQuery=new StringBuilder("INSERT INTO questions VALUES");
 		StringBuilder answerQuery=new StringBuilder("INSERT INTO answers VALUES");
-		//fill tables 
+		//fill tables with test values
 		String boolValue="'false'";
 		for (int i = 1; i <= 20; i++) {
 			questionQuery.append("(" + i + "," + "'Question" + i + "'"+"),");
@@ -135,8 +133,6 @@ public class SQLQuery {
 					answers.add(currentAnswer);
 				}			
 			}
-			
-			//System.out.println(result);
 						
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -148,13 +144,52 @@ public class SQLQuery {
 	
 			if (dbConnection != null) {
 				dbConnection.close();
-				System.out.println("Connection is closed");
 			}
 
 	}
 
 		return result;
 		
+	}
+	
+	public void putScore(String user, int points) throws SQLException{
+		DbConnection DbConn = new DbConnection();
+		Connection dbConnection=DbConn.getConnectionToDb();		
+		
+		PreparedStatement preparedStatement=null;
+		PreparedStatement preparedStatementScore=null;
+		ResultSet rs=null;
+		
+		String scoreQuery="INSERT INTO scoreboard VALUES('"+user+"',"+points+")";
+		String query="select * from scoreboard";
+		
+		try {
+			//insert score in database
+			preparedStatement=dbConnection.prepareStatement(scoreQuery);
+			preparedStatement.execute();
+			
+			//get all data from scoreboard
+			preparedStatementScore=dbConnection.prepareStatement(query);
+			rs=preparedStatementScore.executeQuery();
+			
+			while(rs.next()){
+				String name=rs.getString("username");
+				int score=rs.getInt("score");
+				System.out.println("name: "+name +"  score: "+score);
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+
+			if (preparedStatement != null) {
+				preparedStatement.close();
+			}
+	
+			if (dbConnection != null) {
+				dbConnection.close();
+			}
+		}
 	}
 	
 }
