@@ -1,0 +1,10 @@
+package model;
+
+public class Product {
+
+	private int id;
+	private String name;
+	private double weight;
+	private int quantity;
+	private String warehouseId;
+}

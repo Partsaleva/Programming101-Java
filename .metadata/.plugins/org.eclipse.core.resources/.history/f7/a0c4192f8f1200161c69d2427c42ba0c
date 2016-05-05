@@ -1,0 +1,39 @@
+package model;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class City {
+
+	private String name;
+	private int x;
+	private int y;
+	private List<Warehouse> warehouseList=new ArrayList<>();
+	
+	public City(String name, int x, int y) {
+		this.name = name;
+		this.x = x;
+		this.y = y;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public int getX() {
+		return x;
+	}
+
+	public int getY() {
+		return y;
+	}
+
+	public List<Warehouse> getWarehouse() {
+		return warehouseList;
+	}
+	
+	public void addWarehouse(Warehouse w){
+		warehouseList.add(w);
+	}
+	
+}
