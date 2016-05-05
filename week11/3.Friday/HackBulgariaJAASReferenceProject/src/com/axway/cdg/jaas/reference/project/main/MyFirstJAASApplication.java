@@ -42,7 +42,8 @@ public class MyFirstJAASApplication {
         RefJAASCallbackHandler callbackHandler = new RefJAASCallbackHandler(username, password);
         
         // JAAS starts here - the LoginContext is actually the JAAS login component in which authentication occurrs
-        LoginContext lc = null;        
+        LoginContext lc = null;   
+        scan.close();
         try {
             lc = new LoginContext("RefJAASConfiguration", callbackHandler);
             lc.login();

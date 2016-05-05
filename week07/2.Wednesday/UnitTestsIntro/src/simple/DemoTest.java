@@ -1,6 +1,5 @@
 package simple;
 
-import org.junit.Assert;
 
 import static org.junit.Assert.*;
 

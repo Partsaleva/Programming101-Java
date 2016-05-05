@@ -61,7 +61,8 @@ public class StatisticData implements Statistics{
 	      Iterator<?> i = set.iterator();
 	      // Display elements
 	      while(i.hasNext()) {
-	         Map.Entry m = (Map.Entry)i.next();
+	         @SuppressWarnings("unchecked")
+			Map.Entry<Object, Object> m = (Entry<Object, Object>) i.next();
 	         System.out.print(m.getKey() + ": ");
 	         System.out.println(m.getValue());
 	      }

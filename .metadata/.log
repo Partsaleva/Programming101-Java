@@ -4603,3 +4603,48 @@ java.lang.ClassNotFoundException: org.eclipse.ui.internal.ide.application.addons
 
 !ENTRY org.eclipse.m2e.logback.appender 2 0 2016-05-05 09:31:51.026
 !MESSAGE Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.ui 4 4 2016-05-05 11:50:16.170
+!MESSAGE Conflicting handlers for org.eclipse.ui.file.print: {ActionHandler(org.eclipse.ui.texteditor.TextOperationAction@349f086)} vs {ActionHandler(org.eclipse.ui.texteditor.AbstractDecoratedTextEditor$12@1149906b)}
+
+!ENTRY org.eclipse.ui 4 4 2016-05-05 11:50:16.171
+!MESSAGE Conflicting handlers for org.eclipse.ui.file.print: {ActionHandler(org.eclipse.ui.texteditor.TextOperationAction@349f086)} vs {ActionHandler(org.eclipse.ui.texteditor.AbstractDecoratedTextEditor$12@1149906b)}
+
+!ENTRY org.eclipse.ui 4 4 2016-05-05 11:50:46.341
+!MESSAGE Conflicting handlers for org.eclipse.ui.file.print: {ActionHandler(org.eclipse.ui.texteditor.TextOperationAction@349f086)} vs {ActionHandler(org.eclipse.ui.texteditor.AbstractDecoratedTextEditor$12@1149906b)}
+
+!ENTRY org.eclipse.jface 2 0 2016-05-05 11:50:46.419
+!MESSAGE Keybinding conflicts occurred.  They may interfere with normal accelerator operation.
+!SUBENTRY 1 org.eclipse.jface 2 0 2016-05-05 11:50:46.419
+!MESSAGE A conflict occurred for CTRL+O:
+Binding(CTRL+O,
+	ParameterizedCommand(Command(org.eclipse.mylyn.wikitext.ui.quickOutlineCommand,Quick Outline,
+		Open a popup dialog with a quick outline of the current document,
+		Category(org.eclipse.ui.category.navigate,Navigate,null,true),
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@6c9ffec1,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.mylyn.wikitext.ui.editor.markupSourceContext,,,system)
+Binding(CTRL+O,
+	ParameterizedCommand(Command(org.eclipse.jdt.ui.edit.text.java.show.outline,Quick Outline,
+		Show the quick outline for the editor input,
+		Category(org.eclipse.ui.category.navigate,Navigate,null,true),
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@2a84972,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.jdt.ui.javaEditorScope,,,system)
+
+!ENTRY org.eclipse.ui 4 4 2016-05-05 11:51:01.948
+!MESSAGE Conflicting handlers for org.eclipse.ui.file.print: {ActionHandler(org.eclipse.ui.texteditor.AbstractDecoratedTextEditor$12@66c657f7)} vs {ActionHandler(org.eclipse.ui.texteditor.TextOperationAction@462b0d59)}
+
+!ENTRY org.eclipse.ui 4 4 2016-05-05 11:51:01.949
+!MESSAGE Conflicting handlers for org.eclipse.ui.file.print: {ActionHandler(org.eclipse.ui.texteditor.AbstractDecoratedTextEditor$12@66c657f7)} vs {ActionHandler(org.eclipse.ui.texteditor.TextOperationAction@462b0d59)}
+
+!ENTRY org.eclipse.ui 4 4 2016-05-05 11:51:03.784
+!MESSAGE Conflicting handlers for org.eclipse.ui.file.print: {ActionHandler(org.eclipse.ui.texteditor.TextOperationAction@1f95b94c)} vs {ActionHandler(org.eclipse.ui.texteditor.AbstractDecoratedTextEditor$12@18643bb6)}
+
+!ENTRY org.eclipse.ui 4 4 2016-05-05 11:51:58.939
+!MESSAGE Conflicting handlers for org.eclipse.ui.file.print: {ActionHandler(org.eclipse.ui.texteditor.TextOperationAction@6246ed44)} vs {ActionHandler(org.eclipse.ui.texteditor.AbstractDecoratedTextEditor$12@37387634)}
+
+!ENTRY org.eclipse.ui 4 4 2016-05-05 11:52:03.829
+!MESSAGE Conflicting handlers for org.eclipse.ui.file.print: {ActionHandler(org.eclipse.ui.texteditor.TextOperationAction@6246ed44)} vs {ActionHandler(org.eclipse.ui.texteditor.AbstractDecoratedTextEditor$12@37387634)}

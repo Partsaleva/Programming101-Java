@@ -3,6 +3,7 @@
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Set;
 
 public class HashMapString {
@@ -36,7 +37,8 @@ public class HashMapString {
 	      Iterator<?> i = set.iterator();
 	      // Display elements
 	      while(i.hasNext()) {
-	         Map.Entry m = (Map.Entry)i.next();
+	         @SuppressWarnings("unchecked")
+			Map.Entry<Object, Object> m = (Entry<Object, Object>)i.next();
 	         result+=m.getKey() + " : "+m.getValue()+ "\n";
 	      }
 		return result;

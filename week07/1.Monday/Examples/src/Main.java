@@ -57,7 +57,7 @@ public class Main {
 		}
 	}
 
-	private static void characterStreams() throws IOException {
+	public static void characterStreams() throws IOException {
 		FileReader inputStream = null;
 		FileWriter outputStream = null;
 	

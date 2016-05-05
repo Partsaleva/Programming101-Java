@@ -1,6 +1,5 @@
 package org.hackbulgaria;
 
-import com.sun.xml.internal.ws.policy.privateutil.PolicyUtils;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -65,4 +64,8 @@ public class Matcher {
             System.out.println(pair);
         }
     }
+
+	public int getmRotations() {
+		return mRotations;
+	}
 }

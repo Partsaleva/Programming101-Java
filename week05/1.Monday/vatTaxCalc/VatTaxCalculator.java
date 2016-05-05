@@ -1,6 +1,5 @@
 package vatTaxCalc;
 
-import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
@@ -31,7 +30,8 @@ public class VatTaxCalculator {
 		Set<?> set=map.entrySet();
 		Iterator<?> iter=set.iterator();
 		while(iter.hasNext()){
-			Map.Entry m = (Map.Entry)iter.next();
+			@SuppressWarnings("unchecked")
+			Map.Entry<Object, Object> m = (Map.Entry<Object, Object>)iter.next();
 			if(m.getKey().equals(country)){
 				double tax=(double) m.getValue();
 				return price + price* tax;
@@ -44,4 +44,9 @@ public class VatTaxCalculator {
 		double tax=countries.getDefaultCountry().getVATTax();	
 		return price + price*tax;
 	}
+
+	public double getPrice() {
+		return price;
+	}
+
 }

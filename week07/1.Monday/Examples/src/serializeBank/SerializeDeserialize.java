@@ -1,6 +1,5 @@
 package serializeBank;
 
-import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -25,7 +24,8 @@ public class SerializeDeserialize {
 		
 		FileInputStream fileIn = new FileInputStream("accounts.ser");
         ObjectInputStream in = new ObjectInputStream(fileIn);
-        ArrayList<BankAccount> acc= (ArrayList<BankAccount>)in.readObject();
+        @SuppressWarnings("unchecked")
+		ArrayList<BankAccount> acc= (ArrayList<BankAccount>)in.readObject();
         in.close();
         fileIn.close();
 		return acc;
