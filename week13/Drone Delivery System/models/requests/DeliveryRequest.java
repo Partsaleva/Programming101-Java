@@ -40,6 +40,12 @@ public class DeliveryRequest extends Request{
 	}
 
 	@Override
+	public void log(String str) {
+		// TODO Auto-generated method stub
+		
+	}
+	
+	@Override
 	public String toString() {
 		return "DeliveryRequest [id=" + id + ", timestamp=" + timestamp
 				+ ", targetCoordinates=" + targetCoordinates + ", order="
@@ -92,6 +98,8 @@ public class DeliveryRequest extends Request{
 			return false;
 		return true;
 	}
+
+	
 	
 	
 }

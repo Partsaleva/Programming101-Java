@@ -35,6 +35,12 @@ public class SupplyRequest extends Request{
 	}
 
 	@Override
+	public void log(String str) {
+		// TODO Auto-generated method stub
+		
+	};
+	
+	@Override
 	public String toString() {
 		return "SupplyRequest [id=" + id + ", timeStamp=" + timeStamp
 				+ ", products=" + products + "]";
@@ -77,7 +83,9 @@ public class SupplyRequest extends Request{
 		} else if (!timeStamp.equals(other.timeStamp))
 			return false;
 		return true;
-	};
+	}
+
+	
 	
 	
 	

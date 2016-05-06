@@ -1,6 +1,6 @@
 package models.requests;
 
-public abstract class Request {
+public abstract class Request implements Loggable{
 
 	private String type;
 
@@ -12,9 +12,7 @@ public abstract class Request {
 		return type;
 	}
 
-	public void setType(String type) {
-		this.type = type;
-	}
+	
 
 	@Override
 	public String toString() {
