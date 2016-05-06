@@ -1,0 +1,99 @@
+package database;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
+
+public class DBCreation {
+
+	public static void main(String[] args) {
+		DBCreation db=new DBCreation();
+		db.createDatabase();
+	}
+
+	public void createDatabase(){
+		Connection dbConnection=DbConnection.getDbConnection();
+		PreparedStatement preparedStatement=null;
+		List<String> initialQueries = tablesQuery();
+		initialQueries.addAll(fillTablesQueries());
+		
+		for (String query : initialQueries) {
+			try {
+				preparedStatement=dbConnection.prepareStatement(query);
+				preparedStatement.executeUpdate();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+	}
+	public List<String> tablesQuery(){
+		List<String> tables=new ArrayList<String>();
+		
+		String warehouseTable="create table warehouses("
+				+ "id varchar(20) not null primary key,"
+				+ "location varchar(20) not null,"
+				+ "cityName varchar(20)"
+				+ ");";
+		
+		String productTable="create table products ("
+				+ "id int not null primary key,"
+				+ "name varchar(50) not null,"
+				+ "weightUnits int not null,"
+				+ "quantity int,"
+				+ "warehouseId varchar(20),"
+				+ "FOREIGN KEY (warehouseId) REFERENCES warehouses(id)"
+				+ ");";
+		
+		String droneTable="create table drones("
+				+ "id varchar(20) not null primary key,"
+				+ "batteryUnits int not null,"
+				+ "weightCapacity int not null,"
+				+ "chargingRate int not null,"
+				+ "warehouseId varchar(20),"
+				+ "FOREIGN KEY (warehouseId) REFERENCES warehouses(id)"
+				+ ");";
+		
+		String requestTable="create table requests("
+				+ "id varchar(20) not null primary key,"
+				+ "time timestamp,"
+				+ "data varchar(255) not null);";
+		
+		tables.add(warehouseTable);
+		tables.add(productTable);
+		tables.add(droneTable);
+		tables.add(requestTable);
+		
+		return tables;
+	}
+	
+	public List<String> fillTablesQueries(){
+		List<String> tablesData=new ArrayList<String>();
+		String warehouseData="insert into warehouses values('w1', '42,42', 'Sofia')";
+		
+		Random rand=new Random();
+		StringBuilder productData=new StringBuilder("insert into products values");
+		//fill with some test values
+		for (int i = 1; i < 101; i++) {
+			productData.append("("+i+", 'product"+i+"', "+rand.nextInt(100)+","+rand.nextInt(200)+", 'w1'),");
+		}
+		productData.setCharAt(productData.length()-1, ';');
+		
+		StringBuilder droneData=new StringBuilder("insert into drones values");
+		for (int i = 1; i < 51; i++) {
+			droneData.append("('d"+i+"',2000, 500, 5,'w1'),");
+		}
+		for (int i = 51; i < 81; i++) {
+			droneData.append("('ch"+i+"',1200, 200, 3,'w1'),");
+		}
+		droneData.setCharAt(droneData.length()-1, ';');
+		
+		tablesData.add(warehouseData);
+		tablesData.add(productData.toString());
+		tablesData.add(droneData.toString());
+		
+		return tablesData;
+	}
+}
