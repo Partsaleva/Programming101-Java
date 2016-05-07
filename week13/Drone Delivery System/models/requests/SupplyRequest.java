@@ -6,7 +6,7 @@ import java.util.Map;
 
 import models.Product;
 
-public class SupplyRequest extends Request{
+public class SupplyRequest implements Loggable{
 
 	//<id> <timestamp YYYY-MM-DD HH:MM> 
 	private String id;
@@ -14,9 +14,7 @@ public class SupplyRequest extends Request{
 //	<product name 1> <product weight> <quantity>
 	private Map<Product, Integer> products=new HashMap<>();
 	
-	public SupplyRequest(String type, String id, Date timeStamp,
-			Map<Product, Integer> products) {
-		super(type);
+	public SupplyRequest(String id, Date timeStamp, Map<Product, Integer> products) {
 		this.id = id;
 		this.timeStamp = timeStamp;
 		this.products = products;

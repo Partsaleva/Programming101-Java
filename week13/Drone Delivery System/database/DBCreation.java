@@ -6,12 +6,12 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
-
+//replace DB with CSV files
 public class DBCreation {
 
 	public static void main(String[] args) {
-		DBCreation db=new DBCreation();
-		db.createDatabase();
+		//DBCreation db=new DBCreation();
+		//db.createDatabase();
 	}
 
 	public void createDatabase(){

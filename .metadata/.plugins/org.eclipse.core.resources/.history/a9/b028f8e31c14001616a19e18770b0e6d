@@ -1,0 +1,42 @@
+package database;
+
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.Random;
+
+public class DbFilesCreation {
+
+	public static void main(String[] args) {
+		createProductsFile();
+		createWarehouseFile();
+
+	}
+
+	public static void createProductsFile(){
+		try(BufferedWriter bs=new BufferedWriter(new FileWriter("products.txt"))){
+			String head="id,name,weight,quantity,warehouseId";
+			bs.write(head="\n");
+			Random rand=new Random();
+			for (int i = 1; i < 101; i++) {
+				bs.write(i+",product"+i+","+rand.nextInt(100)+","+rand.nextInt(200)+",w1");
+				bs.write(System.getProperty("line.separator"));
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public static void createWarehouseFile(){
+		try(BufferedWriter bs=new BufferedWriter(new FileWriter("warehouses.txt"))){
+			String head="id,location,cityName";
+			bs.write(head+"\n");		
+			
+			bs.write("w1,42-42,Sofia");
+			bs.write(System.getProperty("line.separator"));
+			
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+}

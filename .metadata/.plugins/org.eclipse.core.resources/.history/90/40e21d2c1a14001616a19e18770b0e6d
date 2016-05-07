@@ -1,0 +1,22 @@
+package database;
+
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+
+public class DbFilesCreation {
+
+	public static void main(String[] args) {
+		createProductsFile();
+
+	}
+
+	public static void createProductsFile(){
+		try(BufferedWriter bs=new BufferedWriter(new FileWriter("products.txt"))){
+			String head="id,name,weight,quantity,warehouseId";
+			bs.write(head);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+}

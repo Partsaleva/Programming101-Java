@@ -80,8 +80,8 @@ public class Main {
 	}
 
 	private static void bufferedStreams() throws IOException {
-		BufferedReader inputStream = new BufferedReader(new FileReader("xanadu.txt"));
-		BufferedWriter outputStream = new BufferedWriter(new FileWriter("characteroutput.txt"));
+		try(BufferedReader inputStream = new BufferedReader(new FileReader("xanadu.txt"))){};
+		try(BufferedWriter outputStream = new BufferedWriter(new FileWriter("characteroutput.txt"))){};
 	}
 
 	private static void dataStreams() throws IOException {

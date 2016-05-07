@@ -6,7 +6,7 @@ import java.util.Map;
 
 import models.Location;
 
-public class DeliveryRequest extends Request{
+public class DeliveryRequest implements Loggable{
 
 	private String id;
 	private Date timestamp;
@@ -14,9 +14,7 @@ public class DeliveryRequest extends Request{
 	 //<product name > <quantity>
 	private Map<String, Integer> order=new HashMap<>();
 	
-	public DeliveryRequest(String type, String id, Date timestamp,
-			Location targetCoordinates, Map<String, Integer> order) {
-		super(type);
+	public DeliveryRequest(String id, Date timestamp, Location targetCoordinates, Map<String, Integer> order) {
 		this.id = id;
 		this.timestamp = timestamp;
 		this.targetCoordinates = targetCoordinates;

@@ -1,0 +1,27 @@
+package database;
+
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.Random;
+
+public class DbFilesCreation {
+
+	public static void main(String[] args) {
+		createProductsFile();
+
+	}
+
+	public static void createProductsFile(){
+		try(BufferedWriter bs=new BufferedWriter(new FileWriter("products.txt",true))){
+			String head="id,name,weight,quantity,warehouseId";
+			bs.write(head);
+			Random rand=new Random();
+			for (int i = 1; i < 101; i++) {
+				bs.write(i+",product"+i+","+rand.nextInt(100)+","+rand.nextInt(200)+",w1");
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+}
