@@ -1,8 +1,8 @@
 package models.requests;
 
+import java.util.ArrayList;
 import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.List;
 
 import models.Product;
 
@@ -12,9 +12,9 @@ public class SupplyRequest implements Loggable{
 	private String id;
 	private Date timeStamp;
 //	<product name 1> <product weight> <quantity>
-	private Map<Product, Integer> products=new HashMap<>();
+	private List<Product> products=new ArrayList<>();
 	
-	public SupplyRequest(String id, Date timeStamp, Map<Product, Integer> products) {
+	public SupplyRequest(String id, Date timeStamp,  List<Product> products) {
 		this.id = id;
 		this.timeStamp = timeStamp;
 		this.products = products;
@@ -28,7 +28,7 @@ public class SupplyRequest implements Loggable{
 		return timeStamp;
 	}
 
-	public Map<Product, Integer> getProducts() {
+	public  List<Product> getProducts() {
 		return products;
 	}
 

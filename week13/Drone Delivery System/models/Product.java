@@ -1,4 +1,4 @@
-package models;
+ package models;
 
 public class Product {
 
@@ -17,6 +17,12 @@ public class Product {
 		this.warehouseId = warehouseId;
 	}
 
+	public Product(String name, double weight, int quantity) {
+		this.name = name;
+		this.weight = weight;
+		this.quantity = quantity;
+	}
+	
 	public int getId() {
 		return id;
 	}
