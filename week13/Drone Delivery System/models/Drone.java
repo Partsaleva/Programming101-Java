@@ -1,18 +1,23 @@
 package models;
 
-public class Drone {
+import java.io.Serializable;
 
+public class Drone implements Serializable{
+
+	private static final long serialVersionUID = 1L;
 	private String id;
 	private int batteryUnits;
 	private int weightCapacity;
 	private int chargingRate;
+	private String warehouseId;
 	
 	public Drone(String id, int batteryUnits, int weightCapacity,
-			int chargingRate) {
+			int chargingRate, String warehouseId) {
 		this.id = id;
 		this.batteryUnits = batteryUnits;
 		this.weightCapacity = weightCapacity;
 		this.chargingRate = chargingRate;
+		this.warehouseId=warehouseId;
 	}
 
 	public String getId() {
@@ -31,6 +36,9 @@ public class Drone {
 		return chargingRate;
 	}
 
+	public String getWarehouseId(){
+		return warehouseId;
+	}
 	@Override
 	public String toString() {
 		return "Drone [id=" + id + ", batteryUnits=" + batteryUnits

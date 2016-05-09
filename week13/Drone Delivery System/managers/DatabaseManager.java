@@ -1,47 +1,89 @@
 package managers;
 
-import java.io.BufferedReader;
+import java.io.BufferedInputStream;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Map;
+import java.util.Queue;
+
+
+import models.Drone;
+import models.Product;
+import models.Warehouse;
 
 
 public class DatabaseManager {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
+		
 	}
 
-	private Map<String, Integer> db=loadProducts();
-
-	public Map<String, Integer> loadProducts() {
-		Map<String, Integer> prod=new HashMap<>();
+	public Warehouse addWarehouse(Warehouse w){
+		Map<Product, Integer> products=getProductsForDb(w.getId());
+		Queue<Drone> drones=getDronesForDb(w.getId());
 		
-		try(BufferedReader reader=new BufferedReader(new FileReader("products.txt"))){
-			String line=null;
-			int headerLine=-1;
-			while((line=reader.readLine())!=null){
-				String[] parts=line.split(",");
-				headerLine++;
-				if(headerLine>0){
-					int quantity= Integer.parseInt(parts[3]);
-					prod.put(parts[1],quantity);
-				}
-			}
+		w.setProducts(products);
+		w.setDrones(drones);
+		return w;	
+	}
+
+	@SuppressWarnings("unchecked")
+	private Map<Product, Integer> getProductsForDb(String wId){		
+		Map<Product, Integer> prod=new HashMap<Product, Integer>();
+		List<Product> p=null;
+		
+		try(ObjectInputStream in =new ObjectInputStream(
+				new BufferedInputStream(
+						new FileInputStream("products")))){
+			
+			p=(List<Product>) in.readObject();
+			
 		} catch (FileNotFoundException e) {
-			System.err.println(e);
+			e.printStackTrace();
 		} catch (IOException e) {
-			System.err.println(e);
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} 
+		
+		for (Product product : p) {
+			if (product.getWarehouseId().equals(wId)) {
+				prod.put(product, product.getQuantity());
+			}
 		}
 		return prod;
+		
 	}
-
-	public Map<String, Integer> getDb() {
-		return db;
+	
+	private Queue<Drone> getDronesForDb(String warehouseId){
+		Queue<Drone> drones=new LinkedList<>();
+		try(ObjectInputStream in =new ObjectInputStream(
+				new BufferedInputStream(
+						new FileInputStream("drones")))){
+			
+			@SuppressWarnings("unchecked")
+			List<Drone> d=(List<Drone>) in.readObject();
+			for (Drone drone : d) {
+				if (drone.getWarehouseId().equals(warehouseId)) {
+					drones.add(drone);
+				}
+			}
+			
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+		return drones;
 	}
+	 
 	
 	
 }

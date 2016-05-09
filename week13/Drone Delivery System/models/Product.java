@@ -1,14 +1,17 @@
  package models;
 
-public class Product {
+import java.io.Serializable;
 
+public class Product implements Serializable{
+
+	private static final long serialVersionUID = 181543857048126583L;
 	private int id;
 	private String name;
-	private double weight;
+	private int weight;
 	private int quantity;
 	private String warehouseId;
 	
-	public Product(int id, String name, double weight, int quantity,
+	public Product(int id, String name, int weight, int quantity,
 			String warehouseId) {
 		this.id = id;
 		this.name = name;
@@ -17,7 +20,7 @@ public class Product {
 		this.warehouseId = warehouseId;
 	}
 
-	public Product(String name, double weight, int quantity) {
+	public Product(String name, int weight, int quantity) {
 		this.name = name;
 		this.weight = weight;
 		this.quantity = quantity;
@@ -50,14 +53,18 @@ public class Product {
 				+ "]";
 	}
 
+	
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
+		result = prime * result + id;
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
-		long temp;
-		temp = Double.doubleToLongBits(weight);
-		result = prime * result + (int) (temp ^ (temp >>> 32));
+		result = prime * result + quantity;
+		result = prime * result
+				+ ((warehouseId == null) ? 0 : warehouseId.hashCode());
+		result = prime * result + weight;
 		return result;
 	}
 
@@ -70,13 +77,21 @@ public class Product {
 		if (getClass() != obj.getClass())
 			return false;
 		Product other = (Product) obj;
+		if (id != other.id)
+			return false;
 		if (name == null) {
 			if (other.name != null)
 				return false;
 		} else if (!name.equals(other.name))
 			return false;
-		if (Double.doubleToLongBits(weight) != Double
-				.doubleToLongBits(other.weight))
+		if (quantity != other.quantity)
+			return false;
+		if (warehouseId == null) {
+			if (other.warehouseId != null)
+				return false;
+		} else if (!warehouseId.equals(other.warehouseId))
+			return false;
+		if (weight != other.weight)
 			return false;
 		return true;
 	}

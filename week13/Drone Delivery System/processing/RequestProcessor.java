@@ -42,8 +42,7 @@ public class RequestProcessor {
 		
 		SupplyRequest supplyRequest=new SupplyRequest(id, new Timestamp(date.getTime()), products);
 		//System.out.println(supplyRequest);
-		DatabaseManager dm=new DatabaseManager();
-		System.out.println(dm.loadProducts());
+	
 		
 	}
 }
