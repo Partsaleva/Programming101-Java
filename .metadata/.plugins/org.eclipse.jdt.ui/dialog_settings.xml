@@ -96,9 +96,9 @@
 		<item value="true" key="org.eclipse.jdt.ui.typecomment.deprecated"/>
 	</section>
 	<section name="DialogBounds_GenerateHashCodeEqualsDialog">
-		<item value="601" key="DIALOG_WIDTH"/>
+		<item value="581" key="DIALOG_WIDTH"/>
 		<item value="1|Ubuntu|11.0|0|GTK|1|" key="DIALOG_FONT_NAME"/>
-		<item value="586" key="DIALOG_HEIGHT"/>
+		<item value="594" key="DIALOG_HEIGHT"/>
 		<item value="363" key="DIALOG_X_ORIGIN"/>
 		<item value="0" key="DIALOG_Y_ORIGIN"/>
 	</section>
@@ -110,9 +110,9 @@
 		<item value="0" key="DIALOG_Y_ORIGIN"/>
 	</section>
 	<section name="DialogBounds_GenerateToStringDialog">
-		<item value="601" key="DIALOG_WIDTH"/>
+		<item value="621" key="DIALOG_WIDTH"/>
 		<item value="1|Ubuntu|11.0|0|GTK|1|" key="DIALOG_FONT_NAME"/>
-		<item value="716" key="DIALOG_HEIGHT"/>
+		<item value="736" key="DIALOG_HEIGHT"/>
 		<item value="363" key="DIALOG_X_ORIGIN"/>
 		<item value="0" key="DIALOG_Y_ORIGIN"/>
 	</section>

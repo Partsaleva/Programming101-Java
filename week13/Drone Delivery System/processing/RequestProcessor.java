@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import managers.DatabaseManager;
 import models.Product;
 import models.requests.SupplyRequest;
 

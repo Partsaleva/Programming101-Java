@@ -1,23 +1,17 @@
 package database;
 
-import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
 import java.io.BufferedWriter;
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-import java.util.Queue;
 import java.util.Random;
 
-import managers.DatabaseManager;
+import managers.WarehouseManager;
 import models.Drone;
 import models.Location;
 import models.Product;
@@ -26,26 +20,26 @@ import models.Warehouse;
 public class DbFilesCreation {
 
 	public static void main(String[] args) {
-		createProductsFile();
-		createDronesFile();
+		createProductsFile("w1");
+		createDronesFile("w1");
 		createWarehouseFile();
-		//createRequestsFile();
+		createRequestsFile("w1");
 	}
 
 	
-	public static void createProductsFile(){
+	public static void createProductsFile(String warehouseId){
 		//create list of products
 		List<Product> products=new ArrayList<Product>();
 		Random rand=new Random();
 		for (int i = 1; i < 101; i++) {
 			int quantity= rand.nextInt(200);
-			Product p=new Product(i, "product"+i, rand.nextInt(100), quantity, "w1");
+			Product p=new Product("product"+i, rand.nextInt(100), quantity);
 			products.add(p);
 		}
 
 		try (ObjectOutputStream objStream=new ObjectOutputStream(
 				new BufferedOutputStream(
-						new FileOutputStream("products",true)))){
+						new FileOutputStream("products"+warehouseId,true)))){
 			//save list as object to file
 			objStream.writeObject(products);
 
@@ -56,20 +50,20 @@ public class DbFilesCreation {
 		}
 	}
 	
-	public static void createDronesFile(){
+	public static void createDronesFile(String warehouseId){
 		//create list of drones
 		List<Drone> drones=new ArrayList<>();
 		for (int i = 1; i < 51; i++) {
-			drones.add(new Drone("d"+i, 2000, 500, 5,"w1"));
+			drones.add(new Drone("d"+i, 2000, 500, 5));
 		}
 		for (int i = 1; i < 31; i++) {
-			drones.add(new Drone("ch"+i, 1200, 200, 3,"w1"));
+			drones.add(new Drone("ch"+i, 1200, 200, 3));
 
 		}
 
 		try (ObjectOutputStream objStream=new ObjectOutputStream(
 				new BufferedOutputStream(
-						new FileOutputStream("drones",true)))){
+						new FileOutputStream("drones"+warehouseId,true)))){
 			//save list as object in file
 			objStream.writeObject(drones);
 
@@ -80,7 +74,8 @@ public class DbFilesCreation {
 		}
 	}
 	public static void createWarehouseFile(){
-		DatabaseManager d=new DatabaseManager();
+		WarehouseManager d=new WarehouseManager();
+		//when add warehouse add all products and drones
 		Warehouse w= d.addWarehouse(new Warehouse("w1", new Location(42, 42)));
 		try (ObjectOutputStream objStream=new ObjectOutputStream(
 				new BufferedOutputStream(
@@ -96,8 +91,8 @@ public class DbFilesCreation {
 	}
 	
 	
-	public static void createRequestsFile(){
-		try(BufferedWriter bs=new BufferedWriter(new FileWriter("requests.txt", true))){
+	public static void createRequestsFile(String warehouseId){
+		try(BufferedWriter bs=new BufferedWriter(new FileWriter("requests"+warehouseId, true))){
 			String head="type,id,time,data";
 			bs.write(head+"\n");		
 			

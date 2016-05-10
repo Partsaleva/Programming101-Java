@@ -9,15 +9,13 @@ public class Drone implements Serializable{
 	private int batteryUnits;
 	private int weightCapacity;
 	private int chargingRate;
-	private String warehouseId;
 	
-	public Drone(String id, int batteryUnits, int weightCapacity,
-			int chargingRate, String warehouseId) {
+	public Drone(String id, int batteryUnits, int weightCapacity,int chargingRate) {
 		this.id = id;
 		this.batteryUnits = batteryUnits;
 		this.weightCapacity = weightCapacity;
 		this.chargingRate = chargingRate;
-		this.warehouseId=warehouseId;
+
 	}
 
 	public String getId() {
@@ -36,9 +34,7 @@ public class Drone implements Serializable{
 		return chargingRate;
 	}
 
-	public String getWarehouseId(){
-		return warehouseId;
-	}
+	
 	@Override
 	public String toString() {
 		return "Drone [id=" + id + ", batteryUnits=" + batteryUnits

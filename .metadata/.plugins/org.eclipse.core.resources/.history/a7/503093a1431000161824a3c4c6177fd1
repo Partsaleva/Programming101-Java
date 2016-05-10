@@ -1,7 +1,0 @@
-package educationalSystem.session;
-
-public class UserSession {
-
-	String user="user1";
-	
-}

@@ -1,16 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-<fullyQualifiedTypeName name="com.sun.syndication.feed.synd.SyndEntry"/>
-<fullyQualifiedTypeName name="java.net.HttpURLConnection"/>
-<fullyQualifiedTypeName name="java.util.Iterator"/>
-<fullyQualifiedTypeName name="service.Agregator"/>
-<fullyQualifiedTypeName name="com.google.gson.JsonParser"/>
-<fullyQualifiedTypeName name="com.google.gson.GsonBuilder"/>
-<fullyQualifiedTypeName name="com.google.gson.JsonElement"/>
-<fullyQualifiedTypeName name="java.io.PrintWriter"/>
-<fullyQualifiedTypeName name="java.net.URL"/>
-<fullyQualifiedTypeName name="java.net.MalformedURLException"/>
-<fullyQualifiedTypeName name="java.net.URLConnection"/>
 <fullyQualifiedTypeName name="com.sun.corba.se.pept.transport.Connection"/>
 <fullyQualifiedTypeName name="educationalSystem.DbConnection"/>
 <fullyQualifiedTypeName name="java.sql.Statement"/>
@@ -30,7 +19,6 @@
 <fullyQualifiedTypeName name="educationalSystem.database.SQLQuery"/>
 <fullyQualifiedTypeName name="java.util.Scanner"/>
 <fullyQualifiedTypeName name="java.lang.System"/>
-<fullyQualifiedTypeName name="java.util.Queue"/>
 <fullyQualifiedTypeName name="java.util.concurrent.LinkedBlockingQueue"/>
 <fullyQualifiedTypeName name="models.Request"/>
 <fullyQualifiedTypeName name="java.util.Map.Entry"/>
@@ -40,7 +28,6 @@
 <fullyQualifiedTypeName name="java.sql.Connection"/>
 <fullyQualifiedTypeName name="java.sql.PreparedStatement"/>
 <fullyQualifiedTypeName name="database.DBCreation"/>
-<fullyQualifiedTypeName name="java.io.BufferedOutputStream"/>
 <fullyQualifiedTypeName name="java.io.FileWriter"/>
 <fullyQualifiedTypeName name="java.io.BufferedWriter"/>
 <fullyQualifiedTypeName name="java.util.Random"/>
@@ -52,12 +39,25 @@
 <fullyQualifiedTypeName name="models.requests.SupplyRequest"/>
 <fullyQualifiedTypeName name="java.util.Date"/>
 <fullyQualifiedTypeName name="java.sql.Timestamp"/>
-<fullyQualifiedTypeName name="java.util.List"/>
-<fullyQualifiedTypeName name="java.util.ArrayList"/>
-<fullyQualifiedTypeName name="java.util.Map"/>
-<fullyQualifiedTypeName name="models.Product"/>
 <fullyQualifiedTypeName name="java.io.BufferedReader"/>
 <fullyQualifiedTypeName name="java.io.FileReader"/>
-<fullyQualifiedTypeName name="java.util.HashMap"/>
+<fullyQualifiedTypeName name="java.io.Serializable"/>
+<fullyQualifiedTypeName name="java.io.ObjectOutputStream"/>
+<fullyQualifiedTypeName name="java.io.BufferedOutputStream"/>
+<fullyQualifiedTypeName name="java.io.FileOutputStream"/>
+<fullyQualifiedTypeName name="java.util.Map"/>
+<fullyQualifiedTypeName name="models.Product"/>
+<fullyQualifiedTypeName name="java.util.Queue"/>
+<fullyQualifiedTypeName name="java.util.ArrayList"/>
+<fullyQualifiedTypeName name="models.Drone"/>
+<fullyQualifiedTypeName name="java.io.ObjectInputStream"/>
+<fullyQualifiedTypeName name="java.io.BufferedInputStream"/>
+<fullyQualifiedTypeName name="java.io.FileInputStream"/>
+<fullyQualifiedTypeName name="java.util.List"/>
 <fullyQualifiedTypeName name="managers.DatabaseManager"/>
+<fullyQualifiedTypeName name="models.Warehouse"/>
+<fullyQualifiedTypeName name="models.Location"/>
+<fullyQualifiedTypeName name="java.util.HashMap"/>
+<fullyQualifiedTypeName name="com.sun.jmx.remote.internal.ArrayQueue"/>
+<fullyQualifiedTypeName name="java.util.LinkedList"/>
 </qualifiedTypeNameHistroy>
