@@ -24,7 +24,10 @@ import models.Warehouse;
 public class WarehouseManager {
 
 	public static void main(String[] args) {
-		
+		WarehouseManager w=new WarehouseManager();
+		System.out.println(w.getWarehouses());
+		Map<Product, Integer> map=w.getProductsForWarehouse("w1");
+		System.out.println(map.size());
 	}
 
 	@SuppressWarnings("unchecked")
@@ -152,6 +155,10 @@ public class WarehouseManager {
 		return drones;
 	}
 	 
-	
+	public void addProducts(Warehouse w,List<Product> products){		
+		for (Product p :products) {
+			w.getProducts().put(p, p.getQuantity());
+		}
+	}
 	
 }

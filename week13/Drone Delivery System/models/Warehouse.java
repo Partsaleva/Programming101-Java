@@ -40,11 +40,13 @@ public class Warehouse implements Serializable{
 		return drones;
 	}
 	
+	
 	@Override
 	public String toString() {
 		return "Warehouse [id=" + id + ", location=" + location + ", products="
-				+ products + "]";
+				+ products + ", drones=" + drones + "]";
 	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;

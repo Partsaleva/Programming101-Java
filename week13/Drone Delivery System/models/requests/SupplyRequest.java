@@ -1,5 +1,8 @@
 package models.requests;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -34,7 +37,19 @@ public class SupplyRequest implements Loggable{
 
 	@Override
 	public void log(String str) {
-		// TODO Auto-generated method stub
+		String[] words=str.split(" ");
+		StringBuilder sb=new StringBuilder();
+		try(BufferedWriter bs=new BufferedWriter(
+				new FileWriter("requests", true))){
+			for (int i = 4; i < words.length; i++) {
+				sb.append(words[i]+ " ");
+			}
+			bs.write("supply,"+words[1]+","+words[2]+" "+words[3]+","+sb.toString());
+			bs.write(System.getProperty("line.separator"));
+			
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 		
 	};
 	

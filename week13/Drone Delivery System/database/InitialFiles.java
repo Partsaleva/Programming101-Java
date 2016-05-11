@@ -23,7 +23,7 @@ public class InitialFiles {
 		createProductsFile("w1");
 		createDronesFile("w1");
 		createWarehouseFile();
-		createRequestsFile("w1");
+		createRequestsFile();
 	}
 
 	
@@ -94,8 +94,9 @@ public class InitialFiles {
 	}
 	
 	
-	public static void createRequestsFile(String warehouseId){
-		try(BufferedWriter bs=new BufferedWriter(new FileWriter("requests"+warehouseId, true))){
+	public static void createRequestsFile(){
+		try(BufferedWriter bs=new BufferedWriter(
+				new FileWriter("requests", true))){
 			String head="type,id,time,data";
 			bs.write(head+"\n");		
 			
