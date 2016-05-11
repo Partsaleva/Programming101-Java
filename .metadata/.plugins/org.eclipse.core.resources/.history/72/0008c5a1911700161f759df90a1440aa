@@ -1,0 +1,61 @@
+package week16;
+
+public class Member {
+
+	private int coef;
+	private int var;
+	private int degree;
+	
+	public Member(int coef, int var, int degree) {
+		this.coef = coef;
+		this.var = var;
+		this.degree = degree;
+	}
+
+	public int getCoef() {
+		return coef;
+	}
+
+	public int getVar() {
+		return var;
+	}
+
+	public int getDegree() {
+		return degree;
+	}
+
+	@Override
+	public String toString() {
+		return "" + coef + "" + var + "^" + degree + "";
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + coef;
+		result = prime * result + degree;
+		result = prime * result + var;
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Member other = (Member) obj;
+		if (coef != other.coef)
+			return false;
+		if (degree != other.degree)
+			return false;
+		if (var != other.var)
+			return false;
+		return true;
+	}
+	
+	
+}

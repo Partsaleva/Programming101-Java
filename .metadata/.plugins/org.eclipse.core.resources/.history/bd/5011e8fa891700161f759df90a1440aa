@@ -1,0 +1,29 @@
+package week16;
+
+
+import java.util.List;
+
+public class Polynomial {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+	List<Member> polinom;
+
+	public Polynomial(List<Member> polinom) {
+		this.polinom = polinom;
+	}
+
+	public List<Member> getPolinom() {
+		return polinom;
+	}
+
+	@Override
+	public String toString() {
+		return " + polinom + "";
+	}
+	
+	
+}

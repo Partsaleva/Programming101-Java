@@ -1,0 +1,26 @@
+package week16;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class Run {
+
+	public static void main(String[] args) {
+		String p1="2x^4 + 3x^2 - 10x + 3";
+		String p2="8x^3 + 6x - 10";
+		parse(p1);
+
+	}
+
+	public static void parse(String p) {
+		List<Member> members = new ArrayList<Member>();
+		String polin=p.replaceAll("\\s", "");
+		//polin=polin.replaceAll("-", "+-");
+		System.out.println(polin);
+		String[] parts = p.split("\\+");
+		for (String mem : parts) {
+			System.out.println(mem);	
+				
+		}
+	}
+}
