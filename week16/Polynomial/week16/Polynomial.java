@@ -12,6 +12,8 @@ public class Polynomial {
 
 	List<Member> polinom;
 
+	
+	
 	public Polynomial(List<Member> polinom) {
 		this.polinom = polinom;
 	}

@@ -1,14 +1,24 @@
 package week16;
 
-public class Member {
+public class Member implements Comparable<Member>  {
 
 	private int coef;
 	private int degree;
+	private boolean mark;
 	
 	public Member(int coef, int degree) {
 		this.coef = coef;		
 		this.degree = degree;
+		setMark(mark);
 	}
+	
+	
+
+	public void setMark(boolean mark2) {
+		this.mark=mark2;	
+	}
+
+
 
 	public int getCoef() {
 		return coef;
@@ -19,6 +29,9 @@ public class Member {
 		return degree;
 	}
 
+	public boolean getmark(){
+		return mark;
+	}
 	@Override
 	public String toString() {
 		return "" + coef + "x^" + degree + "";
@@ -47,6 +60,11 @@ public class Member {
 		if (degree != other.degree)
 			return false;
 		return true;
+	}
+
+	@Override
+	public int compareTo(Member o) {
+		return (this.degree-o.degree);
 	}
 	
 	

@@ -1,0 +1,66 @@
+package week16;
+
+public class Member<C extends Number,D> implements Comparable<Member>{
+
+	private C coef;
+	private D degree;
+	
+	public Member(C coef, D degree) {
+		this.coef = coef;		
+		this.degree = degree;
+	}
+
+	public C getCoef() {
+		return coef;
+	}
+
+
+	public D getDegree() {
+		return degree;
+	}
+
+	@Override
+	public String toString() {
+		return "" + coef + "x^" + degree + "";
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((coef == null) ? 0 : coef.hashCode());
+		result = prime * result + ((degree == null) ? 0 : degree.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Member<?, ?> other = (Member<?, ?>) obj;
+		if (coef == null) {
+			if (other.coef != null)
+				return false;
+		} else if (!coef.equals(other.coef))
+			return false;
+		if (degree == null) {
+			if (other.degree != null)
+				return false;
+		} else if (!degree.equals(other.degree))
+			return false;
+		return true;
+	}
+
+	@Override
+	public int compareTo(Member o) {
+		return (this.degree-o.degree);
+	}
+
+	
+	
+	
+}
