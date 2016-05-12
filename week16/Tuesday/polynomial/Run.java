@@ -21,7 +21,7 @@ public class Run {
 	}
 
 	public  Polynomial parse(String p) {
-		List<Member> members = new ArrayList<Member>();
+		List<Member<Number,Integer>> members = new ArrayList<Member<Number,Integer>>();
 		//replace all whitesp and replace - with +- so we get get sign
 		String polin=p.replaceAll("\\s", "").replaceAll("-", "+-");
 		//System.out.println(polin);
@@ -33,16 +33,16 @@ public class Run {
 				String[] memParts=mem.split("x");
 				//degree >1
 				if (memParts.length > 1) {
-					members.add(new Member(Integer.parseInt(memParts[0]), 
+					members.add(new Member<Number,Integer>(Integer.parseInt(memParts[0]), 
 							Integer.parseInt(memParts[1].substring(1))));
 				}
 				else{
-					members.add(new Member(Integer.parseInt(memParts[0]), 1));
+					members.add(new Member<Number,Integer>(Integer.parseInt(memParts[0]), 1));
 				}
 			}
 			else{
 				//is a number -> degree =0
-				members.add(new Member(Integer.parseInt(mem), 0));
+				members.add(new Member<Number,Integer>(Integer.parseInt(mem), 0));
 			}
 		}
 		return new Polynomial(members);

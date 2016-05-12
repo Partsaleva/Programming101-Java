@@ -3,22 +3,22 @@ package polynomial;
 
 import java.util.List;
 
-public class Polynomial {
+public final class Polynomial {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
 	}
 
-	List<Member> polinom;
+	private final List<Member<Number,Integer>> polinom;
 
 	
 	
-	public Polynomial(List<Member> polinom) {
+	public Polynomial(List<Member<Number,Integer>> polinom) {
 		this.polinom = polinom;
 	}
 
-	public List<Member> getPolinom() {
+	public List<Member<Number,Integer>> getPolinom() {
 		return polinom;
 	}
 

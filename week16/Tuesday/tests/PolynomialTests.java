@@ -31,7 +31,7 @@ public class PolynomialTests {
 		Polynomial pol2=run.parse(p2);
 		Polynomial res=oper.makeOperation(pol1,pol2,'+');
 		double result=oper.evaluatePolynomial(res, 1);
-		assertEquals(12, result, 0.001);
+		assertEquals(12.0, result, 0.001);
 	}
 	
 	@Test
@@ -44,7 +44,7 @@ public class PolynomialTests {
 		Polynomial pol2=run.parse(p2);
 		Polynomial res=oper.makeOperation(pol1,pol2,'-');
 		double result=oper.evaluatePolynomial(res, 1);
-		assertEquals(16, result, 0.001);
+		assertEquals(16.0, result, 0.001);
 	}
 	
 	@Test
@@ -57,6 +57,6 @@ public class PolynomialTests {
 		Polynomial pol2=run.parse(p2);
 		Polynomial res=oper.makeOperation(pol1,pol2,'*');
 		double result=oper.evaluatePolynomial(res, 1);
-		assertEquals(2, result, 0.001);
+		assertEquals(2.0, result, 0.001);
 	}
 }

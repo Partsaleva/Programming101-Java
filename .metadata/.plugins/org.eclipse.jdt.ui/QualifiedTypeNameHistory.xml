@@ -1,9 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-<fullyQualifiedTypeName name="com.sun.xml.internal.ws.api.addressing.WSEndpointReference.Metadata"/>
-<fullyQualifiedTypeName name="java.sql.ResultSetMetaData"/>
-<fullyQualifiedTypeName name="java.util.Set"/>
-<fullyQualifiedTypeName name="java.util.HashSet"/>
 <fullyQualifiedTypeName name="educationalSystem.session.UserSession"/>
 <fullyQualifiedTypeName name="java.lang.Integer"/>
 <fullyQualifiedTypeName name="educationalSystem.models.Question"/>
@@ -47,17 +43,21 @@
 <fullyQualifiedTypeName name="java.io.ObjectInputStream"/>
 <fullyQualifiedTypeName name="java.io.BufferedInputStream"/>
 <fullyQualifiedTypeName name="java.io.FileInputStream"/>
-<fullyQualifiedTypeName name="models.Warehouse"/>
 <fullyQualifiedTypeName name="processing.RequestProcessor"/>
 <fullyQualifiedTypeName name="models.requests.SupplyRequest"/>
 <fullyQualifiedTypeName name="java.util.Map"/>
-<fullyQualifiedTypeName name="models.Product"/>
-<fullyQualifiedTypeName name="managers.WarehouseManager"/>
 <fullyQualifiedTypeName name="java.lang.System"/>
 <fullyQualifiedTypeName name="java.util.LinkedList"/>
+<fullyQualifiedTypeName name="java.lang.StringBuilder"/>
+<fullyQualifiedTypeName name="models.Product"/>
+<fullyQualifiedTypeName name="managers.WarehouseManager"/>
+<fullyQualifiedTypeName name="models.Warehouse"/>
+<fullyQualifiedTypeName name="java.lang.Comparable"/>
 <fullyQualifiedTypeName name="java.util.List"/>
+<fullyQualifiedTypeName name="week16.Operation"/>
 <fullyQualifiedTypeName name="java.util.ArrayList"/>
 <fullyQualifiedTypeName name="week16.Member"/>
 <fullyQualifiedTypeName name="week16.Polynomial"/>
-<fullyQualifiedTypeName name="java.lang.StringBuilder"/>
+<fullyQualifiedTypeName name="polynomial.Operation"/>
+<fullyQualifiedTypeName name="polynomial.Run"/>
 </qualifiedTypeNameHistroy>

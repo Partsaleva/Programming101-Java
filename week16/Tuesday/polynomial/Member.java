@@ -1,12 +1,12 @@
 package polynomial;
 
-public class Member implements Comparable<Member>  {
+public class Member<C extends Number, D extends Number> implements Comparable<Member<C,D>>  {
 
-	private int coef;
-	private int degree;
+	private C coef;
+	private D degree;
 	private boolean mark;
 	
-	public Member(int coef, int degree) {
+	public Member(C  coef, D degree) {
 		this.coef = coef;		
 		this.degree = degree;
 		setMark(mark);
@@ -19,15 +19,19 @@ public class Member implements Comparable<Member>  {
 	}
 
 
+	
 
-	public int getCoef() {
+	public C getCoef() {
 		return coef;
 	}
 
 
-	public int getDegree() {
+
+	public D getDegree() {
 		return degree;
 	}
+
+
 
 	public boolean getmark(){
 		return mark;
@@ -37,35 +41,15 @@ public class Member implements Comparable<Member>  {
 		return "" + coef + "x^" + degree + "";
 	}
 
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + coef;
-		result = prime * result + degree;
-		return result;
-	}
+
 
 	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Member other = (Member) obj;
-		if (coef != other.coef)
-			return false;
-		if (degree != other.degree)
-			return false;
-		return true;
+	public int compareTo(Member<C, D> o) {		
+		return this.getDegree().intValue() + o.getDegree().intValue();
 	}
 
-	@Override
-	public int compareTo(Member o) {
-		return (this.degree-o.degree);
-	}
+
+
 	
 	
 }
