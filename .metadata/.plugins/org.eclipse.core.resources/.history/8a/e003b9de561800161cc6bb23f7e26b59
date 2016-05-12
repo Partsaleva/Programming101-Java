@@ -12,17 +12,26 @@ public class Member<C extends Number, D extends Number> implements Comparable<Me
 		setMark(mark);
 	}
 	
+	
+
 	public void setMark(boolean mark2) {
 		this.mark=mark2;	
 	}
+
+
+	
 
 	public C getCoef() {
 		return coef;
 	}
 
+
+
 	public D getDegree() {
 		return degree;
 	}
+
+
 
 	public boolean getmark(){
 		return mark;
@@ -36,7 +45,7 @@ public class Member<C extends Number, D extends Number> implements Comparable<Me
 
 	@Override
 	public int compareTo(Member<C, D> o) {		
-		return this.getDegree().intValue() - o.getDegree().intValue();
+		return this.getDegree().intValue() + o.getDegree().intValue();
 	}
 
 

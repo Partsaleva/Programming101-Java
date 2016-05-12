@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-<fullyQualifiedTypeName name="educationalSystem.session.UserSession"/>
 <fullyQualifiedTypeName name="java.lang.Integer"/>
 <fullyQualifiedTypeName name="educationalSystem.models.Question"/>
 <fullyQualifiedTypeName name="educationalSystem.models.QuestionAnswers"/>
@@ -60,4 +59,5 @@
 <fullyQualifiedTypeName name="week16.Polynomial"/>
 <fullyQualifiedTypeName name="polynomial.Operation"/>
 <fullyQualifiedTypeName name="polynomial.Run"/>
+<fullyQualifiedTypeName name="java.lang.Number"/>
 </qualifiedTypeNameHistroy>
