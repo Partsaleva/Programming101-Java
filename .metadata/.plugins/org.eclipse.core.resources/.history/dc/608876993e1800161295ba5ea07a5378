@@ -1,0 +1,28 @@
+package tests;
+
+import static org.junit.Assert.*;
+
+import org.junit.AfterClass;
+import org.junit.Test;
+
+import polynomial.Operation;
+import polynomial.Polynomial;
+import polynomial.Run;
+
+public class PolynomialEvaluation {
+
+	@AfterClass
+	public static void tearDownAfterClass() throws Exception {
+	}
+
+	@Test
+	public void test() {
+		Operation o=new Operation();
+		Run run=new Run();
+		String p1="8x^3 + 6x - 10";
+		Polynomial pol1=run.parse(p1);
+		double result=o.evaluatePolynomial(pol1, 2);
+		assertEquals(expected, actual, delta);
+	}
+
+}
