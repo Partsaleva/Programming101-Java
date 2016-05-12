@@ -39,18 +39,24 @@ public class SupplyRequest implements Loggable{
 	public void log(String str) {
 		String[] words=str.split(" ");
 		StringBuilder sb=new StringBuilder();
-		try(BufferedWriter bs=new BufferedWriter(
+		
+		try(BufferedWriter writer=new BufferedWriter(
 				new FileWriter("requests", true))){
+			
+			sb.append("supply,");sb.append(words[1]);sb.append(",");
+			sb.append(words[2]);sb.append(" ");sb.append(words[3]);sb.append(",");
+			
 			for (int i = 4; i < words.length; i++) {
 				sb.append(words[i]+ " ");
 			}
-			bs.write("supply,"+words[1]+","+words[2]+" "+words[3]+","+sb.toString());
-			bs.write(System.getProperty("line.separator"));
+			writer.write(sb.toString());
+			writer.write(System.getProperty("line.separator"));
+			
 			
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		
+		System.out.println(sb);
 	};
 	
 	@Override

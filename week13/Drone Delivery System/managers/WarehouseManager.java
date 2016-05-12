@@ -51,13 +51,14 @@ public class WarehouseManager {
 	public void updateWarehouseData(Warehouse w){
 		
 		Map<Product, Integer> products=w.getProducts();
+		System.out.println(products.size());
 		Queue<Drone> drones=w.getDrones();
 		
-		createUpdatedProductFile(w.getId(),products);
-		createUpdatedDroneFile(w.getId(),drones);
+		createUpdatedProductFile(w,products);
+		createUpdatedDroneFile(w,drones);
 	}
 	
-	private void createUpdatedProductFile(String warehouseId,Map<Product, Integer> products ){
+	private void createUpdatedProductFile(Warehouse w,Map<Product, Integer> products ){
 		List<Product> prod=new ArrayList<Product>();
 		//iterate over map; put in List; save in file
 		for (Entry<Product, Integer> entry : products.entrySet()) {
@@ -66,7 +67,7 @@ public class WarehouseManager {
 		
 		try (ObjectOutputStream objStream=new ObjectOutputStream(
 				new BufferedOutputStream(
-						new FileOutputStream("products"+warehouseId)))){
+						new FileOutputStream("products"+w.getId())))){
 			
 			objStream.writeObject(prod);
 			
@@ -77,7 +78,7 @@ public class WarehouseManager {
 		}
 	}
 	
-	private void createUpdatedDroneFile(String warehouseId,Queue<Drone> drones){
+	private void createUpdatedDroneFile(Warehouse w,Queue<Drone> drones){
 		List<Drone> dr=new ArrayList<Drone>();
 		//iterate over queue; put in List; save in file
 		for (Drone drone : drones) {
@@ -86,7 +87,7 @@ public class WarehouseManager {
 		
 		try (ObjectOutputStream objStream=new ObjectOutputStream(
 				new BufferedOutputStream(
-						new FileOutputStream("drones"+warehouseId)))){
+						new FileOutputStream("drones"+w.getId())))){
 			
 			objStream.writeObject(dr);
 			
@@ -154,11 +155,16 @@ public class WarehouseManager {
 		}
 		return drones;
 	}
-	 
-	public void addProducts(Warehouse w,List<Product> products){		
-		for (Product p :products) {
-			w.getProducts().put(p, p.getQuantity());
-		}
-	}
 	
+	public Warehouse getWarehouseById(String id){
+		Warehouse w=null;
+		List<Warehouse> warehouses =getWarehouses();
+		for (Warehouse warehouse : warehouses) {
+			if(warehouse.getId().equals(id)){
+				w=warehouse;
+			}
+		}
+		System.out.println(w);
+		return w;
+	}
 }

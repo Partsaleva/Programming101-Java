@@ -4,7 +4,6 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.List;
 
 import managers.WarehouseManager;
 import models.Warehouse;
@@ -14,27 +13,24 @@ import processing.RequestProcessor;
 public class Run {
 
 	public static void main(String[] args) {
-		String file="testInputSupply.txt";
-		readInputFile(file);
-		
 		WarehouseManager w=new WarehouseManager();
-		List<Warehouse> warehouses=w.getWarehouses();
-		Warehouse test = null;
-		for (Warehouse warehouse : warehouses) {
-			if(warehouse.getId().equals("w1")){
-				test=warehouse;
-			}
-		}
-		w.updateWarehouseData(test);
+		String file="testInputSupply.txt";
+		Warehouse warehouse=w.getWarehouseById("w1");
+		System.out.println(warehouse.getProducts().size());
+		readInputFile(warehouse,file);
+		
+		
+		w.updateWarehouseData(warehouse);
+		System.out.println(w.getWarehouseById("w1").getProducts().size());
 		
 	}
 
-	public static void readInputFile(String inputFile){
+	public static void readInputFile(Warehouse warehouse,String inputFile){
 		try(BufferedReader reader=new BufferedReader(
 				new FileReader(inputFile))){
 			String line=null;
 			while((line=reader.readLine())!= null){
-				readRequest(line);
+				readRequest(warehouse,line);
 			}
 					
 		} catch (FileNotFoundException fnfe) {
@@ -44,14 +40,13 @@ public class Run {
 		}
 	}
 	
-	public static void readRequest(String request){
+	public static void readRequest(Warehouse warehouse,String request){
 		String[] reqParts=request.split(" ");
 		//get word supply or delivery
 		String type=reqParts[0];
 		//process request
 		RequestProcessor rp=new RequestProcessor();
-		rp.processRequest(type, request);
-		
+		rp.processRequest(warehouse,type, request);
 	}
 	
 }
