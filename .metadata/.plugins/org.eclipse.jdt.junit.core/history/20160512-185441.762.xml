@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="PolynomialTests" project="week16" tests="4" started="4" failures="0" errors="0" ignored="0">
+  <testsuite name="tests.PolynomialTests" time="0.0">
+    <testcase name="testAdd" classname="tests.PolynomialTests" time="0.0"/>
+    <testcase name="testSubtract" classname="tests.PolynomialTests" time="0.0"/>
+    <testcase name="testMultiplicate" classname="tests.PolynomialTests" time="0.0"/>
+    <testcase name="testevaluatePolynomial" classname="tests.PolynomialTests" time="0.0"/>
+  </testsuite>
+</testrun>

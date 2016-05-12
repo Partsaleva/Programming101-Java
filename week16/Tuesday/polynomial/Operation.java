@@ -22,9 +22,7 @@ public class Operation {
 						oper=add(mem1, mem2);
 					} else if(operation=='-'){
 						oper=subtract(mem1, mem2);
-					} else if(operation=='*'){
-						oper=multiplicate(mem1, mem2);
-					}
+					} 
 					members.add(new Member<Number,Integer>(oper, mem1.getDegree()));
 				}
 			}
@@ -42,6 +40,24 @@ public class Operation {
 		return new Polynomial(members);
 		
 	}
+
+	public Polynomial multiplicatePolynomials(Polynomial a, Polynomial b) {
+		List<Member<Number, Integer>> members = new ArrayList<Member<Number, Integer>>();
+
+		for (Member<Number, Integer> mem1 : a.getPolinom()) {
+			for (Member<Number, Integer> mem2 : b.getPolinom()) {
+				members.add(new Member<Number, Integer>(mem1.getCoef().doubleValue() * 
+						mem2.getCoef().doubleValue(), 
+						mem1.getDegree() + mem2.getDegree()));
+
+			}
+		}
+		return new Polynomial(members);
+	}
+		
+		
+		
+	
 	
 	private double add(Member<Number,Integer> a, Member<Number,Integer> b){
 		return a.getCoef().doubleValue() + b.getCoef().doubleValue();
@@ -51,10 +67,7 @@ public class Operation {
 		return a.getCoef().doubleValue() - b.getCoef().doubleValue();
 		
 	}
-	private double multiplicate(Member<Number,Integer> a, Member<Number,Integer> b){
-		return a.getCoef().doubleValue() * b.getCoef().doubleValue();
-		
-	}
+	
 	//Method for multiplicating the polynomial by a constant
 	public Polynomial multiplPolynomialByConstant(int c, Polynomial p){
 		List<Member<Number,Integer>> polinom=new ArrayList<>();

@@ -1,0 +1,57 @@
+package week16;
+
+public class Succ extends NaturalNumber{
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	boolean isZero() {
+		return false;
+	}
+
+	@Override
+	NaturalNumber next() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	NaturalNumber prev() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	NaturalNumber add(NaturalNumber a) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	NaturalNumber minus(NaturalNumber a) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	Integer toInt() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String toString() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public boolean equals() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+}
