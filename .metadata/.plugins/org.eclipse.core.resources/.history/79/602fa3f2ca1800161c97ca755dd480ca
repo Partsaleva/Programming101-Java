@@ -3,7 +3,7 @@ package week16;
 public class Succ extends NaturalNumber{
 
 	public static void main(String[] args) {
-		Succ s=new Succ(Zero.getInstance());
+		Succ s=new Succ();
 		System.out.println(s.toString());
 
 	}
