@@ -15,13 +15,16 @@ public class Run {
 	public static void main(String[] args) {
 		WarehouseManager w=new WarehouseManager();
 		String file="testInputSupply.txt";
+		//TODO create other warehouses
 		Warehouse warehouse=w.getWarehouseById("w1");
-		System.out.println(warehouse.getProducts().size());
+		
 		readInputFile(warehouse,file);
 		
 		
+		
+		
 		w.updateWarehouseData(warehouse);
-		System.out.println(w.getWarehouseById("w1").getProducts().size());
+		System.out.println(warehouse.getProducts());
 		
 	}
 

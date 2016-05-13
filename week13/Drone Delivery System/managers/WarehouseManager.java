@@ -16,6 +16,7 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Queue;
 
+import database.InitialFiles;
 import models.Drone;
 import models.Product;
 import models.Warehouse;
@@ -24,10 +25,6 @@ import models.Warehouse;
 public class WarehouseManager {
 
 	public static void main(String[] args) {
-		WarehouseManager w=new WarehouseManager();
-		System.out.println(w.getWarehouses());
-		Map<Product, Integer> map=w.getProductsForWarehouse("w1");
-		System.out.println(map.size());
 	}
 
 	@SuppressWarnings("unchecked")
@@ -48,6 +45,7 @@ public class WarehouseManager {
 		return warehouses;
 		
 	}
+	
 	public void updateWarehouseData(Warehouse w){
 		
 		Map<Product, Integer> products=w.getProducts();
@@ -56,6 +54,8 @@ public class WarehouseManager {
 		
 		createUpdatedProductFile(w,products);
 		createUpdatedDroneFile(w,drones);
+		createUpdatedWarehouseFile(w);
+		
 	}
 	
 	private void createUpdatedProductFile(Warehouse w,Map<Product, Integer> products ){
@@ -98,16 +98,42 @@ public class WarehouseManager {
 		}
 	}
 	
+	@SuppressWarnings("unchecked")
+	private void createUpdatedWarehouseFile(Warehouse w){
+		List<Warehouse> list=new ArrayList<Warehouse>();
+		try(ObjectInputStream input = new ObjectInputStream(
+				new BufferedInputStream(
+						new FileInputStream("warehouses")))){
+			list=(List<Warehouse>) input.readObject();
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+		for (Warehouse warehouse : list) {
+			if (w.getId().equals(warehouse.getId())) {
+				list.remove(warehouse);
+				list.add(w);
+			}
+		}
+		InitialFiles i=new InitialFiles();
+		i.createWarehouseFile(list);
+	}
 	
+
+
 	public Warehouse addWarehouse(Warehouse w){
 		Map<Product, Integer> products=getProductsForWarehouse(w.getId());
 		Queue<Drone> drones=getDronesForWarehouse(w.getId());
 		
 		w.setProducts(products);
 		w.setDrones(drones);
-		return w;	
+			
+		return w;
 	}
-
+	
 	@SuppressWarnings("unchecked")
 	private Map<Product, Integer> getProductsForWarehouse(String warehouseId){		
 		Map<Product, Integer> prod=new HashMap<Product, Integer>();

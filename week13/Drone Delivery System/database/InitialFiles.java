@@ -20,14 +20,18 @@ import models.Warehouse;
 public class InitialFiles {
 
 	public static void main(String[] args) {
-		createProductsFile("w1");
-		createDronesFile("w1");
-		createWarehouseFile();
-		createRequestsFile();
+		InitialFiles init=new InitialFiles();
+		init.createProductsFile("w1");
+		init.createDronesFile("w1");
+		WarehouseManager wm=new WarehouseManager();
+		List<Warehouse> list=new ArrayList<Warehouse>(); 
+		list.add(wm.addWarehouse(new Warehouse("w1", new Location(42, 42))));
+		init.createWarehouseFile(list);
+		init.createRequestsFile();
 	}
 
 	
-	public static void createProductsFile(String warehouseId){
+	public void createProductsFile(String warehouseId){
 		//create list of products
 		List<Product> products=new ArrayList<Product>();
 		Random rand=new Random();
@@ -50,7 +54,7 @@ public class InitialFiles {
 		}
 	}
 	
-	public static void createDronesFile(String warehouseId){
+	public void createDronesFile(String warehouseId){
 		//create list of drones
 		List<Drone> drones=new ArrayList<>();
 		for (int i = 1; i < 51; i++) {
@@ -74,15 +78,10 @@ public class InitialFiles {
 		}
 	}
 	
-	public static void createWarehouseFile(){
-		WarehouseManager d=new WarehouseManager();
-		//when add warehouse add all products and drones
-		Warehouse w= d.addWarehouse(new Warehouse("w1", new Location(42, 42)));
-		List<Warehouse> list=new ArrayList<>();
-		list.add(w);
+	public void createWarehouseFile(List<Warehouse> list){	
 		try (ObjectOutputStream objStream=new ObjectOutputStream(
 				new BufferedOutputStream(
-						new FileOutputStream("warehouses",true)))){
+						new FileOutputStream("warehouses")))){
 			//save warehouse as object in file
 			objStream.writeObject(list);
 
@@ -94,7 +93,7 @@ public class InitialFiles {
 	}
 	
 	
-	public static void createRequestsFile(){
+	public void createRequestsFile(){
 		try(BufferedWriter bs=new BufferedWriter(
 				new FileWriter("requests", true))){
 			String head="type,id,time,data";

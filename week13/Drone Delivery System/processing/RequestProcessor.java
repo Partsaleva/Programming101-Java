@@ -50,9 +50,15 @@ public class RequestProcessor {
 	public void addProducts(Warehouse w,List<Product> products){
 		Map<Product, Integer> warehouseProducts=w.getProducts();
 		for (Product p :products) {
-			warehouseProducts.put(p, p.getQuantity());
-			w.setProducts(warehouseProducts);
+			if (warehouseProducts.containsKey(p)) {
+				int q=warehouseProducts.get(p)+p.getQuantity();
+				p=new Product(p.getName(), p.getWeight(),q);
+				warehouseProducts.put(p, q);
+			} else {
+				warehouseProducts.put(p, p.getQuantity());
+			}		
 		}
+		w.setProducts(warehouseProducts);
 	}
 	
 

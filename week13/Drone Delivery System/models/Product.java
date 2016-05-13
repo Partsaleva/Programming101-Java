@@ -21,7 +21,7 @@ public class Product implements Serializable{
 		return name;
 	}
 
-	public double getWeight() {
+	public int getWeight() {
 		return weight;
 	}
 
