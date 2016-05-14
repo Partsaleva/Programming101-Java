@@ -8,12 +8,12 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Random;
 
-import managers.WarehouseManager;
 import models.Drone;
-import models.Location;
 import models.Product;
 import models.Warehouse;
 
@@ -23,10 +23,7 @@ public class InitialFiles {
 		InitialFiles init=new InitialFiles();
 		init.createProductsFile("w1");
 		init.createDronesFile("w1");
-		WarehouseManager wm=new WarehouseManager();
-		List<Warehouse> list=new ArrayList<Warehouse>(); 
-		list.add(wm.addWarehouse(new Warehouse("w1", new Location(42, 42))));
-		init.createWarehouseFile(list);
+		init.createWarehouseFile();
 		init.createRequestsFile();
 	}
 
@@ -78,12 +75,13 @@ public class InitialFiles {
 		}
 	}
 	
-	public void createWarehouseFile(List<Warehouse> list){	
+	public void createWarehouseFile(){
+		Map<String, Warehouse> map=new HashMap<>();
 		try (ObjectOutputStream objStream=new ObjectOutputStream(
 				new BufferedOutputStream(
 						new FileOutputStream("warehouses")))){
 			//save warehouse as object in file
-			objStream.writeObject(list);
+			objStream.writeObject(map);
 
 		} catch (FileNotFoundException e1) {				
 			e1.printStackTrace();
@@ -95,9 +93,7 @@ public class InitialFiles {
 	
 	public void createRequestsFile(){
 		try(BufferedWriter bs=new BufferedWriter(
-				new FileWriter("requests", true))){
-			String head="type,id,time,data";
-			bs.write(head+"\n");		
+				new FileWriter("requests", true))){	
 			
 		} catch (IOException e) {
 			e.printStackTrace();

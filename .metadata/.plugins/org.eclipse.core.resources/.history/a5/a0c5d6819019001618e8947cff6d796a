@@ -1,0 +1,106 @@
+package managers;
+
+import java.io.BufferedInputStream;
+import java.io.BufferedOutputStream;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Queue;
+
+import database.InitialFiles;
+import models.Drone;
+import models.Product;
+import models.Warehouse;
+
+
+public class WarehouseManager {
+
+	public static void main(String[] args) {
+	}
+
+	@SuppressWarnings("unchecked")
+	public Map<String, Warehouse> getWarehouses(){
+		Map<String, Warehouse> map=new HashMap<>();
+		List<Warehouse> warehouses=null;
+		try(ObjectInputStream in=new ObjectInputStream(
+				new BufferedInputStream(
+						new FileInputStream("warehouses")))){
+			
+			warehouses=(List<Warehouse>) in.readObject();
+			for (Warehouse w : warehouses) {
+				map.put(w.getId(), w);
+			}
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+		return map;		
+	}
+	
+	public void updateWarehouseData(Warehouse w){
+		
+		Map<Product, Integer> products=w.getProducts();
+		System.out.println(products.size());
+		Queue<Drone> drones=w.getDrones();
+		
+		createUpdatedProductFile(w,products);
+		createUpdatedDroneFile(w,drones);
+		createUpdatedWarehouseFile(w);
+	}
+	
+	
+	public void addWarehouse(Warehouse w){
+		Map<String, Warehouse> warehouses=getWarehouses();
+		WarehouseFilesControl t=new WarehouseFilesControl();
+		
+		Map<Product, Integer> products=t.getProductsForWarehouse(w.getId());
+		Queue<Drone> drones=t.getDronesForWarehouse(w.getId());
+		
+		w.setProducts(products);
+		w.setDrones(drones);
+		if (!warehouses.containsKey(w.getId())) {
+			warehouses.put(w.getId(), w);
+		}
+		
+		try (ObjectOutputStream objStream=new ObjectOutputStream(
+				new BufferedOutputStream(
+						new FileOutputStream("warehouses")))){
+			//save warehouse as object in file
+			objStream.writeObject(warehouses);
+
+		} catch (FileNotFoundException e1) {				
+			e1.printStackTrace();
+		} catch (IOException e1) {			
+			e1.printStackTrace();
+		}
+		return w;
+	}
+	
+	
+	
+	
+	
+	public Warehouse getWarehouseById(String id){
+		Warehouse w=null;
+		List<Warehouse> warehouses =getWarehouses();
+		for (Warehouse warehouse : warehouses) {
+			if(warehouse.getId().equals(id)){
+				w=warehouse;
+			}
+		}
+		System.out.println(w);
+		return w;
+	}
+}

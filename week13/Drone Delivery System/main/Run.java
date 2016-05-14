@@ -25,6 +25,7 @@ public class Run {
 		
 		w.updateWarehouseData(warehouse);
 		System.out.println(warehouse.getProducts());
+		System.out.println(warehouse.getProducts().size());
 		
 	}
 

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-<fullyQualifiedTypeName name="educationalSystem.database.DbConnection"/>
 <fullyQualifiedTypeName name="java.sql.ResultSet"/>
 <fullyQualifiedTypeName name="educationalSystem.database.SQLQuery"/>
 <fullyQualifiedTypeName name="java.util.Scanner"/>
@@ -28,25 +27,17 @@
 <fullyQualifiedTypeName name="java.util.Queue"/>
 <fullyQualifiedTypeName name="models.Drone"/>
 <fullyQualifiedTypeName name="managers.DatabaseManager"/>
-<fullyQualifiedTypeName name="models.Location"/>
 <fullyQualifiedTypeName name="java.util.HashMap"/>
 <fullyQualifiedTypeName name="com.sun.jmx.remote.internal.ArrayQueue"/>
 <fullyQualifiedTypeName name="java.io.BufferedOutputStream"/>
-<fullyQualifiedTypeName name="java.io.ObjectInputStream"/>
-<fullyQualifiedTypeName name="java.io.BufferedInputStream"/>
-<fullyQualifiedTypeName name="java.io.FileInputStream"/>
 <fullyQualifiedTypeName name="processing.RequestProcessor"/>
 <fullyQualifiedTypeName name="models.requests.SupplyRequest"/>
 <fullyQualifiedTypeName name="java.util.Map"/>
 <fullyQualifiedTypeName name="java.lang.System"/>
 <fullyQualifiedTypeName name="java.util.LinkedList"/>
-<fullyQualifiedTypeName name="models.Product"/>
-<fullyQualifiedTypeName name="managers.WarehouseManager"/>
-<fullyQualifiedTypeName name="models.Warehouse"/>
 <fullyQualifiedTypeName name="java.lang.Comparable"/>
 <fullyQualifiedTypeName name="java.util.List"/>
 <fullyQualifiedTypeName name="week16.Operation"/>
-<fullyQualifiedTypeName name="java.util.ArrayList"/>
 <fullyQualifiedTypeName name="week16.Member"/>
 <fullyQualifiedTypeName name="week16.Polynomial"/>
 <fullyQualifiedTypeName name="polynomial.Operation"/>
@@ -60,4 +51,13 @@
 <fullyQualifiedTypeName name="java.lang.ArithmeticException"/>
 <fullyQualifiedTypeName name="week16.NaturalNumber"/>
 <fullyQualifiedTypeName name="week16.Succ"/>
+<fullyQualifiedTypeName name="java.io.ObjectInputStream"/>
+<fullyQualifiedTypeName name="java.io.BufferedInputStream"/>
+<fullyQualifiedTypeName name="java.io.FileInputStream"/>
+<fullyQualifiedTypeName name="database.InitialFiles"/>
+<fullyQualifiedTypeName name="models.Product"/>
+<fullyQualifiedTypeName name="java.util.ArrayList"/>
+<fullyQualifiedTypeName name="managers.WarehouseManager"/>
+<fullyQualifiedTypeName name="models.Warehouse"/>
+<fullyQualifiedTypeName name="models.Location"/>
 </qualifiedTypeNameHistroy>

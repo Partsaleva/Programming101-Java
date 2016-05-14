@@ -1,8 +1,0 @@
-package models.requests;
-
-public interface Loggable {
-
-	default void log(String str){
-		System.out.println("logging::"+str);
-	}
-}
