@@ -22,8 +22,8 @@ public class WarehouseManager {
 
 	public static void main(String[] args) {
 		
-	//	WarehouseManager wm=new WarehouseManager();
-	//	wm.addWarehouse(new Warehouse("w1", new Location(42,42)));
+		WarehouseManager wm=new WarehouseManager();
+		wm.addWarehouse(new Warehouse("w1", new Location(42,42)));
 	}
 
 	@SuppressWarnings("unchecked")
@@ -47,7 +47,7 @@ public class WarehouseManager {
 	}
 	
 	public void updateWarehouseData(Warehouse w){	
-		Map<Product, Integer> products=w.getProducts();
+		Map<String, Product>  products=w.getProducts();
 		System.out.println(products.size());
 		Queue<Drone> drones=w.getDrones();
 		
@@ -62,7 +62,7 @@ public class WarehouseManager {
 		Map<String, Warehouse> warehouses=getWarehouses();
 		WarehouseFilesControl t=new WarehouseFilesControl();
 		
-		Map<Product, Integer> products=t.getProductsForWarehouse(w.getId());
+		Map<String, Product> products=t.getProductsForWarehouse(w.getId());
 		Queue<Drone> drones=t.getDronesForWarehouse(w.getId());
 		
 		w.setProducts(products);

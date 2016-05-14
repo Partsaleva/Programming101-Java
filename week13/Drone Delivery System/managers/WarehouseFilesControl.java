@@ -51,8 +51,8 @@ public class WarehouseFilesControl {
 	}
 	
 	@SuppressWarnings("unchecked") 
-	Map<Product, Integer> getProductsForWarehouse(String warehouseId){		
-		Map<Product, Integer> prod=new HashMap<Product, Integer>();
+	Map<String, Product> getProductsForWarehouse(String warehouseId){		
+		Map<String, Product> prod=new HashMap<>();
 		List<Product> p=null;
 		
 		try(ObjectInputStream in =new ObjectInputStream(
@@ -70,17 +70,17 @@ public class WarehouseFilesControl {
 		} 
 		
 		for (Product product : p) {		
-			prod.put(product, product.getQuantity());		
+			prod.put(product.getName(), product);		
 		}
 		return prod;
 		
 	}
 	
-	void createUpdatedProductFile(Warehouse w,Map<Product, Integer> products ){
+	void createUpdatedProductFile(Warehouse w,Map<String, Product> products ){
 		List<Product> prod=new ArrayList<Product>();
 		//iterate over map; put in List; save in file
-		for (Entry<Product, Integer> entry : products.entrySet()) {
-			prod.add(entry.getKey());
+		for (Entry<String, Product>  entry : products.entrySet()) {
+			prod.add(entry.getValue());
 		}
 		
 		try (ObjectOutputStream objStream=new ObjectOutputStream(

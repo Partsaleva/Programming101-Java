@@ -9,7 +9,7 @@ public class Warehouse implements Serializable{
 	private static final long serialVersionUID = 1L;
 	private String id;
 	private Location location;
-	private Map<Product, Integer> products;
+	private Map<String, Product>  products;
 	private Queue<Drone> drones;
 	
 	public Warehouse(String id, Location location) {
@@ -19,7 +19,7 @@ public class Warehouse implements Serializable{
 		setDrones(drones);
 	}
 	
-	public void setProducts(Map<Product, Integer> products) {
+	public void setProducts(Map<String, Product>  products) {
 		this.products = products;
 	}
 
@@ -33,7 +33,7 @@ public class Warehouse implements Serializable{
 	public Location getLocation() {
 		return location;
 	}
-	public Map<Product, Integer> getProducts() {
+	public Map <String, Product>  getProducts() {
 		return products;
 	}
 	public Queue<Drone> getDrones() {

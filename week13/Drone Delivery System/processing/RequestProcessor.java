@@ -6,6 +6,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
+import models.Location;
 import models.Product;
 import models.Warehouse;
 import models.requests.SupplyRequest;
@@ -23,7 +24,20 @@ public class RequestProcessor {
 	}
 
 	private void runDeliveryRequest(String request) {
+		String[] data=request.split(" ");
+		String id=data[1];
+		Date date=new Date();
+		String[] location=data[4].split(",");
+		Location deliveryLocation=new Location(Double.parseDouble(location[0]), Double.parseDouble(location[1]));
+		List<Product> order=new ArrayList<Product>();
+		
+		for (int i = 5; i < data.length; i=i+2) {
+			String name=data[i]; 
+			int weight=Integer.parseInt(data[i]);
+			int quantity=Integer.parseInt(data[i+1]);
 			
+			order.add(new Product(name, weight, quantity));
+		}
 	}
 
 	private SupplyRequest runSupplyRequest(Warehouse warehouse,String request) {
@@ -48,14 +62,14 @@ public class RequestProcessor {
 				
 	}
 	public void addProducts(Warehouse w,List<Product> products){
-		Map<Product, Integer> warehouseProducts=w.getProducts();
+		Map<String, Product> warehouseProducts=w.getProducts();
 		for (Product p :products) {
 			if (warehouseProducts.containsKey(p)) {
-				int q=warehouseProducts.get(p)+p.getQuantity();
-				p=new Product(p.getName(), p.getWeight(),q);
-				warehouseProducts.put(p, q);
+				int quantity=p.getQuantity()+ warehouseProducts.get(p.getName()).getQuantity();
+				p=new Product(p.getName(), p.getWeight(),quantity);
+				warehouseProducts.put(p.getName(), p);
 			} else {
-				warehouseProducts.put(p, p.getQuantity());
+				warehouseProducts.put(p.getName(), p);
 			}		
 		}
 		w.setProducts(warehouseProducts);

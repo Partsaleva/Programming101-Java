@@ -33,8 +33,8 @@ public class InitialFiles {
 		List<Product> products=new ArrayList<Product>();
 		Random rand=new Random();
 		for (int i = 1; i < 101; i++) {
-			int quantity= rand.nextInt(200);
-			Product p=new Product("product"+i, rand.nextInt(100), quantity);
+			int quantity= rand.nextInt(200-1)+1;
+			Product p=new Product("product"+i, rand.nextInt(100-10)+10, quantity);
 			products.add(p);
 		}
 
