@@ -3,12 +3,15 @@ package processing;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import managers.DeliveryManager;
 import models.Location;
 import models.Product;
 import models.Warehouse;
+import models.requests.DeliveryRequest;
 import models.requests.SupplyRequest;
 
 public class RequestProcessor {
@@ -19,25 +22,31 @@ public class RequestProcessor {
 			SupplyRequest s=runSupplyRequest(warehouse,request);
 			s.log(request);
 		} else {
-			runDeliveryRequest(request);
+			DeliveryRequest d=runDeliveryRequest(request);
+			d.log(request);
 		}
 	}
 
-	private void runDeliveryRequest(String request) {
+	private DeliveryRequest runDeliveryRequest(String request) {
 		String[] data=request.split(" ");
 		String id=data[1];
 		Date date=new Date();
 		String[] location=data[4].split(",");
 		Location deliveryLocation=new Location(Double.parseDouble(location[0]), Double.parseDouble(location[1]));
-		List<Product> order=new ArrayList<Product>();
+		Map<String, Integer> order=new HashMap<String, Integer>();
 		
 		for (int i = 5; i < data.length; i=i+2) {
 			String name=data[i]; 
-			int weight=Integer.parseInt(data[i]);
-			int quantity=Integer.parseInt(data[i+1]);
-			
-			order.add(new Product(name, weight, quantity));
+			int quantity=Integer.parseInt(data[i+1]);			
+			order.put(name, quantity);
 		}
+		DeliveryRequest deliveryRequest=new DeliveryRequest(id, new Timestamp(date.getTime()),
+				deliveryLocation, order);
+		
+		DeliveryManager delM = new DeliveryManager();
+		delM.executeDelivery(deliveryRequest);
+		return deliveryRequest;
+		
 	}
 
 	private SupplyRequest runSupplyRequest(Warehouse warehouse,String request) {

@@ -6,7 +6,7 @@ import java.util.Map;
 
 import models.Location;
 
-public class DeliveryRequest implements Loggable{
+public class DeliveryRequest extends Request{
 
 	private String id;
 	private Date timestamp;
@@ -35,12 +35,6 @@ public class DeliveryRequest implements Loggable{
 
 	public Map<String, Integer> getOrder() {
 		return order;
-	}
-
-	@Override
-	public void log(String str) {
-		// TODO Auto-generated method stub
-		
 	}
 	
 	@Override

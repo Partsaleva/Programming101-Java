@@ -1,15 +1,12 @@
 package models.requests;
 
-import java.io.BufferedWriter;
-import java.io.FileWriter;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 import models.Product;
 
-public class SupplyRequest implements Loggable{
+public class SupplyRequest extends Request{
 
 	//<id> <timestamp YYYY-MM-DD HH:MM> 
 	private String id;
@@ -35,29 +32,6 @@ public class SupplyRequest implements Loggable{
 		return products;
 	}
 
-	@Override
-	public void log(String str) {
-		String[] words=str.split(" ");
-		StringBuilder sb=new StringBuilder();
-		
-		try(BufferedWriter writer=new BufferedWriter(
-				new FileWriter("requests", true))){
-			
-			sb.append("supply,");sb.append(words[1]);sb.append(",");
-			sb.append(words[2]);sb.append(" ");sb.append(words[3]);sb.append(",");
-			
-			for (int i = 4; i < words.length; i++) {
-				sb.append(words[i]+ " ");
-			}
-			writer.write(sb.toString());
-			writer.write(System.getProperty("line.separator"));
-			
-			
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		System.out.println(sb);
-	};
 	
 	@Override
 	public String toString() {
