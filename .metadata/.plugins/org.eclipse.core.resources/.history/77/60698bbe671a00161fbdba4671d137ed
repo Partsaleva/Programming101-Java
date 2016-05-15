@@ -1,0 +1,67 @@
+package managers;
+
+import java.util.Map;
+import java.util.Queue;
+
+import models.Drone;
+import models.Location;
+import models.Product;
+import models.Warehouse;
+import models.requests.DeliveryRequest;
+
+public class DeliveryManager {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+	public void executeDelivery(Warehouse warehouse,DeliveryRequest deliveryRequest) {
+		if(isAllProductsInStock(warehouse.getProducts(), deliveryRequest.getOrder())){
+			getProdustsFromWarehouse(warehouse.getProducts(), deliveryRequest.getOrder());
+			getDonesForDelivery(warehouse.getDrones());
+			estimateTimeOfArrival(warehouse,deliveryRequest.getTargetCoordinates());
+		}
+		
+	}
+
+	private void estimateTimeOfArrival(Warehouse warehouse,
+			Location targetCoordinates) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	private void getDonesForDelivery(Queue<Drone> drones) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	private void getProdustsFromWarehouse(Map<String, Product> products,
+			Map<String, Integer> order) {
+		
+		for (String key : order.keySet()) {
+			Product updatedProduct=new Product(key, products.get(key).getWeight(), 
+					products.get(key).getQuantity()- order.get(key));
+			
+			products.put(key, updatedProduct);
+		}
+	}
+
+	private boolean isAllProductsInStock(Map<String, Product> warehouseProducts, Map<String, Integer> order){
+		for (String key : order.keySet()) {
+			if(!warehouseProducts.containsKey(key)){
+				return false;
+			}
+		}
+		return true;		
+	}
+	
+	//distance between warehouse and delivery location
+	private double calculateDistance(Location w, Location d){
+		//The distance from cell [x1, y1] to cell [x2, y2] is calculated as 
+		//((x1 - x2)^2 + (y1 - y2)^2)^-2 (two-dimensional Euclidean distance).
+		double distanceUnits=Math.sqrt((w.getX()-d.getX()) * (w.getX()-d.getX()) + 
+				( (w.getY() - d.getY()) * (w.getY() - d.getY()) ));
+		return distanceUnits;		
+	}
+}

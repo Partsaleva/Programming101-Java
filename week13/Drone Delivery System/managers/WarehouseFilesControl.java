@@ -9,12 +9,12 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Queue;
 import java.util.Map.Entry;
+import java.util.concurrent.ConcurrentHashMap;
 
 import models.Drone;
 import models.Product;
@@ -52,7 +52,7 @@ public class WarehouseFilesControl {
 	
 	@SuppressWarnings("unchecked") 
 	Map<String, Product> getProductsForWarehouse(String warehouseId){		
-		Map<String, Product> prod=new HashMap<>();
+		Map<String, Product> prod=new ConcurrentHashMap<>();
 		List<Product> p=null;
 		
 		try(ObjectInputStream in =new ObjectInputStream(

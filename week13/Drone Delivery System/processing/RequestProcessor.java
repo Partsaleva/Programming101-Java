@@ -22,12 +22,12 @@ public class RequestProcessor {
 			SupplyRequest s=runSupplyRequest(warehouse,request);
 			s.log(request);
 		} else {
-			DeliveryRequest d=runDeliveryRequest(request);
+			DeliveryRequest d=runDeliveryRequest(warehouse,request);
 			d.log(request);
 		}
 	}
 
-	private DeliveryRequest runDeliveryRequest(String request) {
+	private DeliveryRequest runDeliveryRequest(Warehouse warehouse,String request) {
 		String[] data=request.split(" ");
 		String id=data[1];
 		Date date=new Date();
@@ -44,9 +44,8 @@ public class RequestProcessor {
 				deliveryLocation, order);
 		
 		DeliveryManager delM = new DeliveryManager();
-		delM.executeDelivery(deliveryRequest);
-		return deliveryRequest;
-		
+		delM.executeDelivery(warehouse,deliveryRequest);
+		return deliveryRequest;		
 	}
 
 	private SupplyRequest runSupplyRequest(Warehouse warehouse,String request) {
@@ -70,6 +69,8 @@ public class RequestProcessor {
 		return supplyRequest;
 				
 	}
+	
+	
 	public void addProducts(Warehouse w,List<Product> products){
 		Map<String, Product> warehouseProducts=w.getProducts();
 		for (Product p :products) {

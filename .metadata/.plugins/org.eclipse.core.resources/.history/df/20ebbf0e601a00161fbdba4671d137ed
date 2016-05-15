@@ -1,0 +1,18 @@
+package managers;
+
+import models.Warehouse;
+import models.requests.DeliveryRequest;
+
+public class DeliveryManager {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+	public void executeDelivery(Warehouse warehouse,DeliveryRequest deliveryRequest) {
+		// TODO Auto-generated method stub
+		
+	}
+
+}
