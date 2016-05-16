@@ -11,6 +11,7 @@ public class Warehouse implements Serializable{
 	private Location location;
 	private Map<String, Product>  products;
 	private Queue<Drone> drones;
+	private Queue<Drone> chineseDrones;
 	
 	public Warehouse(String id, Location location) {
 		this.id = id;
@@ -41,6 +42,14 @@ public class Warehouse implements Serializable{
 	}
 	
 	
+	public Queue<Drone> getChineseDrones() {
+		return chineseDrones;
+	}
+
+	public void setChineseDrones(Queue<Drone> chineesDrones) {
+		this.chineseDrones = chineesDrones;
+	}
+
 	@Override
 	public String toString() {
 		return "Warehouse [id=" + id + ", location=" + location + ", products="

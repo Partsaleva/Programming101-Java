@@ -1,0 +1,25 @@
+package managers;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Queue;
+
+import models.Drone;
+import models.Warehouse;
+
+public class DronesControl {
+
+	public List<Drone> chooseDrones(Warehouse warehouse, int deliveryWeight,
+			int deliveryTime) {
+		List<Drone> dronesForDelivery=new ArrayList<Drone>();
+		Queue<Drone> west=warehouse.getDrones();
+		Queue<Drone> chinese=warehouse.getChineseDrones();
+		int weight=deliveryWeight;
+		while(weight>0){
+			Drone drone=drones.poll();
+			dronesForDelivery.add(drone);
+			weight -= drone.getWeightCapacity();
+		}
+	}
+
+}

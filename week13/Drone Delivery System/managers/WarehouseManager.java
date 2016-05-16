@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Queue;
 
@@ -63,10 +64,11 @@ public class WarehouseManager {
 		WarehouseFilesControl t=new WarehouseFilesControl();
 		
 		Map<String, Product> products=t.getProductsForWarehouse(w.getId());
-		Queue<Drone> drones=t.getDronesForWarehouse(w.getId());
+		List<Queue<Drone>> drones=t.getDronesForWarehouse(w.getId());
 		
 		w.setProducts(products);
-		w.setDrones(drones);
+		w.setDrones(drones.get(0));
+		w.setChineseDrones(drones.get(1));
 		if (!warehouses.containsKey(w.getId())) {
 			warehouses.put(w.getId(), w);
 		}else{

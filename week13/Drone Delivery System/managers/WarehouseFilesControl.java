@@ -28,8 +28,12 @@ public class WarehouseFilesControl {
 		wm.addWarehouse(w);		
 	}
 	
-	Queue<Drone> getDronesForWarehouse(String warehouseId){
-		Queue<Drone> drones=new LinkedList<>();
+	List<Queue<Drone>> getDronesForWarehouse(String warehouseId){
+		List<Queue<Drone>> drones=new ArrayList<>();
+		
+		Queue<Drone> westDrones=new LinkedList<>();
+		Queue<Drone> chineseDrones=new LinkedList<>();
+		
 		try(ObjectInputStream in =new ObjectInputStream(
 				new BufferedInputStream(
 						new FileInputStream("drones"+warehouseId)))){
@@ -37,7 +41,10 @@ public class WarehouseFilesControl {
 			@SuppressWarnings("unchecked")
 			List<Drone> d=(List<Drone>) in.readObject();
 			for (Drone drone : d) {
-				drones.add(drone);				
+				while(drone.getId().contains("d")){
+					westDrones.add(drone);
+				}
+				chineseDrones.add(drone);				
 			}
 			
 		} catch (FileNotFoundException e) {

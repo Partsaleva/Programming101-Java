@@ -32,7 +32,21 @@ public class RequestProcessor {
 		String id=data[1];
 		Date date=new Date();
 		String[] location=data[4].split(",");
-		Location deliveryLocation=new Location(Double.parseDouble(location[0]), Double.parseDouble(location[1]));
+		double X=Double.parseDouble(location[0]);
+		double Y=Double.parseDouble(location[1]);
+		
+		Location deliveryLocation=null;
+		//check if coordinates are valid
+		if(X > 1000 || Y > 1000){
+			throw new IllegalArgumentException("Coodrdinates outside city ");
+			
+		}else if(X < 0 || Y < 0){
+			throw new IllegalArgumentException("Coodrdinates < 0 ");
+			
+		}else{
+			deliveryLocation=new Location(X,Y);
+		}
+		
 		Map<String, Integer> order=new HashMap<String, Integer>();
 		
 		for (int i = 5; i < data.length; i=i+2) {

@@ -21,32 +21,28 @@ public class DeliveryManager {
 	public void executeDelivery(Warehouse warehouse,DeliveryRequest deliveryRequest) {
 		if(isAllProductsInStock(warehouse.getProducts(), deliveryRequest.getOrder())){
 			int deliveryWeight=getProdustsFromWarehouse(warehouse.getProducts(), deliveryRequest.getOrder());
-			getDonesForDelivery(warehouse.getDrones(),deliveryWeight);
-			estimateTimeOfArrival(warehouse,deliveryRequest);
+			int distance=(int) calculateDistance(warehouse.getLocation(), deliveryRequest.getTargetCoordinates());
+			int deliveryTime=estimateTimeOfArrival(deliveryRequest, distance);
+			getDronesForDelivery(warehouse ,deliveryWeight, distance);
+			
 		}
 		
 	}
 
-	private void estimateTimeOfArrival(Warehouse warehouse,
-			DeliveryRequest deliveryRequest) {
-		int distance=(int) calculateDistance(warehouse.getLocation(), deliveryRequest.getTargetCoordinates());
+	private int estimateTimeOfArrival(DeliveryRequest deliveryRequest, int distance) {	
 		int timeForLoadUnload=deliveryRequest.getOrder().size() *2 ;
 		int time=distance+timeForLoadUnload;
-		int minutes = time / 60; //since both are ints, you get an int
-		int sec = time % 60;
-		System.out.printf("Estimated time of arrival: %d:%02d (minutes)\n ",minutes, sec );
+		int hours = time / 60; //since both are ints, you get an int
+		int min = time % 60;
+		System.out.printf("Estimated time of arrival: %d:%02d (hours)\n",hours, min );
+		return time;
 	}
 
 	//TODO check if battery holds
-	private void getDonesForDelivery(Queue<Drone> drones, int deliveryWeight) {
-		List<Drone> dronesForDelivery=new ArrayList<Drone>();
-		int weight=deliveryWeight;
-		while(weight>0){
-			Drone drone=drones.poll();
-			dronesForDelivery.add(drone);
-			weight -= drone.getWeightCapacity();
-		}
-		
+	private void getDronesForDelivery(Warehouse warehouse, int deliveryWeight, int distance) {
+		DronesControl droneControl=new DronesControl();
+		List<Drone> dronesForDelivery=droneControl.chooseDrones(warehouse, deliveryWeight,distance);
+				
 	}
 
 	//getProducts and calculate weightUnits
@@ -79,5 +75,9 @@ public class DeliveryManager {
 		double distanceUnits=Math.sqrt((w.getX()-d.getX()) * (w.getX()-d.getX()) + 
 				( (w.getY() - d.getY()) * (w.getY() - d.getY()) ));
 		return distanceUnits;		
+	}
+	
+	private int distance(int dist){
+		return dist;
 	}
 }
