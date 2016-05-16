@@ -4,14 +4,12 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Queue;
 
-import exceptions.noSuitableDroneFoundException;
 import models.Drone;
 import models.Warehouse;
 
 public class DronesControl {
 
-	public List<Drone> chooseDrones(Warehouse warehouse, int deliveryWeight,int distance) 
-			throws noSuitableDroneFoundException {
+	public List<Drone> chooseDrones(Warehouse warehouse, int deliveryWeight,int distance) {
 		List<Drone> dronesForDelivery=null;
 		Queue<Drone> west=warehouse.getDrones();
 		Queue<Drone> chinese=warehouse.getChineseDrones();
@@ -25,7 +23,7 @@ public class DronesControl {
 			dronesForDelivery=getPropDrones(west,deliveryWeight);
 			
 		}else{
-			throw new noSuitableDroneFoundException("There is no drone that can execute the order");
+			//throw new 
 		}
 		
 		return dronesForDelivery;

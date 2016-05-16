@@ -10,8 +10,7 @@ import models.Warehouse;
 
 public class DronesControl {
 
-	public List<Drone> chooseDrones(Warehouse warehouse, int deliveryWeight,int distance) 
-			throws noSuitableDroneFoundException {
+	public List<Drone> chooseDrones(Warehouse warehouse, int deliveryWeight,int distance) {
 		List<Drone> dronesForDelivery=null;
 		Queue<Drone> west=warehouse.getDrones();
 		Queue<Drone> chinese=warehouse.getChineseDrones();
