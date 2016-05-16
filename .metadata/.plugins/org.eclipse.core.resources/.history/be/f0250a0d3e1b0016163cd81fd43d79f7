@@ -19,7 +19,7 @@ public class DeliveryManager {
 	}
 
 	public void executeDelivery(Warehouse warehouse,DeliveryRequest deliveryRequest) 
-			throws noSuitableDroneFoundException, ProductsNotFoundException {
+			throws noSuitableDroneFoundException {
 		if(isAllProductsInStock(warehouse.getProducts(), deliveryRequest.getOrder())){
 			int deliveryWeight=getProdustsFromWarehouse(warehouse.getProducts(), deliveryRequest.getOrder());
 			int distance=(int) calculateDistance(warehouse.getLocation(), deliveryRequest.getTargetCoordinates());
@@ -61,8 +61,7 @@ public class DeliveryManager {
 		return weightUnits;
 	}
 
-	private boolean isAllProductsInStock(Map<String, Product> warehouseProducts, Map<String, Integer> order) 
-			throws ProductsNotFoundException{
+	private boolean isAllProductsInStock(Map<String, Product> warehouseProducts, Map<String, Integer> order){
 		for (String key : order.keySet()) {
 			if(!warehouseProducts.containsKey(key)){
 				throw new ProductsNotFoundException("One or more Products not in stock");

@@ -7,8 +7,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import exceptions.ProductsNotFoundException;
-import exceptions.noSuitableDroneFoundException;
 import managers.DeliveryManager;
 import models.Location;
 import models.Product;
@@ -19,8 +17,7 @@ import models.requests.SupplyRequest;
 public class RequestProcessor {
 
 	
-	public void processRequest(Warehouse warehouse,String type, String request) 
-			throws noSuitableDroneFoundException, ProductsNotFoundException{
+	public void processRequest(Warehouse warehouse,String type, String request){
 		if (type.equals("supply")) {
 			SupplyRequest s=runSupplyRequest(warehouse,request);
 			s.log(request);
@@ -30,8 +27,7 @@ public class RequestProcessor {
 		}
 	}
 
-	private DeliveryRequest runDeliveryRequest(Warehouse warehouse,String request) 
-			throws noSuitableDroneFoundException, ProductsNotFoundException {
+	private DeliveryRequest runDeliveryRequest(Warehouse warehouse,String request) {
 		String[] data=request.split(" ");
 		String id=data[1];
 		Date date=new Date();

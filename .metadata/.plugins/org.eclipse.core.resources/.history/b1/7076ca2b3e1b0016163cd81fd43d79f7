@@ -19,7 +19,7 @@ public class DeliveryManager {
 	}
 
 	public void executeDelivery(Warehouse warehouse,DeliveryRequest deliveryRequest) 
-			throws noSuitableDroneFoundException, ProductsNotFoundException {
+			throws noSuitableDroneFoundException {
 		if(isAllProductsInStock(warehouse.getProducts(), deliveryRequest.getOrder())){
 			int deliveryWeight=getProdustsFromWarehouse(warehouse.getProducts(), deliveryRequest.getOrder());
 			int distance=(int) calculateDistance(warehouse.getLocation(), deliveryRequest.getTargetCoordinates());

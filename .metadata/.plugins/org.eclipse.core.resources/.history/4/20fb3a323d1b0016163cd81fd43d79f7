@@ -5,7 +5,6 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 
-import exceptions.ProductsNotFoundException;
 import exceptions.noSuitableDroneFoundException;
 import managers.WarehouseManager;
 import models.Warehouse;
@@ -23,13 +22,7 @@ public class Run {
 		
 		//readInputFile(warehouse,supplyFile);
 		
-		try {
-			readInputFile(warehouse,deliveryFile);
-		} catch (noSuitableDroneFoundException e) {			
-			e.printStackTrace();
-		} catch (ProductsNotFoundException e) {
-			e.printStackTrace();
-		}
+		readInputFile(warehouse,deliveryFile);
 		
 		
 		//w.updateWarehouseData(warehouse);
@@ -38,8 +31,7 @@ public class Run {
 		
 	}
 
-	public static void readInputFile(Warehouse warehouse,String inputFile) 
-			throws noSuitableDroneFoundException, ProductsNotFoundException{
+	public static void readInputFile(Warehouse warehouse,String inputFile){
 		try(BufferedReader reader=new BufferedReader(
 				new FileReader(inputFile))){
 			String line=null;
@@ -55,7 +47,7 @@ public class Run {
 	}
 	
 	public static void readRequest(Warehouse warehouse,String request) 
-			throws noSuitableDroneFoundException, ProductsNotFoundException{
+			throws noSuitableDroneFoundException{
 		String[] reqParts=request.split(" ");
 		//get word supply or delivery
 		String type=reqParts[0];
