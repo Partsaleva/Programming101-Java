@@ -1,0 +1,22 @@
+package week17;
+
+public class Practice {
+
+	public static void main(String[] args) {
+		Thread thread=new Thread(new RunnableImpl());
+		thread.start();
+		System.out.println("Started thread");
+	}
+
+	public static class RunnableImpl implements Runnable{
+
+		@Override
+		public void run() {
+			for (int i = 0; i < 100; i++) {
+				System.out.println("line "+ i);
+			}
+			
+		}
+		
+	}
+}

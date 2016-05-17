@@ -22,7 +22,8 @@ import javax.security.auth.spi.LoginModule;
  */
 public class UsernameLoginModule implements LoginModule {
     
-    private Subject subject;
+    @SuppressWarnings("unused")
+	private Subject subject;
     
     private CallbackHandler callbackhandler;
 

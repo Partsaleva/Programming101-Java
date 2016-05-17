@@ -32,6 +32,7 @@ public class Main {
 	
 	static class B{
 		static int a=0;
+		@SuppressWarnings("static-access")
 		public synchronized void incr(){		
 			this.a+=1;
 			System.out.println(a);	
