@@ -41,9 +41,9 @@ public class WarehouseFilesControl {
 			@SuppressWarnings("unchecked")
 			List<Drone> d=(List<Drone>) in.readObject();
 			for (Drone drone : d) {
-				while(drone.getId().contains("d")){
+				if(drone.getId().contains("d")){
 					westDrones.add(drone);
-				}
+				}else
 				chineseDrones.add(drone);				
 			}
 			
@@ -54,6 +54,8 @@ public class WarehouseFilesControl {
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		}
+		drones.add(westDrones);
+		drones.add(chineseDrones);
 		return drones;
 	}
 	

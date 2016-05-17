@@ -16,15 +16,17 @@ public class Run {
 
 	public static void main(String[] args) {
 		WarehouseManager w=new WarehouseManager();
-		String supplyFile="testInputSupply.txt";
-		String deliveryFile="testInputDelivery.txt";
+		//String supplyFile="testInputSupply.txt";
+		//String deliveryFile="testInputDelivery.txt";
+		String inputFile="input.txt";
 		//TODO create other warehouses
 		Warehouse warehouse=w.getWarehouseById("w1");
 		
-		//readInputFile(warehouse,supplyFile);
 		
 		try {
-			readInputFile(warehouse,deliveryFile);
+			//readInputFile(warehouse,supplyFile);
+			//readInputFile(warehouse,deliveryFile);
+			readInputFile(warehouse,inputFile);
 		} catch (noSuitableDroneFoundException e) {			
 			e.printStackTrace();
 		} catch (ProductsNotFoundException e) {

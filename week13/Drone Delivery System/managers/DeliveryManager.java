@@ -20,32 +20,28 @@ public class DeliveryManager {
 
 	public void executeDelivery(Warehouse warehouse,DeliveryRequest deliveryRequest) 
 			throws noSuitableDroneFoundException, ProductsNotFoundException {
+		DronesControl control=new DronesControl(); 
 		if(isAllProductsInStock(warehouse.getProducts(), deliveryRequest.getOrder())){
+			
 			int deliveryWeight=getProdustsFromWarehouse(warehouse.getProducts(), deliveryRequest.getOrder());
 			int distance=(int) calculateDistance(warehouse.getLocation(), deliveryRequest.getTargetCoordinates());
-			int deliveryTime=estimateTimeOfArrival(deliveryRequest, distance);
-			getDronesForDelivery(warehouse ,deliveryWeight, distance);
-			
+			estimateTimeOfArrival(deliveryRequest, distance);
+			List<Drone> dronesForDelivery=control.getDronesForDelivery(warehouse ,deliveryWeight, distance);
+			control.chargeUsedDrones(warehouse,dronesForDelivery, distance, deliveryRequest.getTimestamp());		
 		}
 		
 	}
 
-	private int estimateTimeOfArrival(DeliveryRequest deliveryRequest, int distance) {	
+
+	private void estimateTimeOfArrival(DeliveryRequest deliveryRequest, int distance) {	
 		int timeForLoadUnload=deliveryRequest.getOrder().size() *2 ;
 		int time=distance+timeForLoadUnload;
-		int hours = time / 60; //since both are ints, you get an int
+		int hours = time / 60; 
 		int min = time % 60;
 		System.out.printf("Estimated time of arrival: %d:%02d (hours)\n",hours, min );
-		return time;
 	}
 
-	//TODO check if battery holds
-	private void getDronesForDelivery(Warehouse warehouse, int deliveryWeight, int distance) 
-			throws noSuitableDroneFoundException {
-		DronesControl droneControl=new DronesControl();
-		List<Drone> dronesForDelivery=droneControl.chooseDrones(warehouse, deliveryWeight,distance);
-				
-	}
+	
 
 	//getProducts and calculate weightUnits
 	private int getProdustsFromWarehouse(Map<String, Product> products,
@@ -80,7 +76,4 @@ public class DeliveryManager {
 		return distanceUnits;		
 	}
 	
-	private int distance(int dist){
-		return dist;
-	}
 }

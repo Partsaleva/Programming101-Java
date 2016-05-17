@@ -18,6 +18,7 @@ public class Warehouse implements Serializable{
 		this.location = location;
 		setProducts(products);
 		setDrones(drones);
+		setChineseDrones(chineseDrones);
 	}
 	
 	public void setProducts(Map<String, Product>  products) {
@@ -46,8 +47,8 @@ public class Warehouse implements Serializable{
 		return chineseDrones;
 	}
 
-	public void setChineseDrones(Queue<Drone> chineesDrones) {
-		this.chineseDrones = chineesDrones;
+	public void setChineseDrones(Queue<Drone> chineseDrones) {
+		this.chineseDrones = chineseDrones;
 	}
 
 	@Override
