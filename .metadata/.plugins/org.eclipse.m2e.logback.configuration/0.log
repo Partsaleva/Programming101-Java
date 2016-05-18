@@ -876,3 +876,7 @@ java.net.ConnectException: Connection timed out
 2016-05-17 18:58:56,997 [Worker-4] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/partsaleva/Projects/java101/Simple JSON pretty printer service/src/main/resources
 2016-05-17 18:58:56,998 [Worker-4] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
 2016-05-17 18:58:56,999 [Worker-4] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/partsaleva/Projects/java101/Simple JSON pretty printer service/src/test/resources
+2016-05-18 07:57:02,560 [Worker-14] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-05-18 07:57:02,636 [Worker-14] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/partsaleva/Projects/java101/Simple JSON pretty printer service/src/main/resources
+2016-05-18 07:57:02,638 [Worker-14] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-05-18 07:57:02,638 [Worker-14] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/partsaleva/Projects/java101/Simple JSON pretty printer service/src/test/resources

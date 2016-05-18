@@ -16,10 +16,34 @@ import models.Warehouse;
 import models.requests.DeliveryRequest;
 import models.requests.SupplyRequest;
 
-public class RequestProcessor {
+public class RequestProcessor implements Runnable{
 
+	Warehouse warehouse;
+	String type;
+	String request;
 	
-	public void processRequest(Warehouse warehouse,String type, String request) 
+	
+
+	public RequestProcessor(Warehouse warehouse, String type, String request) {
+		this.warehouse = warehouse;
+		this.type = type;
+		this.request = request;
+	}
+
+	@Override
+	public void run() {
+		
+		try {
+			processRequest();
+		} catch (noSuitableDroneFoundException e) {
+			System.err.println(e);
+		} catch (ProductsNotFoundException e) {
+			System.err.println(e);
+		}
+					
+	}
+	
+	public void processRequest() 
 			throws noSuitableDroneFoundException, ProductsNotFoundException{
 		if (type.equals("supply")) {
 			SupplyRequest s=runSupplyRequest(warehouse,request);
@@ -102,6 +126,7 @@ public class RequestProcessor {
 		}
 		w.setProducts(warehouseProducts);
 	}
+
 	
 
 }

@@ -13,10 +13,7 @@ import models.requests.DeliveryRequest;
 
 public class DeliveryManager {
 
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
-	}
+	
 
 	public void executeDelivery(Warehouse warehouse,DeliveryRequest deliveryRequest) 
 			throws noSuitableDroneFoundException, ProductsNotFoundException {
@@ -25,9 +22,9 @@ public class DeliveryManager {
 			
 			int deliveryWeight=getProdustsFromWarehouse(warehouse.getProducts(), deliveryRequest.getOrder());
 			int distance=(int) calculateDistance(warehouse.getLocation(), deliveryRequest.getTargetCoordinates());
-			estimateTimeOfArrival(deliveryRequest, distance);
 			List<Drone> dronesForDelivery=control.getDronesForDelivery(warehouse ,deliveryWeight, distance);
-			control.chargeUsedDrones(warehouse,dronesForDelivery, distance, deliveryRequest.getTimestamp());		
+			control.chargeUsedDrones(warehouse,dronesForDelivery, distance, deliveryRequest.getTimestamp());
+			estimateTimeOfArrival(deliveryRequest, distance);
 		}
 		
 	}

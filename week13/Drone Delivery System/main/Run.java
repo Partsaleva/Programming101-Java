@@ -5,8 +5,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 
-import exceptions.ProductsNotFoundException;
-import exceptions.noSuitableDroneFoundException;
+
 import managers.WarehouseManager;
 import models.Warehouse;
 import processing.RequestProcessor;
@@ -23,15 +22,13 @@ public class Run {
 		Warehouse warehouse=w.getWarehouseById("w1");
 		
 		
-		try {
+		
 			//readInputFile(warehouse,supplyFile);
 			//readInputFile(warehouse,deliveryFile);
-			readInputFile(warehouse,inputFile);
-		} catch (noSuitableDroneFoundException e) {			
-			e.printStackTrace();
-		} catch (ProductsNotFoundException e) {
-			e.printStackTrace();
-		}
+			
+		readInputFile(warehouse,inputFile);
+			
+		
 		
 		
 		//w.updateWarehouseData(warehouse);
@@ -40,12 +37,12 @@ public class Run {
 		
 	}
 
-	public static void readInputFile(Warehouse warehouse,String inputFile) 
-			throws noSuitableDroneFoundException, ProductsNotFoundException{
+	public static void readInputFile(Warehouse warehouse,String inputFile){
 		try(BufferedReader reader=new BufferedReader(
 				new FileReader(inputFile))){
 			String line=null;
 			while((line=reader.readLine())!= null){
+				
 				readRequest(warehouse,line);
 			}
 					
@@ -56,14 +53,18 @@ public class Run {
 		}
 	}
 	
-	public static void readRequest(Warehouse warehouse,String request) 
-			throws noSuitableDroneFoundException, ProductsNotFoundException{
+	public static void readRequest(Warehouse warehouse,String request) {
 		String[] reqParts=request.split(" ");
 		//get word supply or delivery
 		String type=reqParts[0];
 		//process request
-		RequestProcessor rp=new RequestProcessor();
-		rp.processRequest(warehouse,type, request);
+		Thread t=new Thread(new RequestProcessor(warehouse,type, request));
+		t.start();
+		try {
+			t.join();
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
 	}
 	
 }
