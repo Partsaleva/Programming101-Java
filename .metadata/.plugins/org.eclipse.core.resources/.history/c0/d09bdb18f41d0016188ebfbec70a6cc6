@@ -22,6 +22,8 @@ public class Run {
 		//TODO create other warehouses
 		Warehouse warehouse=w.getWarehouseById("w1");
 		
+		
+		
 			//readInputFile(warehouse,supplyFile);
 			//readInputFile(warehouse,deliveryFile);
 			
