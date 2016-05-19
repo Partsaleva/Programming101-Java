@@ -1,0 +1,21 @@
+package week17;
+
+import java.util.Arrays;
+import java.util.List;
+import java.util.function.Consumer;
+
+public class Pract1 {
+
+	public static void main(String[] args) {
+		List<String> l =Arrays.asList("one", "two", "four", "eight");
+	
+		
+		l.forEach(new Consumer<String>(){		
+			public void accept(String s){
+				System.out.println(s);
+			}			
+		});
+
+		l.forEach(s-> System.out.println(s));
+	}
+}

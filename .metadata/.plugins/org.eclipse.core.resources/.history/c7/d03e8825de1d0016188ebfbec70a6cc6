@@ -1,0 +1,54 @@
+package week17;
+
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
+import java.util.function.Consumer;
+
+public class Pract1 {
+
+	public static void main(String[] args) {
+		List<String> l =Arrays.asList( "four","one", "two", "eight");
+	
+		
+		l.forEach(new Consumer<String>(){		
+			public void accept(String s){
+				System.out.print(s + " ");
+			}			
+		});
+
+		System.out.println();
+		l.forEach(s-> System.out.print(s + " "));
+		
+		System.out.println();
+		l.forEach(System.out::println);
+			
+		Comparator<String> x = new Comparator<String>()
+	    {
+	        @Override
+	        public int compare(String o1, String o2)
+	        {
+	            if(o1.length() < o2.length())
+	                return -1;
+	            if(o2.length() < o1.length())
+	                return 1;
+	            return 0;
+	        }
+	    };
+
+	    Collections.sort(l,  x);
+	    System.out.println(l);
+
+	    
+	    Collections.sort(new Comparator<String>(){
+			@Override
+			public int compare(String a, String b) {
+				return Integer.compare(a.length(), b.length());
+			}
+	    	
+	    });
+	}
+	
+	
+}

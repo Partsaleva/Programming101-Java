@@ -129,15 +129,16 @@ public class RequestProcessor implements Runnable{
 		w.setProducts(warehouseProducts);
 	}
 
-	private int sToInt(String s){
-		return Integer.parseInt(s.substring(0, 1).replaceAll("^[0]", ""));
+	private int toInt(String s){
+		return Integer.parseInt(s);
 	}
 	
 	private DTimestamp getTimestamp(String date, String time){
 		String[] d=date.split("-");
-		String[] t=date.split(":");
-		return new DTimestamp(new DDate(sToInt(d[0]), sToInt(d[1]), sToInt(d[2])),
-				new DTime(sToInt(t[0]), sToInt(t[1])));
+		String[] t=time.split(":");
+		
+		return new DTimestamp(new DDate(toInt(d[0]), toInt(d[1]), toInt(d[2])),
+				new DTime(toInt(t[0]), toInt(t[1])));
 	}
 
 }
