@@ -1,0 +1,24 @@
+package models.timestamp;
+
+public class DTime {
+
+	private int hh;
+	private int mm;
+	public DTime(int hh, int mm) {
+		super();
+		this.hh = hh;
+		this.mm = mm;
+	}
+	public int getHh() {
+		return hh;
+	}
+	public int getMm() {
+		return mm;
+	}
+	@Override
+	public String toString() {
+		return hh + ":" + mm;
+	}
+	
+	
+}

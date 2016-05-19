@@ -1,22 +1,22 @@
 package models.requests;
 
-import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
 import models.Location;
+import models.timestamp.DTimestamp;
 
 public class DeliveryRequest extends Request{
 
 	private String id;
-	private Date timestamp;
+	private DTimestamp timestamp;
 	private Location targetCoordinates; 
 	 //<product name > <quantity>
 	private Map<String, Integer> order=new HashMap<>();
 	
-	public DeliveryRequest(String id, Date timestamp, Location targetCoordinates, Map<String, Integer> order) {
+	public DeliveryRequest(String id, DTimestamp dTimestamp, Location targetCoordinates, Map<String, Integer> order) {
 		this.id = id;
-		this.timestamp = timestamp;
+		this.timestamp = dTimestamp;
 		this.targetCoordinates = targetCoordinates;
 		this.order = order;
 	}
@@ -25,7 +25,7 @@ public class DeliveryRequest extends Request{
 		return id;
 	}
 
-	public Date getTimestamp() {
+	public DTimestamp getTimestamp() {
 		return timestamp;
 	}
 

@@ -1,8 +1,6 @@
 package processing;
 
-import java.sql.Timestamp;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -15,6 +13,9 @@ import models.Product;
 import models.Warehouse;
 import models.requests.DeliveryRequest;
 import models.requests.SupplyRequest;
+import models.timestamp.DDate;
+import models.timestamp.DTime;
+import models.timestamp.DTimestamp;
 
 public class RequestProcessor implements Runnable{
 
@@ -54,11 +55,13 @@ public class RequestProcessor implements Runnable{
 		}
 	}
 
+	
+	
 	private DeliveryRequest runDeliveryRequest(Warehouse warehouse,String request) 
 			throws noSuitableDroneFoundException, ProductsNotFoundException {
 		String[] data=request.split(" ");
 		String id=data[1];
-		Date date=new Date();
+		
 		String[] location=data[4].split(",");
 		double X=Double.parseDouble(location[0]);
 		double Y=Double.parseDouble(location[1]);
@@ -82,7 +85,7 @@ public class RequestProcessor implements Runnable{
 			int quantity=Integer.parseInt(data[i+1]);			
 			order.put(name, quantity);
 		}
-		DeliveryRequest deliveryRequest=new DeliveryRequest(id, new Timestamp(date.getTime()),
+		DeliveryRequest deliveryRequest=new DeliveryRequest(id, getTimestamp(data[2], data[3]),
 				deliveryLocation, order);
 		
 		DeliveryManager delM = new DeliveryManager();
@@ -93,7 +96,6 @@ public class RequestProcessor implements Runnable{
 	private SupplyRequest runSupplyRequest(Warehouse warehouse,String request) {
 		String[] data=request.split(" ");
 		String id=data[1];
-		Date date= new Date();
 
 		List<Product> products=new ArrayList<Product>();
 		
@@ -105,7 +107,7 @@ public class RequestProcessor implements Runnable{
 			products.add(new Product(name, weight, quantity));
 		}
 		
-		SupplyRequest supplyRequest=new SupplyRequest(id, new Timestamp(date.getTime()), products);
+		SupplyRequest supplyRequest=new SupplyRequest(id, getTimestamp(data[2], data[3]), products);
 		//TODO change when can choose warehouse
 		addProducts(warehouse, supplyRequest.getProducts());	
 		return supplyRequest;
@@ -127,6 +129,15 @@ public class RequestProcessor implements Runnable{
 		w.setProducts(warehouseProducts);
 	}
 
+	private int sToInt(String s){
+		return Integer.parseInt(s.substring(0, 1).replaceAll("^[0]", ""));
+	}
 	
+	private DTimestamp getTimestamp(String date, String time){
+		String[] d=date.split("-");
+		String[] t=date.split(":");
+		return new DTimestamp(new DDate(sToInt(d[0]), sToInt(d[1]), sToInt(d[2])),
+				new DTime(sToInt(t[0]), sToInt(t[1])));
+	}
 
 }

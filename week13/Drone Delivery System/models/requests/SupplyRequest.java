@@ -1,30 +1,32 @@
 package models.requests;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import models.Product;
+import models.timestamp.DTimestamp;
 
 public class SupplyRequest extends Request{
 
 	//<id> <timestamp YYYY-MM-DD HH:MM> 
 	private String id;
-	private Date timeStamp;
+	private DTimestamp timeStamp;
 //	<product name 1> <product weight> <quantity>
 	private List<Product> products=new ArrayList<>();
 	
-	public SupplyRequest(String id, Date timeStamp,  List<Product> products) {
+	public SupplyRequest(String id, DTimestamp dTimestamp,  List<Product> products) {
 		this.id = id;
-		this.timeStamp = timeStamp;
+		this.timeStamp = dTimestamp;
 		this.products = products;
 	}
+
+	
 
 	public String getId() {
 		return id;
 	}
 
-	public Date getTimeStamp() {
+	public DTimestamp getTimeStamp() {
 		return timeStamp;
 	}
 

@@ -1,0 +1,9 @@
+package models.timestamp;
+
+public class DTimestamp {
+
+	private DDate date;
+	private DTime time;
+	
+	
+}

@@ -1,15 +1,15 @@
 package managers;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.Queue;
-import java.util.concurrent.TimeUnit;
 
 import exceptions.noSuitableDroneFoundException;
 import models.ChargingStation;
 import models.Drone;
 import models.Warehouse;
+import models.timestamp.DTime;
+import models.timestamp.DTimestamp;
 
 public class DronesControl {
 
@@ -57,15 +57,18 @@ public class DronesControl {
 		
 		return drone.getBatteryUnits()>battery;		
 	}
-
-	public void chargeUsedDrones(Warehouse warehouse,List<Drone> dronesForDelivery,int distance, Date timestamp) {
+	private int returnMinutes(DTime t){
+		return t.getHh() * 60 + t.getMm();
+		
+	}
+	public void chargeUsedDrones(Warehouse warehouse,List<Drone> dronesForDelivery,int distance, DTimestamp dTimestamp) {
 		List<ChargingStation> charge=new ArrayList<>(32);
 		//save drones with time and used battery
-		charge.add(new ChargingStation(dronesForDelivery, distance*2, timestamp.getTime()));
+		charge.add(new ChargingStation(dronesForDelivery, distance*2, dTimestamp.getTime()));
 		
 		for (ChargingStation chStat : charge) {
 			//calculate minutes between current time and saved for drones before
-			long minutes = TimeUnit.MILLISECONDS.toMinutes(timestamp.getTime() - chStat.getTimestamp());
+			int minutes = returnMinutes(dTimestamp.getTime()) - returnMinutes(chStat.getTimestamp());
 			//if BU spent < passed time we add drones back to warehouse
 			if (chStat.getUnitsForCharging() < minutes) {
 				Queue<Drone> warehouseDrones=null;

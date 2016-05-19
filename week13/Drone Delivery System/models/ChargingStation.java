@@ -3,16 +3,18 @@ package models;
 
 import java.util.List;
 
+import models.timestamp.DTime;
+
 public class ChargingStation {
 
 	private List<Drone> drones;
 	private int unitsForCharging;
-	private long timestamp;
+	private DTime timestamp;
 	
-	public ChargingStation(List<Drone> drones, int unitsForCharging,long timestamp) {
+	public ChargingStation(List<Drone> drones, int unitsForCharging,DTime dTime) {
 		this.drones = drones;
 		this.unitsForCharging = unitsForCharging;
-		this.timestamp=timestamp;
+		this.timestamp=dTime;
 	}
 
 	public List<Drone> getDrones() {
@@ -24,7 +26,7 @@ public class ChargingStation {
 	}
 
 	
-	public long getTimestamp() {
+	public DTime getTimestamp() {
 		return timestamp;
 	}
 
