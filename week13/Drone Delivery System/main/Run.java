@@ -7,9 +7,9 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import managers.WarehouseManager;
 import models.Warehouse;
 import processing.RequestProcessor;
+import processing.WarehouseManager;
 
 
 public class Run {
@@ -27,6 +27,7 @@ public class Run {
 			thread.start();
 			synchronized (thread) {
 				try {
+					//wait until thread work is complete
 					thread.wait();
 				} catch (InterruptedException e) {
 					e.printStackTrace();
@@ -54,7 +55,8 @@ public class Run {
 		try(BufferedReader reader=new BufferedReader(
 				new FileReader(inputFile))){
 			String line=null;
-			while((line=reader.readLine())!= null){				
+			while((line=reader.readLine())!= null){	
+				//add all threads in list to execute
 				listOfThreads.add(readRequest(warehouse,line));
 			}
 					
@@ -70,7 +72,7 @@ public class Run {
 		String[] reqParts=request.split(" ");
 		//get word supply or delivery
 		String type=reqParts[0];
-		//process request
+		//process request 
 		return (new Thread(new RequestProcessor(warehouse,type, request)));		
 	}
 	

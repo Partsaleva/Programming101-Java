@@ -4,11 +4,9 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.concurrent.locks.Lock;
 
 import exceptions.ProductsNotFoundException;
 import exceptions.noSuitableDroneFoundException;
-import managers.DeliveryManager;
 import models.Location;
 import models.Product;
 import models.Warehouse;
@@ -45,7 +43,7 @@ public class RequestProcessor implements Runnable{
 			} catch (ProductsNotFoundException e) {
 				System.err.println(e);
 			}
-			
+			//notify when its ready
 			notify();
 		}
 					
@@ -100,6 +98,8 @@ public class RequestProcessor implements Runnable{
 		return deliveryRequest;		
 	}
 
+	
+	
 	private SupplyRequest runSupplyRequest(Warehouse warehouse,String request) {
 		String[] data=request.split(" ");
 		String id=data[1];
@@ -144,8 +144,8 @@ public class RequestProcessor implements Runnable{
 		String[] d=date.split("-");
 		String[] t=time.split(":");
 		
-		return new DTimestamp(new DDate(toInt(d[0]), toInt(d[1]), toInt(d[2])),
-				new DTime(toInt(t[0]), toInt(t[1])));
+		return new DTimestamp(new DDate( toInt(d[0] ), toInt( d[1] ), toInt( d[2] ) ),
+				new DTime(toInt( t[0] ), toInt( t[1] ) ));
 	}
 
 }
