@@ -2,15 +2,16 @@ package models;
 
 
 import java.util.List;
-import models.timestamp.DTimestamp;
+
+import models.timestamp.DTime;
 
 public class ChargingStation {
 
 	private List<Drone> drones;
 	private int unitsForCharging;
-	private DTimestamp timestamp;
+	private DTime timestamp;
 	
-	public ChargingStation(List<Drone> drones, int unitsForCharging,DTimestamp dTime) {
+	public ChargingStation(List<Drone> drones, int unitsForCharging,DTime dTime) {
 		this.drones = drones;
 		this.unitsForCharging = unitsForCharging;
 		this.timestamp=dTime;
@@ -25,7 +26,7 @@ public class ChargingStation {
 	}
 
 	
-	public DTimestamp getTimestamp() {
+	public DTime getTimestamp() {
 		return timestamp;
 	}
 

@@ -2,6 +2,8 @@ package models;
 
 
 import java.util.List;
+
+import models.timestamp.DTime;
 import models.timestamp.DTimestamp;
 
 public class ChargingStation {

@@ -1,2 +1,0 @@
-id,location,cityName
-w1,42-42,Sofia
