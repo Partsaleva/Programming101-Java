@@ -25,6 +25,7 @@ public class DeliveryManager {
 			List<Drone> dronesForDelivery=control.getDronesForDelivery(warehouse ,deliveryWeight, distance);
 			control.chargeUsedDrones(warehouse,dronesForDelivery, distance, deliveryRequest.getTimestamp());
 			estimateTimeOfArrival(deliveryRequest, distance);
+
 		}
 		
 	}

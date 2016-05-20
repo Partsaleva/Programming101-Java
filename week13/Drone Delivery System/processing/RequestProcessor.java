@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.locks.Lock;
 
 import exceptions.ProductsNotFoundException;
 import exceptions.noSuitableDroneFoundException;
@@ -34,12 +35,18 @@ public class RequestProcessor implements Runnable{
 	@Override
 	public void run() {
 		
-		try {
-			processRequest();
-		} catch (noSuitableDroneFoundException e) {
-			System.err.println(e);
-		} catch (ProductsNotFoundException e) {
-			System.err.println(e);
+		synchronized(this){
+			try {
+				
+				processRequest();
+				
+			} catch (noSuitableDroneFoundException e) {
+				System.err.println(e);
+			} catch (ProductsNotFoundException e) {
+				System.err.println(e);
+			}
+			
+			notify();
 		}
 					
 	}

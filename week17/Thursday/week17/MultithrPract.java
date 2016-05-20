@@ -1,8 +1,10 @@
 package week17;
 
+import java.util.List;
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.CompletableFuture;
+import java.util.stream.Collectors;
 import java.util.stream.LongStream;
 
 public class MultithrPract {
@@ -38,6 +40,16 @@ public class MultithrPract {
 		});
 		
 		f1.acceptEitherAsync(f2, System.out::println).join();
+		
+		
+		
+		List<Long> numbers =LongStream
+				.range(0,(long) 1e7)
+				.boxed().
+				collect(Collectors.toList());
+		long result=numbers.parallelStream()
+				.reduce(0L, (x,y)-> x+y);
+		System.out.println(result);
 	}
 	
 }

@@ -16,18 +16,22 @@ public class Run {
 
 	public static void main(String[] args) {
 		WarehouseManager w=new WarehouseManager();
-		//String supplyFile="testInputSupply.txt";
-		//String deliveryFile="testInputDelivery.txt";
+		
 		String inputFile="input.txt";
 		//TODO create other warehouses
 		Warehouse warehouse=w.getWarehouseById("w1");
-		
-			//readInputFile(warehouse,supplyFile);
-			//readInputFile(warehouse,deliveryFile);
-			
+					
 		List<Thread> listOfThreads=readInputFile(warehouse,inputFile);
+		
 		for (Thread thread : listOfThreads) {
 			thread.start();
+			synchronized (thread) {
+				try {
+					thread.wait();
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
+			}
 		}
 			
 		for (Thread thread : listOfThreads) {
