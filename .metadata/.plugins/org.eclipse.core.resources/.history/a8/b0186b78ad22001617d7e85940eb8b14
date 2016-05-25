@@ -1,0 +1,10 @@
+package bonusTask;
+
+public class Cook {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

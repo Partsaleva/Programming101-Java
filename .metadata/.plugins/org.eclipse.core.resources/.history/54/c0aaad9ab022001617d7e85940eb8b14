@@ -1,0 +1,24 @@
+package bonusTask;
+
+import java.util.List;
+import java.util.Scanner;
+
+public class Cook {
+
+	public static void main(String[] args) {
+		int testExample;
+		
+		List<Integer> timesForHotPlates;
+	}
+
+	public void test(){
+		Scanner scanner=new Scanner(System.in);
+		System.out.print("Mekitsi: ");
+		int mekitsi=scanner.nextInt();
+		System.out.print("hot plates: ");
+		int hotPlates=scanner.nextInt();
+		
+		
+		scanner.close();
+	}
+}

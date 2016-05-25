@@ -1,0 +1,48 @@
+package bonusTask;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.Scanner;
+
+public class Cook {
+
+	public static void main(String[] args) {
+		Scanner scanner=new Scanner(System.in);
+		int testExample=scanner.nextInt();
+		
+		for (int i = 0; i < testExample; i++) {
+			test();
+		}
+		
+		
+	}
+
+	public static void test(){
+		List<Integer> timesForHotPlates=new ArrayList<Integer>();
+		Scanner scanner=new Scanner(System.in);
+		System.out.print("Mekitsi: ");
+		//0 < x <1015
+		int mekitsi=scanner.nextInt();
+		//0 < x < 20
+		System.out.print("hot plates: ");
+		int hotPlates=scanner.nextInt();
+		// < 500
+		System.out.print("times for hot plates: ");
+		String[] times=scanner.nextLine().split(" ");
+		scanner.close();
+		
+		for (int i = 0; i < hotPlates; i++) {
+			timesForHotPlates.add(Integer.parseInt(times[i]));
+		}
+		Collections.sort(timesForHotPlates);
+		
+		
+	}
+	
+	private int calculateTime(List<Integer> times, int mekitsi, int hotPlates){
+		
+		return hotPlates;
+		
+	}
+}
