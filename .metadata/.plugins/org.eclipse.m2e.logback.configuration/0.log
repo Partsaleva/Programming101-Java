@@ -900,3 +900,11 @@ java.net.ConnectException: Connection timed out
 2016-05-20 09:44:45,881 [Worker-3] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/partsaleva/Projects/java101/Simple JSON pretty printer service/src/main/resources
 2016-05-20 09:44:45,884 [Worker-3] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
 2016-05-20 09:44:45,884 [Worker-3] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/partsaleva/Projects/java101/Simple JSON pretty printer service/src/test/resources
+2016-05-24 18:28:43,789 [Worker-3] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-05-24 18:28:43,860 [Worker-3] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/partsaleva/Projects/java101/Simple JSON pretty printer service/src/main/resources
+2016-05-24 18:28:43,862 [Worker-3] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-05-24 18:28:43,862 [Worker-3] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/partsaleva/Projects/java101/Simple JSON pretty printer service/src/test/resources
+2016-05-25 10:32:22,731 [Worker-3] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-05-25 10:32:22,773 [Worker-3] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/partsaleva/Projects/java101/Simple JSON pretty printer service/src/main/resources
+2016-05-25 10:32:22,777 [Worker-3] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-05-25 10:32:22,777 [Worker-3] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/partsaleva/Projects/java101/Simple JSON pretty printer service/src/test/resources
