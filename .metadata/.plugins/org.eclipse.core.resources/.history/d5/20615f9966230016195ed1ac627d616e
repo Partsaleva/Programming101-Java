@@ -1,0 +1,17 @@
+package practice;
+
+import java.util.Stack;
+
+public class DfsExample {
+
+	static int[][] graph;
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+	public static void dfs(){
+		int currentVertex=1;
+		Stack<Integer> traversed = new Stack<>();
+	}
+}

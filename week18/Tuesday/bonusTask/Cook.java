@@ -8,15 +8,14 @@ import java.util.Scanner;
 public class Cook {
 
 	public static void main(String[] args) {
-		int testExample;
-		try(Scanner scanner=new Scanner(System.in)){
-			testExample=scanner.nextInt();
-		}
+		
+		
+			test();
+		
+		
 		
 	
-		for (int i = 0; i < testExample; i++) {
-			test();
-		}
+		
 		
 		
 	}
@@ -25,30 +24,44 @@ public class Cook {
 		List<Integer> timesForHotPlates=new ArrayList<Integer>();
 		int mekitsi; 
 		int hotPlates; 
-		String[] times;
-		try(Scanner scanner=new Scanner(System.in)){
-			System.out.print("Mekitsi: ");
-			// TODO check input 0 < x <1015
-			mekitsi=scanner.nextInt();
-			//// TODO check input 0 < x < 20
-			System.out.print("hot plates: ");
-			hotPlates=scanner.nextInt();
-			//// TODO check input < 500
-			System.out.print("times for hot plates: ");
-			times=scanner.nextLine().split(" ");
-		}
+		String timesString;
+		Scanner scanInt=new Scanner(System.in);
+		
+		System.out.print("Mekitsi: ");
+		// TODO check input 0 < x <1015
+		mekitsi=scanInt.nextInt();
+		//// TODO check input 0 < x < 20
+		System.out.print("hot plates: ");
+		hotPlates=scanInt.nextInt();
+		
+		
+		
+		//// TODO check input < 500
+		Scanner scanStr=new Scanner(System.in);
+		System.out.print("times for hot plates: ");
+		timesString=scanStr.nextLine();
+		String[] times=timesString.split(" ");
 		
 		for (int i = 0; i < hotPlates; i++) {
 			timesForHotPlates.add(Integer.parseInt(times[i]));
 		}
 		Collections.sort(timesForHotPlates);
 		System.out.println(calculateTime(timesForHotPlates, mekitsi, hotPlates));
+		 
+		scanInt.close();
+		scanStr.close();
+		
+		
 		
 	}
 	
-	private static int calculateTime(List<Integer> times, int mekitsi, int hotPlates){
-		//TODO implement
-		return hotPlates;
+	private static int calculateTime(List<Integer> timesForHotPlates, int mekitsi, int hotPlates){
+		int time=0;
+		int minTime=0;
+		for (int i = 0; i < timesForHotPlates.size(); i++) {
+			
+		}
+		return minTime;
 		
 	}
 }
