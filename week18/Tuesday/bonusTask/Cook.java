@@ -56,7 +56,7 @@ public class Cook {
 	}
 	
 	private static int calculateTime(List<Integer> timesForHotPlates, int mekitsi, int hotPlates){
-		int time=0;
+		//int mek=mekitsi;
 		int minTime=0;
 		for (int i = 0; i < timesForHotPlates.size(); i++) {
 			
@@ -64,4 +64,6 @@ public class Cook {
 		return minTime;
 		
 	}
+	
+	
 }
