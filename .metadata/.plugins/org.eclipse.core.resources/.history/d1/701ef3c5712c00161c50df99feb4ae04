@@ -1,0 +1,18 @@
+package graphs;
+
+public class BuildScripts {
+
+	public static void main(String[] args) {
+		int numberOfPrograms= 5;
+		String namesOfPrograms = "Extensions Interface Core Common Networking";
+		String programToBuild = "Interface";
+		String depend1 = "3 Common Core Networking";
+		String depend2 = "4 Core Common Extensions Networking";
+		String depend3 = "0";
+		String depend4 = "1 Core";
+		String depend5 = "2 Core Common";
+
+		
+	}
+
+}
