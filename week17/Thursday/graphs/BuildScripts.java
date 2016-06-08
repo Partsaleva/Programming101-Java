@@ -1,11 +1,15 @@
 package graphs;
 
 import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.List;
 
 public class BuildScripts {
 
-	static int[][] graph;
+	static LinkedList<Integer> adj[];
+	 
+	  
 	 
 	public static void main(String[] args) {
 		List<String> listOfDependencies=new ArrayList<>();
@@ -22,18 +26,25 @@ public class BuildScripts {
 		listOfDependencies.add(depend3);
 		listOfDependencies.add(depend4);
 		listOfDependencies.add(depend5);
-		graph=new int[numberOfPrograms][numberOfPrograms];
+		adj=new LinkedList[numberOfPrograms];
 		buildGraph(namesOfPrograms, listOfDependencies);
 		printGraph();
 				
 	}
 
+	
+	
 	private static void printGraph() {
-		for (int i = 0; i < graph.length; i++) {
-			for (int j = 0; j < graph.length; j++) {
-				System.out.print(graph[i][j] + " ");
-			}
-			System.out.println();
+		for (int i = 0; i < adj.length; i++) {
+			System.out.print(i);
+			Iterator<Integer> it = adj[i].listIterator();
+			System.out.print(" [");
+	        while (it.hasNext())
+	        {
+	        	System.out.print(it.next());
+	        }
+	        System.out.print("]");
+	        System.out.println();
 		}
 		
 	}
@@ -41,7 +52,9 @@ public class BuildScripts {
 	public static void buildGraph(String namesOfPrograms, List<String> listOfDependencies){
 		List<List<String>> dependencies=makeDependencyList(listOfDependencies);
 		List<String> programs=makeProgramList(namesOfPrograms);
-		
+		for (int i=0; i<programs.size(); ++i){
+            adj[i] = new LinkedList();
+		}
 		for (int i = 0; i < dependencies.size(); i++) {
 			List<String> depList=dependencies.get(i);
 			//for every list of dependencies
@@ -49,7 +62,7 @@ public class BuildScripts {
 				//find where in our program list is this dependency
 				int index=programs.indexOf(str);
 				// there is way from row[index] to column[index]
-				graph[index][i]=1;
+				adj[index].add(i);
 			}
 			
 		}
