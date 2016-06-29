@@ -13,33 +13,19 @@ public class IsPrime {
 
 	}
 	
-	public boolean isPrime(int number)
-	{
-		//only positive numbers can be prime
-		if(number<2)
-		{
+	public boolean isPrime(int number){
+		if (number < 2) {
 			return false;
 		}
-		else
-		{
-			//we need to check only to sqrt of num
-			double max=Math.sqrt(number);
-			int i = 2;
-			if (number == 2)
-			{
-			    return true;
-			}
-			while (i <= max)
-			{
-				//if we can divide number return false
-				if (number % i == 0)
-				{
+		else{
+			int max=(int) Math.sqrt(number);
+			for (int i = 2; i < max; i++) {
+				if (number % i ==0) {
 					return false;
 				}
-				i++;
 			}
 		}
-		return true;	
+		return true;
 	}
 
 }

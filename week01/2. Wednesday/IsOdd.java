@@ -12,7 +12,7 @@ public class IsOdd {
 	}
 	
 	public boolean isOdd(int n){
-		return Math.abs(n)%2==1;
+		return Math.abs(n) % 2 == 1;
 	}
 
 }
