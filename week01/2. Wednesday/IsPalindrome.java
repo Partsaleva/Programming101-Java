@@ -13,8 +13,7 @@ public class IsPalindrome {
 
 	}
 	
-	boolean isPalindrome(String argument)
-	{
+	boolean isPalindrome(String argument){
 		//reverse string
 		String reverse = new StringBuffer(argument).reverse().toString();
 		//compare reversed and original

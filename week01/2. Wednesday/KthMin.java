@@ -15,24 +15,23 @@ public class KthMin {
 		int k = in.nextInt();
 		in.close();*/
 		
-		System.out.println(num.kthMin(k,array));
+		System.out.println(num.kthMin(4,array));
 		System.out.println(num.kthMin(l,array));
 
 	}
 	
+	
 	//sort array and return k-1 element
-	int kthMin(int k,int[] arr)
-	{
-		if(k>0 && k<arr.length)
-		{
+	int kthMin(int k,int[] arr){
+		if(k > 0 && k < arr.length){
 			Arrays.sort(arr);
 			return arr[k-1];
 		}
-		else
-		{
-			System.out.println("no such element");
+		else{
+			System.out.print("no such element ");
 			return -1;
 		}
+		
 	}
 
 }

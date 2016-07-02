@@ -15,8 +15,7 @@ public class HasAnagramOf {
 	}
 
 	//if contains all lettes and they are in diff order return true
-	boolean hasAnagramOf(String shorter, String longer)
-	{
+	boolean hasAnagramOf(String shorter, String longer){
 		if(!isSubseq(shorter, longer)&& deleteChars(shorter, longer))
 		{
 			return true;

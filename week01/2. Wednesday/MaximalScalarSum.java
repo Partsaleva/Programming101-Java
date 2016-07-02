@@ -16,14 +16,13 @@ public class MaximalScalarSum {
 
 	}
 	
-	long maximalScalarSum(int[] a, int[] b)
-	{
-		long num=0;
+	long maximalScalarSum(int[] a, int[] b) {
+		long num = 0;
 		//
-		Arrays.sort(a);Arrays.sort(b);
-		for(int i=0;i<a.length;i++)
-		{
-			num+=a[i]*b[i];
+		Arrays.sort(a);
+		Arrays.sort(b);
+		for (int i = 0; i < a.length; i++) {
+			num += a[i] * b[i];
 		}
 		return num;
 	}

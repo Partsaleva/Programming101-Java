@@ -23,7 +23,11 @@ public class Anagram {
 		String s6="";
 		
 		System.out.println(str.anagram(s1, s2));
+		long s=System.nanoTime();
 		System.out.println(str.anagram(s3, s4));
+		long e=System.nanoTime();
+		System.out.println(e-s);
+		
 		System.out.println(str.anagram(s5, s6));
 		
 
@@ -38,7 +42,7 @@ public class Anagram {
 		}
 		else{
 			//if strings are eq, but empty- return false
-			if(A.length()==0&&B.length()==0){
+			if(A.length()==0 && B.length()==0){
 				return false;
 			}
 			//convert to lower case, sort and compare
@@ -55,4 +59,23 @@ public class Anagram {
 		}
 		return false;
 	}
+	
+	static boolean anagram1(String A, String B) {
+		  A = A.replaceAll("\\s+", "").toLowerCase();
+		  B = B.replaceAll("\\s+", "").toLowerCase();
+
+		  if (A.length() != B.length()) {
+		   return false;
+		  }
+
+		  for (int i = 0; i < A.length();) {
+		   int index = B.indexOf(A.charAt(i));
+		   if (index >= 0) {
+		    return anagram1(A.substring(0, i) + A.substring(i + 1), B.substring(0, index) + B.substring(index + 1));
+		   } else {
+		    return false;
+		   }
+		  }
+		  return true;
+		 }
 }

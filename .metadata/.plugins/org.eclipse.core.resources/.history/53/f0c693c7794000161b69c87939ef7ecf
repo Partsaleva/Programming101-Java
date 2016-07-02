@@ -1,0 +1,57 @@
+
+
+/*21. Copy every character K times
+String copyEveryChar(String input, int k)
+copyEveryChar("tldr", 3) => "tttllldddrrr"*/
+
+
+public class CopyEveryChar {
+	
+	public static void main(String[] args) {
+		CopyEveryChar str=new CopyEveryChar();
+		String input="tldr";
+		long s=System.nanoTime();
+		//System.out.println(str.copyEveryChar(input, 3));
+		System.out.println(copyEveryChar1(input, 3));
+		long e=System.nanoTime();
+		System.out.println(e-s);
+				
+		System.out.println(str.copyEveryChar(input, 3));
+		System.out.println(copyEveryChar1(input, 3));
+	}
+
+	String copyEveryChar(String input, int k){
+	
+		String result="";
+		for(int i=0; i<input.length(); i++){
+		
+			char ch = input.charAt(i);
+			for(int j=0; j<k; j++){		
+				//add every char k times to string
+				result+=ch;
+			}
+		}
+		return result;
+	}
+	
+	 static String replace(char input, int k) {
+		  if (k == 0) {
+		   return "";
+		  }
+		  String s = replace(input, k / 2);
+		  if (k % 2 == 0) {
+		   return s + s;
+		  } else {
+		   return s + s + input;
+		  }
+
+		 }
+
+		 static String copyEveryChar1(String input, int k) {
+		  String result = "";
+		  for (int i = 0; i < input.length(); i++) {
+		   result += replace(input.charAt(i), k);
+		  }
+		  return result;
+		 }
+}
