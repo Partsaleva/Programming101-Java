@@ -17,10 +17,10 @@ public class CorrectBrackets {
 			if(count<0){
 				return false;
 			}
-			if(expr[i]==')'){
+			if(expr[i]=='('){
 				count--;
 			}
-			else if(expr[i]=='('){
+			else if(expr[i]==')'){
 				count++;
 			}
 		}
